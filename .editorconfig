@@ -1,0 +1,22 @@
+# http://editorconfig.org
+root = true
+
+[*]
+indent_style = space
+indent_size = 2
+
+end_of_line = lf
+charset = utf-8
+trim_trailing_whitespace = true
+insert_final_newline = true
+max_line_length = 120
+
+[*.{gradle,java,json,kt,kts,scala,rs,xml,kt.spec,kts.spec,sh}]
+indent_size = 4
+
+[*.{kt,kts}]
+# default IntelliJ IDEA style, same as alphabetical, but with "java", "javax", "kotlin" and alias imports in the end of the imports list
+ij_kotlin_imports_layout=*,java.**,javax.**,kotlin.**,^
+
+[*.md]
+trim_trailing_whitespace = false

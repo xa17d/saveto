@@ -3,11 +3,13 @@ plugins {
     id 'kotlin-android'
 }
 
+// apply from: rootProject.file("versions2.gradle")
+
 android {
     compileSdk 31
 
     defaultConfig {
-        applicationId "at.xa1.saveto"
+        applicationId "at.xa1.safeto"
         minSdk 26
         targetSdk 31
         versionCode 1
@@ -21,7 +23,7 @@ android {
 
     buildTypes {
         release {
-            minifyEnabled false
+            minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
@@ -37,8 +39,8 @@ android {
         compose true
     }
     composeOptions {
-        kotlinCompilerExtensionVersion compose_version
-        kotlinCompilerVersion '1.5.21'
+        kotlinCompilerExtensionVersion versions.androidx.compose
+        kotlinCompilerVersion versions.kotlin
     }
     packagingOptions {
         resources {
@@ -48,18 +50,15 @@ android {
 }
 
 dependencies {
+    implementation lib.androidx.compose.ui
+    implementation lib.androidx.compose.material
+    implementation lib.androidx.compose.uiPreview
+    implementation lib.androidx.activity.compose
+    implementation lib.kotlinx.coroutines.android
 
-    implementation 'androidx.core:core-ktx:1.7.0'
-    implementation 'androidx.appcompat:appcompat:1.4.0'
-    implementation 'com.google.android.material:material:1.4.0'
-    implementation "androidx.compose.ui:ui:$compose_version"
-    implementation "androidx.compose.material:material:$compose_version"
-    implementation "androidx.compose.ui:ui-tooling-preview:$compose_version"
-    implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.4.0'
-    implementation 'androidx.activity:activity-compose:1.4.0'
-    testImplementation 'junit:junit:4.+'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.3'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
-    androidTestImplementation "androidx.compose.ui:ui-test-junit4:$compose_version"
-    debugImplementation "androidx.compose.ui:ui-tooling:$compose_version"
+    testImplementation lib.junit
+    androidTestImplementation lib.androidx.test.ext
+    androidTestImplementation lib.androidx.test.espresso
+    androidTestImplementation lib.androidx.compose.uiTest
+    debugImplementation lib.androidx.compose.uiTooling
 }
