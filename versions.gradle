@@ -1,53 +1,55 @@
 def versions = [
-        "kotlin"     : "1.6.10",
-        "minSdk"     : 26,
-        "compileSdk" : 31,
-        "targetSdk"  : 31,
-        "versionCode": 1,
-        "versionName": "1.0",
+    "kotlin"     : "1.5.31", // don't forget to update kotlin-gradle-plugin too
+    "minSdk"     : 26,
+    "compileSdk" : 31,
+    "targetSdk"  : 31,
+    "versionCode": 1,
+    "versionName": "1.0",
 
-        "androidx"   : [
-                "core"     : "1.7.0",
-                "appcompat": "1.4.0",
-                "activity" : "1.4.0",
-                "compose"  : "1.0.5",
-        ],
+    "androidx"   : [
+        "core"     : "1.7.0",
+        "appcompat": "1.4.0",
+        "activity" : "1.4.0",
+        "compose"  : "1.0.5",
+    ],
 
-        "kotlinx"    : [
-                "coroutines": "1.6.0"
-        ],
+    "kotlinx"    : [
+        "coroutines": "1.6.0"
+    ],
 ]
 
 def lib = [
-        "kotlin"     : [
-                "stdlib": "org.jetbrains.kotlin:kotlin-stdlib:${versions.kotlin}"
-        ],
-        "kotlinx"    : [
-                "coroutines": [
-                        "core"   : "org.jetbrains.kotlinx:kotlinx-coroutines-core:${versions.kotlinx.coroutines}",
-                        "android": "org.jetbrains.kotlinx:kotlinx-coroutines-android:${versions.kotlinx.coroutines}"
-                ]
-        ],
-        "junit"      : "junit:junit:4.12",
-        "codeScanner": "com.budiyev.android:code-scanner:2.1.0",
-        "androidx"   : [
-                "coreKtx"  : "androidx.core:core-ktx:${versions.androidx.core}",
-                "appcompat": "androidx.appcompat:appcompat:${versions.androidx.appcompat}",
-                "compose"  : [
-                        "ui"       : "androidx.compose.ui:ui:${versions.androidx.compose}",
-                        "uiPreview": "androidx.compose.ui:ui-tooling-preview:${versions.androidx.compose}",
-                        "uiTooling": "androidx.compose.ui:ui-tooling:${versions.androidx.compose}",
-                        "material" : "androidx.compose.material:material:${versions.androidx.compose}",
-                        "uiTest": "androidx.compose.ui:ui-test-junit4:${versions.androidx.compose}",
-                ],
-                "activity" : [
-                        "compose": "androidx.activity:activity-compose:${versions.androidx.activity}"
-                ],
-                "test":  [
-                        "ext": "androidx.test.ext:junit:1.1.3",
-                        "espresso": "androidx.test.espresso:espresso-core:3.4.0",
-                ]
+    "kotlin"  : [
+        "stdlib": "org.jetbrains.kotlin:kotlin-stdlib:${versions.kotlin}"
+    ],
+    "kotlinx" : [
+        "coroutines": [
+            "core"   : "org.jetbrains.kotlinx:kotlinx-coroutines-core:${versions.kotlinx.coroutines}",
+            "android": "org.jetbrains.kotlinx:kotlinx-coroutines-android:${versions.kotlinx.coroutines}"
         ]
+    ],
+    "junit"   : "junit:junit:4.12",
+    "android" : [
+        "material": "com.google.android.material:material:1.4.0"
+    ],
+    "androidx": [
+        "coreKtx"  : "androidx.core:core-ktx:${versions.androidx.core}",
+        "appcompat": "androidx.appcompat:appcompat:${versions.androidx.appcompat}",
+        "compose"  : [
+            "ui"       : "androidx.compose.ui:ui:${versions.androidx.compose}",
+            "uiPreview": "androidx.compose.ui:ui-tooling-preview:${versions.androidx.compose}",
+            "uiTooling": "androidx.compose.ui:ui-tooling:${versions.androidx.compose}",
+            "material" : "androidx.compose.material:material:${versions.androidx.compose}",
+            "uiTest"   : "androidx.compose.ui:ui-test-junit4:${versions.androidx.compose}",
+        ],
+        "activity" : [
+            "compose": "androidx.activity:activity-compose:${versions.androidx.activity}"
+        ],
+        "test"     : [
+            "ext"     : "androidx.test.ext:junit:1.1.3",
+            "espresso": "androidx.test.espresso:espresso-core:3.4.0",
+        ]
+    ]
 ]
 
 ext.versions = versions

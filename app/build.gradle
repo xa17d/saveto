@@ -50,6 +50,9 @@ android {
 }
 
 dependencies {
+    implementation lib.kotlin.stdlib
+    implementation lib.android.material
+    implementation lib.androidx.appcompat
     implementation lib.androidx.compose.ui
     implementation lib.androidx.compose.material
     implementation lib.androidx.compose.uiPreview
