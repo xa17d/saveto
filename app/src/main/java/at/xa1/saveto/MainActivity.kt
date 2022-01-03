@@ -26,11 +26,10 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
 
         getInjector().inject(this)
-
         hostHolder.attach(this)
+
         setContent {
             SaveToTheme {
-                // A surface container using the 'background' color from the theme
                 Surface(color = MaterialTheme.colors.background) {
                     navigator.Show()
                 }

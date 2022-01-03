@@ -2,23 +2,30 @@ package at.xa1.saveto.di
 
 import android.app.Activity
 import android.app.Application
+import android.content.Context
 import android.content.Intent
 import at.xa1.saveto.MainActivity
 import at.xa1.saveto.MainArgs
-import at.xa1.saveto.MainCoodrdinator
+import at.xa1.saveto.MainCoordinator
 import at.xa1.saveto.MainResult
 import at.xa1.saveto.android.HostHolder
 import at.xa1.saveto.android.IntentManager
 import at.xa1.saveto.android.SaveDialog
 import at.xa1.saveto.android.StreamCopy
 import at.xa1.saveto.android.getRetainedInstance
-import at.xa1.saveto.navigation.CoordinatorDestination
+import at.xa1.saveto.model.SettingsStore
 import at.xa1.saveto.navigation.ComposeNavigator
+import at.xa1.saveto.navigation.CoordinatorDestination
+import at.xa1.saveto.ui.LaunchedCoordinator
 import at.xa1.saveto.ui.SaveCoordinator
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 
-class Injector {
+class Injector(private val applicationContext: Application) {
+
+    private val settingsStore = SettingsStore(
+        applicationContext.getSharedPreferences("settings", Context.MODE_PRIVATE)
+    )
 
     fun inject(mainActivity: MainActivity) {
 
@@ -30,12 +37,22 @@ class Injector {
                     SaveCoordinator(
                         CoroutineScope(Dispatchers.Main),
                         SaveDialog(intentManager),
-                        StreamCopy(applicationContext.contentResolver)
+                        StreamCopy(applicationContext.contentResolver),
+                        settingsStore
+                    )
+                }
+
+                val launchedCoordinatorDestination = CoordinatorDestination {
+                    LaunchedCoordinator(
+                        settingsStore
                     )
                 }
 
                 val mainCoordinatorDestination = CoordinatorDestination {
-                    MainCoodrdinator(saveCoordinatorDestination)
+                    MainCoordinator(
+                        saveCoordinatorDestination,
+                        launchedCoordinatorDestination
+                    )
                 }
 
                 goTo(mainCoordinatorDestination) {
@@ -72,8 +89,8 @@ class Injector {
         lateinit var INSTANCE: Injector
             private set
 
-        fun init() {
-            INSTANCE = Injector()
+        fun init(applicationContext: Application) {
+            INSTANCE = Injector(applicationContext)
         }
     }
 }

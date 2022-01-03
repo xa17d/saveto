@@ -16,6 +16,10 @@ def versions = [
     "kotlinx"    : [
         "coroutines": "1.6.0"
     ],
+
+    "google": [
+        "accompanist": "0.22.0-rc"
+    ]
 ]
 
 def lib = [
@@ -49,6 +53,12 @@ def lib = [
         "test"     : [
             "ext"     : "androidx.test.ext:junit:1.1.3",
             "espresso": "androidx.test.espresso:espresso-core:3.4.0",
+        ]
+    ],
+    "google": [
+        "accompanist": [
+            "pager": "com.google.accompanist:accompanist-pager:${versions.google.accompanist}",
+            "pagerIndicators": "com.google.accompanist:accompanist-pager-indicators:${versions.google.accompanist}",
         ]
     ]
 ]

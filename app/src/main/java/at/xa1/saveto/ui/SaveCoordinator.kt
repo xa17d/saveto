@@ -4,6 +4,8 @@ import android.net.Uri
 import at.xa1.saveto.MainResult
 import at.xa1.saveto.android.SaveDialog
 import at.xa1.saveto.android.StreamCopy
+import at.xa1.saveto.model.PreviewMode
+import at.xa1.saveto.model.SettingsStore
 import at.xa1.saveto.model.Source
 import at.xa1.saveto.model.SourceData
 import at.xa1.saveto.model.humanReadableByteCount
@@ -21,12 +23,18 @@ import kotlinx.coroutines.launch
 class SaveCoordinator(
     private val scope: CoroutineScope,
     private val saveDialog: SaveDialog,
-    private val streamCopy: StreamCopy
+    private val streamCopy: StreamCopy,
+    private val settingsStore: SettingsStore
 ) : Coordinator<SaveArgs>() {
     override fun onStart() {
         super.onStart()
         navigator.goTo(SplashDestination)
-        scope.launch { preview() }
+        scope.launch {
+            when (settingsStore.previewMode) {
+                PreviewMode.INTENT_DETAILS -> preview()
+                PreviewMode.NONE -> save()
+            }
+        }
     }
 
     private fun preview() {
@@ -81,7 +89,7 @@ class SaveCoordinator(
                 .collect()
 
             if (streamCopy.progress.value.isFailed) {
-                TODO()
+                TODO() // TODO implement and test
             } else {
                 success()
             }

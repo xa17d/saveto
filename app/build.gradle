@@ -58,6 +58,8 @@ dependencies {
     implementation lib.androidx.compose.uiPreview
     implementation lib.androidx.activity.compose
     implementation lib.kotlinx.coroutines.android
+    implementation lib.google.accompanist.pager
+    implementation lib.google.accompanist.pagerIndicators
 
     testImplementation lib.junit
     testImplementation lib.kotlinx.coroutines.test

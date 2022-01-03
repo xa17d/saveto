@@ -11,7 +11,7 @@ Save shares to file from any app.
 - [x] Propose Filename
 - [x] Support Plain Text
 - [x] Make Scrollable
-- [ ] Dependency Injection
+- [x] Dependency Injection
 - [ ] List open source licenses
 - [ ] Settings
 - [ ] Intro
