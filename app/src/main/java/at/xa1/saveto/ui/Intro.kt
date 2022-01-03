@@ -2,24 +2,21 @@ package at.xa1.saveto.ui
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
-import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.material.Button
 import androidx.compose.material.Card
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.unit.dp
 import at.xa1.saveto.navigation.Destination
 import com.google.accompanist.pager.ExperimentalPagerApi
 import com.google.accompanist.pager.HorizontalPager
 import com.google.accompanist.pager.HorizontalPagerIndicator
-import com.google.accompanist.pager.calculateCurrentOffsetForPage
 import com.google.accompanist.pager.rememberPagerState
-import kotlin.math.absoluteValue
 
 @OptIn(ExperimentalPagerApi::class)
 @Composable
@@ -28,11 +25,9 @@ fun Intro(modifier: Modifier = Modifier, args: IntroArgs) {
     Column(Modifier.fillMaxSize()) {
         val pagerState = rememberPagerState()
 
-        // Display 10 items
         HorizontalPager(
             count = 4,
             state = pagerState,
-            // Add 32.dp horizontal padding to 'center' the pages
             contentPadding = PaddingValues(32.dp),
             modifier = Modifier
                 .weight(1f)
@@ -43,31 +38,14 @@ fun Intro(modifier: Modifier = Modifier, args: IntroArgs) {
                 modifier = Modifier
                     .fillMaxSize()
                     .padding(start = 8.dp, end = 8.dp)
-                    /*.graphicsLayer {
-                        // Calculate the absolute offset for the current page from the
-                        // scroll position. We use the absolute value which allows us to mirror
-                        // any effects for both directions
-                        val pageOffset = calculateCurrentOffsetForPage(page).absoluteValue
-
-                        // We animate the scaleX + scaleY, between 85% and 100%
-                        lerp(
-                            start = 0.85f,
-                            stop = 1f,
-                            fraction = 1f - pageOffset.coerceIn(0f, 1f)
-                        ).also { scale ->
-                            scaleX = scale
-                            scaleY = scale
-                        }
-
-                        // We animate the alpha, between 50% and 100%
-                        alpha = lerp(
-                            start = 0.5f,
-                            stop = 1f,
-                            fraction = 1f - pageOffset.coerceIn(0f, 1f)
-                        )
-                    }*/
             ) {
-                Text(text = page.toString())
+                when (page) {
+                    0 -> CardFindShared()
+                    1 -> CardSelectShareTo()
+                    2 -> CardChooseDestination()
+                    3 -> CardFinish(args = args)
+                    else -> error("no such page")
+                }
             }
         }
 
@@ -78,54 +56,37 @@ fun Intro(modifier: Modifier = Modifier, args: IntroArgs) {
                 .padding(16.dp),
         )
 
-        if (pagerState.currentPage == 3) {
-            args.onCompleted()
-        }
-
     }
+}
 
+@Composable
+fun CardFindShared() {
+    Text(text = "find the shared symbol")
+}
 
-    /*
-    val pagerState = rememberPagerState()
-    HorizontalPager(
-        state = pagerState,
-        modifier = Modifier.fillMaxSize(),
-        count = 4,
-        contentPadding = PaddingValues(8.dp)
+@Composable
+fun CardSelectShareTo() {
+    Text(text = "select share to")
+}
 
-    ) { page ->
-        Card(
-            elevation = 4.dp,
-            modifier = Modifier
-                .fillMaxSize(0.9f)
-                .padding(8.dp)
-                .graphicsLayer {
-                    // Calculate the absolute offset for the current page from the
-                    // scroll position. We use the absolute value which allows us to mirror
-                    // any effects for both directions
-                    val pageOffset = calculateCurrentOffsetForPage(page).absoluteValue
+@Composable
+fun CardChooseDestination() {
+    Text(text = "choose destination and save")
+}
 
-                    // We animate the scaleX + scaleY, between 85% and 100%
-                    lerp(
-                        start = 0.85f,
-                        stop = 1f,
-                        fraction = 1f - pageOffset.coerceIn(0f, 1f)
-                    ).also { scale ->
-                        scaleX = scale
-                        scaleY = scale
-                    }
-
-                    // We animate the alpha, between 50% and 100%
-                    alpha = lerp(
-                        start = 0.5f,
-                        stop = 1f,
-                        fraction = 1f - pageOffset.coerceIn(0f, 1f)
-                    )
-                }
-        ) {
-            Text(text = page.toString())
+@Composable
+fun CardFinish(args: IntroArgs) {
+    Column {
+        Button(onClick = { args.onClose() }) {
+            Text(text = "Exit and Try yourself") // TODO resources
         }
-    }*/
+
+        // TODO add "open share dialog now? to try it out.
+
+        Button(onClick = { args.onCompleted() }) { // TODO rename arg?
+            Text(text = "Settings") // TODO resources
+        }
+    }
 }
 
 fun lerp(start: Float, stop: Float, fraction: Float): Float {
@@ -136,4 +97,7 @@ val IntroDestination = Destination<IntroArgs> {
     Intro(modifier = Modifier.fillMaxSize(), args)
 }
 
-data class IntroArgs(val onCompleted: () -> Unit)
+data class IntroArgs(
+    val onCompleted: () -> Unit,
+    val onClose: () -> Unit
+)

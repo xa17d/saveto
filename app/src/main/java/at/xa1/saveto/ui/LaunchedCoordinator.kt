@@ -22,13 +22,19 @@ class LaunchedCoordinator(
                 onCompleted = {
                     settingsStore.introSeen = true
                     settings()
-                }
+                },
+                onClose = { args.onClose(MainResult.OK) }
             )
         }
     }
 
     private fun settings() {
-        navigator.goTo(SplashDestination)
+        navigator.goTo(SettingsDestination) {
+            SettingsArgs(
+                settingsStore = settingsStore,
+                onIntro = ::intro
+            )
+        }
     }
 }
 
