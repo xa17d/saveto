@@ -76,7 +76,7 @@ data class SourcePreviewArgs(
     val onSave: () -> Unit
 )
 
-data class Source( // TODO handle multifile
+data class Source(
     val intent: Intent,
     val type: String
 ) {
