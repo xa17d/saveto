@@ -1,6 +1,5 @@
 package at.xa1.saveto
 
-import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -9,63 +8,31 @@ import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import at.xa1.saveto.android.HostHolder
 import at.xa1.saveto.android.IntentManager
-import at.xa1.saveto.android.SaveDialog
-import at.xa1.saveto.android.StreamCopy
-import at.xa1.saveto.navigation.CDestination
+import at.xa1.saveto.di.Inject
+import at.xa1.saveto.di.getInjector
 import at.xa1.saveto.navigation.ComposeNavigator
-import at.xa1.saveto.ui.SaveCoordinator
 import at.xa1.saveto.ui.theme.SaveToTheme
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
 
 class MainActivity : ComponentActivity() {
 
-    var hostHolder = HostHolder() // TODO inject
-    var intentManager: IntentManager = IntentManager(hostHolder) // TODO inject
-    var nav = ComposeNavigator().apply {
-
-    }
+    @Inject
+    lateinit var hostHolder: HostHolder
+    @Inject
+    lateinit var intentManager: IntentManager
+    @Inject
+    lateinit var navigator: ComposeNavigator
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        nav.apply {
-            val d = CDestination {
-                SaveCoordinator(
-                    CoroutineScope(Dispatchers.Main),
-                    SaveDialog(intentManager),
-                    StreamCopy(contentResolver)
-                )
-            }
-
-            val m = CDestination {
-                MainCoodrdinator(d)
-            }
-
-            goTo(m) {
-                MainArgs(
-                    intent = intent,
-                    onClose = { result ->
-                        hostHolder.runOrEnqueue {
-                            activity.setResult(
-                                when (result) {
-                                    MainResult.OK -> Activity.RESULT_OK
-                                    MainResult.ABORT -> Activity.RESULT_CANCELED
-                                }
-                            )
-                            activity.finish()
-                        }
-                    }
-                )
-            }
-        }
+        getInjector().inject(this)
 
         hostHolder.attach(this)
         setContent {
             SaveToTheme {
                 // A surface container using the 'background' color from the theme
                 Surface(color = MaterialTheme.colors.background) {
-                    nav.show()
+                    navigator.Show()
                 }
             }
         }

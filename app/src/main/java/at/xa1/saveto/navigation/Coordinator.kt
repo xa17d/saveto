@@ -53,7 +53,7 @@ class ComposeNavigator : Navigator() {
                 val context = LocationContext(args = args)
                 _screen.value = { destination.composable(context) }
             }
-            is CoordinatorDestination<Args> -> {
+            is CoordinatorDestinationImpl<Args> -> {
                 val coordinator = destination.factory.invoke()
                 coordinator.start(this, args)
             }
@@ -64,7 +64,7 @@ class ComposeNavigator : Navigator() {
     }
 
     @Composable
-    fun show() {
+    fun Show() {
         val s = screen.collectAsState()
         s.value.invoke()
     }
@@ -83,7 +83,7 @@ class ComposeDestination<Args>(
 fun <Args> Destination(composable: @Composable LocationContext<Args>.() -> Unit) =
     ComposeDestination(composable)
 
-fun <Args> CDestination(factory: () -> Coordinator<Args>) =
-    CoordinatorDestination(factory)
+fun <Args> CoordinatorDestination(factory: () -> Coordinator<Args>) =
+    CoordinatorDestinationImpl(factory)
 
-class CoordinatorDestination<Args>(val factory: () -> Coordinator<Args>) : Destination<Args>
+class CoordinatorDestinationImpl<Args>(val factory: () -> Coordinator<Args>) : Destination<Args>

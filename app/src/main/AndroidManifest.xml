@@ -3,6 +3,7 @@
     package="at.xa1.saveto">
 
     <application
+        android:name=".App"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -23,6 +24,7 @@
                 <action android:name="android.intent.action.SEND" />
                 <!--<action android:name="android.intent.action.SEND_MULTIPLE" />-->
                 <category android:name="android.intent.category.DEFAULT" />
+
                 <data android:mimeType="image/*" />
                 <data android:mimeType="text/plain" />
                 <data android:mimeType="*/*" />
@@ -30,6 +32,7 @@
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
                 <category android:name="android.intent.category.DEFAULT" />
+
                 <data android:mimeType="application/pdf" />
                 <data android:mimeType="*/*" />
             </intent-filter>
