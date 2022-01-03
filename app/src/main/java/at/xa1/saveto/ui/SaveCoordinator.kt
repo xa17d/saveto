@@ -7,6 +7,8 @@ import at.xa1.saveto.model.getFilenameFrom
 import at.xa1.saveto.navigation.Coordinator
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
@@ -31,7 +33,12 @@ class SaveCoordinator(
     }
 
     private fun save() {
-        navigator.goTo(LoadingDestination)
+        val statusText = MutableStateFlow<String?>(null)
+        navigator.goTo(LoadingDestination) {
+            LoadingArgs(
+                text = statusText
+            )
+        }
         scope.launch {
             val filename = getFilenameFrom(args.source.intent)
             val result = saveDialog.show(args.source.type, filename)
@@ -39,6 +46,7 @@ class SaveCoordinator(
             if (result == null) {
                 abort()
             } else {
+                statusText.value = "Saving..."
                 copy(result)
             }
         }
@@ -53,6 +61,14 @@ class SaveCoordinator(
             withContext(Dispatchers.IO) {
                 streamCopy.copy(args.source.sourceUri, destinationUri)
             }
+            success()
+        }
+    }
+
+    private fun success() {
+        navigator.goTo(SuccessDestination)
+        scope.launch {
+            delay(500)
             args.onClose()
         }
     }
