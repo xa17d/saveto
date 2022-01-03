@@ -7,9 +7,13 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 
 @Composable
-fun Scrollable(block: @Composable () -> Unit) {
+fun Scrollable(modifier: Modifier = Modifier, block: @Composable () -> Unit) {
     val scrollState = rememberScrollState()
-    Box(modifier = Modifier.verticalScroll(scrollState)) {
+    Box(
+        modifier = Modifier
+            .verticalScroll(scrollState)
+            .then(modifier)
+    ) {
         block()
     }
 }

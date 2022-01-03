@@ -13,7 +13,7 @@ Save shares to file from any app.
 - [x] Make Scrollable
 - [x] Dependency Injection
 - [x] List open source licenses
-- [ ] Settings
+- [x] Settings
 - [ ] Intro
 - [ ] Review package and file structure
 - [ ] Code Review (total)

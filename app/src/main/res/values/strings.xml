@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">Save To…</string>
+    <string name="settingsTitle">Save To... Settings</string>
+    <string name="settingsPreviewModeNone">No preview and immediately open save dialog</string>
+    <string name="settingsPreviewModeIntentDetails">Show details about the Android Intent before opening the save dialog.</string>
+    <string name="settingsRestartIntro">Restart the Intro</string>
+    <string name="settingsOssLicenses">Show Open Source Licenses</string>
+    <string name="settingsContact">Contact</string>
 </resources>

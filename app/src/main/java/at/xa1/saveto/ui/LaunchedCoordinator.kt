@@ -1,11 +1,17 @@
 package at.xa1.saveto.ui
 
 import android.content.Intent
+import android.net.Uri
+import androidx.core.content.ContextCompat
 import at.xa1.saveto.MainResult
 import at.xa1.saveto.android.HostHolder
 import at.xa1.saveto.model.SettingsStore
 import at.xa1.saveto.navigation.Coordinator
 import com.google.android.gms.oss.licenses.OssLicensesMenuActivity
+import androidx.core.content.ContextCompat.startActivity
+
+
+
 
 class LaunchedCoordinator(
     private val settingsStore: SettingsStore,
@@ -27,7 +33,7 @@ class LaunchedCoordinator(
                     settingsStore.introSeen = true
                     settings()
                 },
-                onClose = { args.onClose(MainResult.OK) }
+                onClose = ::close
             )
         }
     }
@@ -41,9 +47,23 @@ class LaunchedCoordinator(
                         activity.startActivity(Intent(activity, OssLicensesMenuActivity::class.java))
                     }
                 },
-                onIntro = ::intro
+                onIntro = ::intro,
+                onClose = ::close,
+                onContact = {
+                    hostHolder.runOrEnqueue {
+                        activity.startActivity(
+                            Intent(Intent.ACTION_VIEW).apply {
+                                data = Uri.parse("https://xa1.at/saveto/contact")
+                            }
+                        )
+                    }
+                }
             )
         }
+    }
+
+    private fun close() {
+        args.onClose(MainResult.OK)
     }
 }
 
