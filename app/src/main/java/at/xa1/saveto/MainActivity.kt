@@ -6,6 +6,7 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
+import at.xa1.saveto.android.HostHolder
 import at.xa1.saveto.android.IntentManager
 import at.xa1.saveto.android.SaveDialog
 import at.xa1.saveto.android.StreamCopy
@@ -20,7 +21,8 @@ import kotlinx.coroutines.Dispatchers
 
 class MainActivity : ComponentActivity() {
 
-    var intentManager: IntentManager = IntentManager() // TODO inject
+    var hostHolder = HostHolder() // TODO inject
+    var intentManager: IntentManager = IntentManager(hostHolder) // TODO inject
     var nav = ComposeNavigator().apply {
 
     }
@@ -42,7 +44,7 @@ class MainActivity : ComponentActivity() {
             }
         }
 
-        intentManager.attach(this)
+        hostHolder.attach(this)
         setContent {
             SaveToTheme {
                 // A surface container using the 'background' color from the theme
