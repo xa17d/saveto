@@ -44,7 +44,7 @@ class Injector(private val applicationContext: Application) {
 
                 val launchedCoordinatorDestination = CoordinatorDestination {
                     LaunchedCoordinator(
-                        settingsStore
+                        settingsStore, hostHolder
                     )
                 }
 

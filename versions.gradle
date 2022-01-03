@@ -59,6 +59,9 @@ def lib = [
         "accompanist": [
             "pager": "com.google.accompanist:accompanist-pager:${versions.google.accompanist}",
             "pagerIndicators": "com.google.accompanist:accompanist-pager-indicators:${versions.google.accompanist}",
+        ],
+        "play": [
+            "ossLicenses": "com.google.android.gms:play-services-oss-licenses:17.0.0"
         ]
     ]
 ]

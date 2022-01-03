@@ -1,6 +1,7 @@
 plugins {
     id 'com.android.application'
     id 'kotlin-android'
+    id 'com.google.android.gms.oss-licenses-plugin'
 }
 
 // apply from: rootProject.file("versions2.gradle")
@@ -60,6 +61,7 @@ dependencies {
     implementation lib.kotlinx.coroutines.android
     implementation lib.google.accompanist.pager
     implementation lib.google.accompanist.pagerIndicators
+    implementation lib.google.play.ossLicenses
 
     testImplementation lib.junit
     testImplementation lib.kotlinx.coroutines.test

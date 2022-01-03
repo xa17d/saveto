@@ -24,6 +24,10 @@ fun Settings(modifier: Modifier = Modifier, args: SettingsArgs) {
             Text(text = "Intro")
         }
 
+        Button(onClick = { args.onOssLicenses() }) {
+            Text(text = "Licenses")
+        }
+
         val previewMode = remember { mutableStateOf(args.settingsStore.previewMode) }
         Text("Preview")
         Column {
@@ -55,5 +59,6 @@ val SettingsDestination = Destination<SettingsArgs> {
 
 data class SettingsArgs(
     val settingsStore: SettingsStore,
+    val onOssLicenses: () -> Unit,
     val onIntro: () -> Unit
 )
