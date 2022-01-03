@@ -9,7 +9,8 @@ Save shares to file from any app.
 - [x] Show Success
 - [ ] Show Error
 - [ ] Support Plain Text
-- [ ] Make Scrollable
+- [x] Make Scrollable
 - [ ] List open source licenses
 - [ ] Settings
 - [ ] Intro
+- [ ] Review package and file structure

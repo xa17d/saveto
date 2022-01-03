@@ -13,21 +13,24 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import at.xa1.saveto.android.Scrollable
 import at.xa1.saveto.model.getSourceInformation
 import at.xa1.saveto.navigation.Destination
 
 @Composable
 fun SourcePreview(source: Source, onSave: () -> Unit) {
-    Column {
-        Button(
-            modifier = Modifier
-                .padding(8.dp)
-                .align(Alignment.CenterHorizontally),
-            onClick = onSave
-        ) {
-            Text(text = "Save")
+    Scrollable {
+        Column {
+            Button(
+                modifier = Modifier
+                    .padding(8.dp)
+                    .align(Alignment.CenterHorizontally),
+                onClick = onSave
+            ) {
+                Text(text = "Save")
+            }
+            IntentBox(intent = source.intent)
         }
-        IntentBox(intent = source.intent)
     }
 }
 
