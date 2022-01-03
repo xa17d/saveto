@@ -4,6 +4,7 @@ import android.content.ContentResolver
 import android.net.Uri
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
+import java.io.ByteArrayInputStream
 import java.io.IOException
 import java.io.InputStream
 import java.io.OutputStream
@@ -16,14 +17,11 @@ class StreamCopy(
     val progress: StateFlow<Progress>
         get() = _progress
 
-    fun copy(sourceUri: Uri, destinationUri: Uri) {
+    fun copy(sourceStream: InputStream, destinationStream: OutputStream) {
         try {
-            contentResolver.openInputStream(sourceUri).use { source ->
-                source ?: error("openInputStream(sourceUri) returns null")
-
-                contentResolver.openOutputStream(destinationUri, "w").use { destination ->
-                    destination ?: error("openOutputStream(destinationUri) returns null")
-                    copy(source = source, destination =  destination)
+            sourceStream.use { source ->
+                destinationStream.use { destination ->
+                    copyBytes(source = source, destination = destination)
 
                     source.close()
                     destination.close()
@@ -36,7 +34,23 @@ class StreamCopy(
         }
     }
 
-    private fun copy(source: InputStream, destination: OutputStream): Long {
+    fun copy(string: String, destinationUri: Uri) {
+        val source = ByteArrayInputStream(string.toByteArray())
+        val destination = contentResolver.openOutputStream(destinationUri, "w") // TODO deduplicate?
+            ?: error("openOutputStream(destinationUri) returns null")
+        copy(source, destination)
+    }
+
+
+    fun copy(sourceUri: Uri, destinationUri: Uri) {
+        val source = contentResolver.openInputStream(sourceUri)
+            ?: error("openInputStream(sourceUri) returns null")
+        val destination = contentResolver.openOutputStream(destinationUri, "w")
+            ?: error("openOutputStream(destinationUri) returns null")
+        copy(source, destination)
+    }
+
+    private fun copyBytes(source: InputStream, destination: OutputStream): Long {
         var progress = initialProgress()
 
         var bytesCopied: Long = 0
@@ -61,5 +75,9 @@ class StreamCopy(
     )
 
     private fun initialProgress(): Progress =
-        Progress(isFinished = false, isFailed = false, bytesCopied = 0L) // TODO add phases: e.g. start reading, closing,...
+        Progress(
+            isFinished = false,
+            isFailed = false,
+            bytesCopied = 0L
+        ) // TODO add phases: e.g. start reading, closing,...
 }

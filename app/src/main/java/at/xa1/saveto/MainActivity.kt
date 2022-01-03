@@ -13,9 +13,7 @@ import at.xa1.saveto.android.SaveDialog
 import at.xa1.saveto.android.StreamCopy
 import at.xa1.saveto.navigation.CDestination
 import at.xa1.saveto.navigation.ComposeNavigator
-import at.xa1.saveto.ui.SaveArgs
 import at.xa1.saveto.ui.SaveCoordinator
-import at.xa1.saveto.ui.Source
 import at.xa1.saveto.ui.theme.SaveToTheme
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -40,16 +38,19 @@ class MainActivity : ComponentActivity() {
                 )
             }
 
-            goTo(d) {
-                SaveArgs(
-                    source = Source(intent, intent.type ?: "*/*"),
-                    onClose = { success->
+            val m = CDestination {
+                MainCoodrdinator(d)
+            }
+
+            goTo(m) {
+                MainArgs(
+                    intent = intent,
+                    onClose = { result ->
                         hostHolder.runOrEnqueue {
                             activity.setResult(
-                                if (success) {
-                                    Activity.RESULT_OK
-                                } else {
-                                    Activity.RESULT_CANCELED
+                                when (result) {
+                                    MainResult.OK -> Activity.RESULT_OK
+                                    MainResult.ABORT -> Activity.RESULT_CANCELED
                                 }
                             )
                             activity.finish()
@@ -70,6 +71,7 @@ class MainActivity : ComponentActivity() {
         }
     }
 
+    @SuppressWarnings("deprecation")
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         intentManager.onActivityResult(requestCode, resultCode, data)

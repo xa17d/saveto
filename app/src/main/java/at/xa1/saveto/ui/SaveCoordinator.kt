@@ -1,10 +1,13 @@
 package at.xa1.saveto.ui
 
 import android.net.Uri
+import at.xa1.saveto.MainResult
 import at.xa1.saveto.android.SaveDialog
 import at.xa1.saveto.android.StreamCopy
-import at.xa1.saveto.model.getFilenameFrom
+import at.xa1.saveto.model.Source
+import at.xa1.saveto.model.SourceData
 import at.xa1.saveto.model.humanReadableByteCount
+import at.xa1.saveto.model.proposedFilename
 import at.xa1.saveto.navigation.Coordinator
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -43,32 +46,37 @@ class SaveCoordinator(
             )
         }
         scope.launch {
-            val filename = getFilenameFrom(args.source.intent)
+            val filename = args.source.proposedFilename()
             val result = saveDialog.show(args.source.type, filename)
 
             if (result == null) {
                 abort()
             } else {
-                statusText.value = "Saving..."
+                statusText.value = "Saving..." // TODO resource
                 copy(result, statusText)
             }
         }
     }
 
     private fun abort() {
-        args.onClose(false)
+        args.onClose(MainResult.ABORT)
     }
 
     private fun copy(destinationUri: Uri, statusText: MutableStateFlow<String?>) {
         scope.launch {
             launch(Dispatchers.IO) {
-                streamCopy.copy(args.source.sourceUri, destinationUri)
+                when (val sourceData = args.source.data) {
+                    is SourceData.Uri -> streamCopy.copy(sourceData.value, destinationUri)
+                    is SourceData.Text -> streamCopy.copy(sourceData.value, destinationUri)
+                    SourceData.Unknown -> error("unknown") // TODO
+                }
             }
 
             streamCopy.progress
                 .takeWhile { progress -> !progress.isFinished }
                 .onEach { progress ->
-                    statusText.value = "${humanReadableByteCount(progress.bytesCopied)} written..." // TODO resources
+                    statusText.value =
+                        "${humanReadableByteCount(progress.bytesCopied)} written..." // TODO resources
                 }
                 .collect()
 
@@ -77,6 +85,7 @@ class SaveCoordinator(
             } else {
                 success()
             }
+
         }
     }
 
@@ -84,12 +93,12 @@ class SaveCoordinator(
         navigator.goTo(SuccessDestination)
         scope.launch {
             delay(500)
-            args.onClose(true)
+            args.onClose(MainResult.OK)
         }
     }
 }
 
 data class SaveArgs(
     val source: Source,
-    val onClose: (success: Boolean) -> Unit
+    val onClose: (result: MainResult) -> Unit
 )

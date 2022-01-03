@@ -8,14 +8,15 @@ Save shares to file from any app.
 - [x] Show KB copied
 - [x] Show Success
 - [ ] Show Error
-  [ ] Propose Filename
-- [ ] Support Plain Text
+- [x] Propose Filename
+- [x] Support Plain Text
 - [x] Make Scrollable
 - [ ] Dependency Injection
 - [ ] List open source licenses
 - [ ] Settings
 - [ ] Intro
 - [ ] Review package and file structure
+- [ ] Code Review (total)
 
 **Future Version:**
 - [ ] Support multiple files

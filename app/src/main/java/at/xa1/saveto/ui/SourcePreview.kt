@@ -1,7 +1,6 @@
 package at.xa1.saveto.ui
 
 import android.content.Intent
-import android.net.Uri
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
@@ -14,7 +13,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import at.xa1.saveto.android.Scrollable
-import at.xa1.saveto.model.getSourceInformation
+import at.xa1.saveto.model.Source
 import at.xa1.saveto.navigation.Destination
 
 @Composable
@@ -29,7 +28,7 @@ fun SourcePreview(source: Source, onSave: () -> Unit) {
             ) {
                 Text(text = "Save")
             }
-            IntentBox(intent = source.intent)
+            IntentBox(intent = source.rawIntent)
         }
     }
 }
@@ -75,11 +74,3 @@ data class SourcePreviewArgs(
     val source: Source,
     val onSave: () -> Unit
 )
-
-data class Source(
-    val intent: Intent,
-    val type: String
-) {
-    val sourceUri: Uri
-        get() = getSourceInformation(intent) // TODO fix
-}
