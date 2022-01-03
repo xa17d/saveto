@@ -4,13 +4,16 @@ import android.net.Uri
 import at.xa1.saveto.android.SaveDialog
 import at.xa1.saveto.android.StreamCopy
 import at.xa1.saveto.model.getFilenameFrom
+import at.xa1.saveto.model.humanReadableByteCount
 import at.xa1.saveto.navigation.Coordinator
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.flow.onEach
+import kotlinx.coroutines.flow.takeWhile
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 
 class SaveCoordinator(
     private val scope: CoroutineScope,
@@ -47,7 +50,7 @@ class SaveCoordinator(
                 abort()
             } else {
                 statusText.value = "Saving..."
-                copy(result)
+                copy(result, statusText)
             }
         }
     }
@@ -56,12 +59,24 @@ class SaveCoordinator(
         args.onClose()
     }
 
-    private fun copy(destinationUri: Uri) {
+    private fun copy(destinationUri: Uri, statusText: MutableStateFlow<String?>) {
         scope.launch {
-            withContext(Dispatchers.IO) {
+            launch(Dispatchers.IO) {
                 streamCopy.copy(args.source.sourceUri, destinationUri)
             }
-            success()
+
+            streamCopy.progress
+                .takeWhile { progress -> !progress.isFinished }
+                .onEach { progress ->
+                    statusText.value = "${humanReadableByteCount(progress.bytesCopied)} written..." // TODO resources
+                }
+                .collect()
+
+            if (streamCopy.progress.value.isFailed) {
+                TODO()
+            } else {
+                success()
+            }
         }
     }
 

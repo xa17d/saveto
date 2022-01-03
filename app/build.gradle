@@ -60,6 +60,7 @@ dependencies {
     implementation lib.kotlinx.coroutines.android
 
     testImplementation lib.junit
+    testImplementation lib.kotlinx.coroutines.test
     androidTestImplementation lib.androidx.test.ext
     androidTestImplementation lib.androidx.test.espresso
     androidTestImplementation lib.androidx.compose.uiTest

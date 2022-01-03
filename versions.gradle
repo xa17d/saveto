@@ -25,7 +25,8 @@ def lib = [
     "kotlinx" : [
         "coroutines": [
             "core"   : "org.jetbrains.kotlinx:kotlinx-coroutines-core:${versions.kotlinx.coroutines}",
-            "android": "org.jetbrains.kotlinx:kotlinx-coroutines-android:${versions.kotlinx.coroutines}"
+            "android": "org.jetbrains.kotlinx:kotlinx-coroutines-android:${versions.kotlinx.coroutines}",
+            "test": "org.jetbrains.kotlinx:kotlinx-coroutines-test:${versions.kotlinx.coroutines}",
         ]
     ],
     "junit"   : "junit:junit:4.12",
