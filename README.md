@@ -14,7 +14,7 @@ Save shares to file from any app.
 - [x] Dependency Injection
 - [x] List open source licenses
 - [x] Settings
-- [ ] Intro
+- [x] Intro
 - [ ] Review package and file structure
 - [ ] Code Review (total)
 

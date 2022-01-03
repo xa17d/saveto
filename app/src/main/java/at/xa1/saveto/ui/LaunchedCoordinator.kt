@@ -2,16 +2,11 @@ package at.xa1.saveto.ui
 
 import android.content.Intent
 import android.net.Uri
-import androidx.core.content.ContextCompat
 import at.xa1.saveto.MainResult
 import at.xa1.saveto.android.HostHolder
 import at.xa1.saveto.model.SettingsStore
 import at.xa1.saveto.navigation.Coordinator
 import com.google.android.gms.oss.licenses.OssLicensesMenuActivity
-import androidx.core.content.ContextCompat.startActivity
-
-
-
 
 class LaunchedCoordinator(
     private val settingsStore: SettingsStore,
@@ -29,7 +24,7 @@ class LaunchedCoordinator(
     private fun intro() {
         navigator.goTo(IntroDestination) {
             IntroArgs(
-                onCompleted = {
+                onSettings = {
                     settingsStore.introSeen = true
                     settings()
                 },

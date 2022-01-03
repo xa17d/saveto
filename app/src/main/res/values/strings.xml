@@ -6,4 +6,16 @@
     <string name="settingsRestartIntro">Restart the Intro</string>
     <string name="settingsOssLicenses">Show Open Source Licenses</string>
     <string name="settingsContact">Contact</string>
+    <string name="introExitAndTry">Exit and Share from Another App</string>
+    <string name="introOpenSettings">Open Settings</string>
+    <string name="introWelcome">Welcome to Save To…!</string>
+    <string name="introExplanation">You can now save data from various apps. Look out for the "Share" or "Open with…" option.</string>
+    <string name="introSelectSaveTo">Select \"Save To…\" in the Share Bottom Sheet</string>
+    <string name="introShareBottomSheetImageContentDescription">Share Bottom Sheet</string>
+    <string name="introShareButton">Share</string>
+    <string name="introShareButtonContentDescription">Share Icon</string>
+    <string name="introSwipeToContinue">swipe to continue</string>
+    <string name="introSaveDialogImageContentDescription">Save Dialog</string>
+    <string name="introChooseDestination">Choose Target Filename:</string>
+    <string name="introAndDone">...and done!</string>
 </resources>
