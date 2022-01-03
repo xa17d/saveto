@@ -9,3 +9,7 @@ fun getSourceInformation(intent: Intent): Uri {
         ?: intent.data
         ?: error("cannot get data")
 }
+
+fun getFilenameFrom(intent: Intent): String {
+    return "test" // TODO proper implementation
+}
