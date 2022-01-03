@@ -56,7 +56,7 @@ class SaveCoordinator(
     }
 
     private fun abort() {
-        args.onClose()
+        args.onClose(false)
     }
 
     private fun copy(destinationUri: Uri, statusText: MutableStateFlow<String?>) {
@@ -84,12 +84,12 @@ class SaveCoordinator(
         navigator.goTo(SuccessDestination)
         scope.launch {
             delay(500)
-            args.onClose()
+            args.onClose(true)
         }
     }
 }
 
 data class SaveArgs(
     val source: Source,
-    val onClose: () -> Unit
+    val onClose: (success: Boolean) -> Unit
 )

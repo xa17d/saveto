@@ -1,5 +1,6 @@
 package at.xa1.saveto
 
+import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -40,7 +41,21 @@ class MainActivity : ComponentActivity() {
             }
 
             goTo(d) {
-                SaveArgs(Source(intent, intent.type ?: "*/*"), onClose = { finish() })
+                SaveArgs(
+                    source = Source(intent, intent.type ?: "*/*"),
+                    onClose = { success->
+                        hostHolder.runOrEnqueue {
+                            activity.setResult(
+                                if (success) {
+                                    Activity.RESULT_OK
+                                } else {
+                                    Activity.RESULT_CANCELED
+                                }
+                            )
+                            activity.finish()
+                        }
+                    }
+                )
             }
         }
 

@@ -4,7 +4,7 @@ Save shares to file from any app.
 
 ## Backlog
 
-- [ ] Return OK Result when finished successfully
+- [x] Return OK Result when finished successfully
 - [x] Show KB copied
 - [x] Show Success
 - [ ] Show Error
