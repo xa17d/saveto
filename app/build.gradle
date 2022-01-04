@@ -4,7 +4,10 @@ plugins {
     id 'com.google.android.gms.oss-licenses-plugin'
 }
 
-// apply from: rootProject.file("versions2.gradle")
+def keystorePropertiesFile = rootProject.file(".signing/keystore.properties")
+def keystoreProperties = new Properties()
+keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
+
 
 android {
     compileSdk 31
@@ -22,10 +25,21 @@ android {
         }
     }
 
+    signingConfigs {
+        release {
+            keyAlias keystoreProperties['keyAlias']
+            keyPassword keystoreProperties['keyPassword']
+            storeFile rootProject.file(keystoreProperties['storeFile'])
+            storePassword keystoreProperties['storePassword']
+        }
+    }
+
+
     buildTypes {
         release {
             minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
         }
     }
     compileOptions {

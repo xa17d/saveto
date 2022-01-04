@@ -7,6 +7,8 @@ Share data from any app to save it into a file.
 
 Exporting data from any app into a file made simple. Just open the share options, select "Save To…" and choose the target file. Done. No permissions required.
 
+Very first release of "Save To…". Adds the app to the "sharing" and "open with" options on your device. When opened, allows to store the shared data into a file. It can then be viewed in the Gallery or another app.
+
 ## Screenshots
 
 * Make sure status bar is empty
