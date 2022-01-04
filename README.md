@@ -3,9 +3,9 @@
 Save shares to file from any app.
 
 Save To… - Share into a file
-Share data from any app and save it into a file.
+Share data from any app to save it into a file.
 
-Exporting data from another app into a file made simple. Just open the share options, select "Save To…" and choose the target file. No permissions required.
+Exporting data from any app into a file made simple. Just open the share options, select "Save To…" and choose the target file. Done. No permissions required.
 
 ## Screenshots
 
