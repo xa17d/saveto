@@ -17,7 +17,7 @@ def versions = [
         "coroutines": "1.6.0"
     ],
 
-    "google": [
+    "google"     : [
         "accompanist": "0.22.0-rc"
     ]
 ]
@@ -30,7 +30,7 @@ def lib = [
         "coroutines": [
             "core"   : "org.jetbrains.kotlinx:kotlinx-coroutines-core:${versions.kotlinx.coroutines}",
             "android": "org.jetbrains.kotlinx:kotlinx-coroutines-android:${versions.kotlinx.coroutines}",
-            "test": "org.jetbrains.kotlinx:kotlinx-coroutines-test:${versions.kotlinx.coroutines}",
+            "test"   : "org.jetbrains.kotlinx:kotlinx-coroutines-test:${versions.kotlinx.coroutines}",
         ]
     ],
     "junit"   : "junit:junit:4.12",
@@ -41,11 +41,12 @@ def lib = [
         "coreKtx"  : "androidx.core:core-ktx:${versions.androidx.core}",
         "appcompat": "androidx.appcompat:appcompat:${versions.androidx.appcompat}",
         "compose"  : [
-            "ui"       : "androidx.compose.ui:ui:${versions.androidx.compose}",
-            "uiPreview": "androidx.compose.ui:ui-tooling-preview:${versions.androidx.compose}",
-            "uiTooling": "androidx.compose.ui:ui-tooling:${versions.androidx.compose}",
-            "material" : "androidx.compose.material:material:${versions.androidx.compose}",
-            "uiTest"   : "androidx.compose.ui:ui-test-junit4:${versions.androidx.compose}",
+            "ui"            : "androidx.compose.ui:ui:${versions.androidx.compose}",
+            "uiPreview"     : "androidx.compose.ui:ui-tooling-preview:${versions.androidx.compose}",
+            "uiTooling"     : "androidx.compose.ui:ui-tooling:${versions.androidx.compose}",
+            "material"      : "androidx.compose.material:material:${versions.androidx.compose}",
+            "uiTest"        : "androidx.compose.ui:ui-test-junit4:${versions.androidx.compose}",
+            "uiTestManifest": "androidx.compose.ui:ui-test-manifest:${versions.androidx.compose}",
         ],
         "activity" : [
             "compose": "androidx.activity:activity-compose:${versions.androidx.activity}"
@@ -55,12 +56,12 @@ def lib = [
             "espresso": "androidx.test.espresso:espresso-core:3.4.0",
         ]
     ],
-    "google": [
+    "google"  : [
         "accompanist": [
-            "pager": "com.google.accompanist:accompanist-pager:${versions.google.accompanist}",
+            "pager"          : "com.google.accompanist:accompanist-pager:${versions.google.accompanist}",
             "pagerIndicators": "com.google.accompanist:accompanist-pager-indicators:${versions.google.accompanist}",
         ],
-        "play": [
+        "play"       : [
             "ossLicenses": "com.google.android.gms:play-services-oss-licenses:17.0.0"
         ]
     ]
