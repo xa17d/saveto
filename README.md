@@ -30,8 +30,9 @@ Very first release of "Save To…". Adds the app to the "sharing" and "open with
 - [x] List open source licenses
 - [x] Settings
 - [x] Intro
-- [ ] Screenshots
-- [ ] Feature graphic
+- [x] Screenshots
+- [x] Feature graphic
+- [x] https://xa1.at/saveto/ site
 - [ ] Review package and file structure
 - [ ] Code Review (total)
 

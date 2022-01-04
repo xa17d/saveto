@@ -33,6 +33,7 @@ import at.xa1.saveto.ui.Loading
 import at.xa1.saveto.ui.Settings
 import at.xa1.saveto.ui.SettingsArgs
 import at.xa1.saveto.ui.Splash
+import at.xa1.saveto.ui.Success
 import at.xa1.saveto.ui.theme.SaveToTheme
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -158,6 +159,17 @@ class PlayStoreScreenshots {
                         onContact = {}
                     )
                 )
+            }
+        }
+
+        waitForScreenshot()
+    }
+
+    @Test
+    fun success() {
+        composeTestRule.setContent {
+            SaveToTheme {
+                Success(modifier = Modifier.fillMaxSize())
             }
         }
 
