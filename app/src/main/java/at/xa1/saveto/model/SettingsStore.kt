@@ -2,10 +2,15 @@ package at.xa1.saveto.model
 
 import android.content.SharedPreferences
 
-class SettingsStore(
-    private val sharedPreferences: SharedPreferences
-) {
+interface SettingsStore {
     var previewMode: PreviewMode
+    var introSeen: Boolean
+}
+
+class SharedPreferencesSettingsStore(
+    private val sharedPreferences: SharedPreferences
+) : SettingsStore {
+    override var previewMode: PreviewMode
         get() {
             return when (sharedPreferences.getString("previewMode", "NONE")) {
                 "NONE" -> PreviewMode.NONE
@@ -21,7 +26,7 @@ class SettingsStore(
             sharedPreferences.edit().putString("previewMode", s).apply()
         }
 
-    var introSeen: Boolean
+    override var introSeen: Boolean
         get() = sharedPreferences.getBoolean("introSeen", false)
         set(value) = sharedPreferences.edit().putBoolean("introSeen", value).apply()
 }

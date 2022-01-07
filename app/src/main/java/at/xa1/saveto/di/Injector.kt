@@ -13,7 +13,7 @@ import at.xa1.saveto.android.IntentManager
 import at.xa1.saveto.android.SaveDialog
 import at.xa1.saveto.android.StreamCopy
 import at.xa1.saveto.android.getRetainedInstance
-import at.xa1.saveto.model.SettingsStore
+import at.xa1.saveto.model.SharedPreferencesSettingsStore
 import at.xa1.saveto.navigation.ComposeNavigator
 import at.xa1.saveto.navigation.CoordinatorDestination
 import at.xa1.saveto.ui.LaunchedCoordinator
@@ -23,13 +23,13 @@ import kotlinx.coroutines.Dispatchers
 
 class Injector(private val applicationContext: Application) {
 
-    private val settingsStore = SettingsStore(
+    private val settingsStore = SharedPreferencesSettingsStore(
         applicationContext.getSharedPreferences("settings", Context.MODE_PRIVATE)
     )
 
     fun inject(mainActivity: MainActivity) {
 
-        class MainActivityInstances(intent: Intent, applicationContext: Application) {
+        class MainActivityInstances(intent: Intent) {
             val hostHolder = HostHolder()
             val intentManager = IntentManager(hostHolder)
             val navigator = ComposeNavigator().apply {
@@ -75,7 +75,7 @@ class Injector(private val applicationContext: Application) {
         }
 
         val instances = getRetainedInstance(mainActivity) {
-            MainActivityInstances(mainActivity.intent, mainActivity.application)
+            MainActivityInstances(mainActivity.intent)
         }
 
         mainActivity.apply {
@@ -100,7 +100,9 @@ fun getInjector(): Injector {
 }
 
 /**
- * Just a marker
+ * Just a marker.
+ * Injection is performed manually using [Injector].
+ * Could be replaced by Dagger in the future.
  */
 @Retention(AnnotationRetention.SOURCE)
 annotation class Inject

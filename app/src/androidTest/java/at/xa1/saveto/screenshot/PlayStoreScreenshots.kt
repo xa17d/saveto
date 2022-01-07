@@ -1,6 +1,5 @@
 package at.xa1.saveto.screenshot
 
-import android.content.Context
 import androidx.activity.ComponentActivity
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -28,7 +27,6 @@ import at.xa1.saveto.android.IntentManager
 import at.xa1.saveto.android.SaveDialog
 import at.xa1.saveto.android.ShareChooser
 import at.xa1.saveto.model.Mime
-import at.xa1.saveto.model.SettingsStore
 import at.xa1.saveto.ui.Loading
 import at.xa1.saveto.ui.Settings
 import at.xa1.saveto.ui.SettingsArgs
@@ -147,12 +145,7 @@ class PlayStoreScreenshots {
                 Settings(
                     modifier = Modifier.fillMaxSize(),
                     args = SettingsArgs(
-                        settingsStore = SettingsStore( // TODO use fake
-                            composeTestRule.activity.getSharedPreferences(
-                                "test",
-                                Context.MODE_PRIVATE
-                            )
-                        ),
+                        settingsStore = FakeSettingsStore(),
                         onOssLicenses = {},
                         onIntro = {},
                         onClose = {},
