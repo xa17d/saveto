@@ -2,6 +2,8 @@ package at.xa1.saveto.ui
 
 import android.net.Uri
 import at.xa1.saveto.MainResult
+import at.xa1.saveto.R
+import at.xa1.saveto.android.Resources
 import at.xa1.saveto.android.SaveDialog
 import at.xa1.saveto.android.StreamCopy
 import at.xa1.saveto.model.PreviewMode
@@ -24,7 +26,8 @@ class SaveCoordinator(
     private val scope: CoroutineScope,
     private val saveDialog: SaveDialog,
     private val streamCopy: StreamCopy,
-    private val settingsStore: SettingsStore
+    private val settingsStore: SettingsStore,
+    private val resources: Resources,
 ) : Coordinator<SaveArgs>() {
     override fun onStart() {
         super.onStart()
@@ -60,7 +63,7 @@ class SaveCoordinator(
             if (result == null) {
                 abort()
             } else {
-                statusText.value = "Saving..." // TODO resource
+                statusText.value = resources.string(R.string.saving)
                 copy(result, statusText)
             }
         }
@@ -83,8 +86,10 @@ class SaveCoordinator(
             streamCopy.progress
                 .takeWhile { progress -> !progress.isFinished }
                 .onEach { progress ->
-                    statusText.value =
-                        "${humanReadableByteCount(progress.bytesCopied)} written..." // TODO resources
+                    statusText.value = resources.string(
+                        R.string.progressBytesWritten,
+                        humanReadableByteCount(progress.bytesCopied)
+                    )
                 }
                 .collect()
 

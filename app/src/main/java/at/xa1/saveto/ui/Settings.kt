@@ -38,18 +38,26 @@ fun Settings(modifier: Modifier = Modifier, args: SettingsArgs) {
             title = { Text(text = stringResource(R.string.settingsTitle)) },
             navigationIcon = {
                 IconButton(onClick = { args.onClose() }) {
-                    Icon(Icons.Filled.Close, "close") // TODO
+                    Icon(Icons.Filled.Close, stringResource(id = R.string.settingsClose))
                 }
             }
         )
 
-        Scrollable(modifier = Modifier.padding(8.dp).fillMaxSize()) {
+        Scrollable(
+            modifier = Modifier
+                .padding(8.dp)
+                .fillMaxSize()
+        ) {
             Column {
                 val previewMode = remember { mutableStateOf(args.settingsStore.previewMode) }
 
                 Card(elevation = 4.dp, modifier = Modifier.fillMaxWidth()) {
                     Column {
-                        Text("Preview", modifier = Modifier.padding(8.dp), fontWeight = FontWeight.Bold)
+                        Text(
+                            stringResource(id = R.string.settingsPreview),
+                            modifier = Modifier.padding(8.dp),
+                            fontWeight = FontWeight.Bold
+                        )
 
                         Row(
                             modifier = Modifier

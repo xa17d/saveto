@@ -18,4 +18,9 @@
     <string name="introSaveDialogImageContentDescription">Save Dialog</string>
     <string name="introChooseDestination">Choose Target Filename:</string>
     <string name="introAndDone">...and done!</string>
+    <string name="saving">Saving...</string>
+    <string name="progressBytesWritten">%1$ written...</string>
+    <string name="settingsClose">close</string>
+    <string name="settingsPreview">Preview</string>
+    <string name="splashLogo">SaveTo logo</string>
 </resources>

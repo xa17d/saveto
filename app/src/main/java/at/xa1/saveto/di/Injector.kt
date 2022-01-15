@@ -8,6 +8,7 @@ import at.xa1.saveto.MainActivity
 import at.xa1.saveto.MainArgs
 import at.xa1.saveto.MainCoordinator
 import at.xa1.saveto.MainResult
+import at.xa1.saveto.android.AndroidResources
 import at.xa1.saveto.android.HostHolder
 import at.xa1.saveto.android.IntentManager
 import at.xa1.saveto.android.SaveDialog
@@ -27,6 +28,8 @@ class Injector(private val applicationContext: Application) {
         applicationContext.getSharedPreferences("settings", Context.MODE_PRIVATE)
     )
 
+    private val resources = AndroidResources(applicationContext)
+
     fun inject(mainActivity: MainActivity) {
 
         class MainActivityInstances(intent: Intent) {
@@ -38,7 +41,8 @@ class Injector(private val applicationContext: Application) {
                         CoroutineScope(Dispatchers.Main),
                         SaveDialog(intentManager),
                         StreamCopy(applicationContext.contentResolver),
-                        settingsStore
+                        settingsStore,
+                        resources
                     )
                 }
 
