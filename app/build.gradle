@@ -1,7 +1,8 @@
 plugins {
-    id 'com.android.application'
-    id 'kotlin-android'
-    id 'com.google.android.gms.oss-licenses-plugin'
+    id "com.android.application"
+    id "kotlin-android"
+    id "com.google.android.gms.oss-licenses-plugin"
+    id "org.jlleitschuh.gradle.ktlint" version "10.2.1"
 }
 
 def keystorePropertiesFile = rootProject.file(".signing/keystore.properties")
