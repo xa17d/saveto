@@ -1,0 +1,26 @@
+<resources>
+    <string name="app_name">Save To…</string>
+    <string name="introAndDone">…und fertig!</string>
+    <string name="introChooseDestination">Wähle einen Ziel-Dateiname:</string>
+    <string name="introExitAndTry">Schließen und von einer anderen App teilen</string>
+    <string name="introExplanation">Du kannst jetzt Daten aus verschiedenen Apps speichern. Suche einfach nach der "Teilen" oder "Öffnen mit" Option.</string>
+    <string name="introOpenSettings">Einstellungen öffnen</string>
+    <string name="introSaveDialogImageContentDescription">Speicher-Dialog</string>
+    <string name="introSelectSaveTo">Wähle \"Save To…\" im Teilen Menü aus</string>
+    <string name="introShareBottomSheetImageContentDescription">Teilen Menü</string>
+    <string name="introShareButton">Teilen</string>
+    <string name="introShareButtonContentDescription">Teilen Symbol</string>
+    <string name="introSwipeToContinue">wische um fortzufahren</string>
+    <string name="introWelcome">Willkommen bei Save To…!</string>
+    <string name="progressBytesWritten">%1$ geschrieben…</string>
+    <string name="saving">Speichern…</string>
+    <string name="settingsClose">schließen</string>
+    <string name="settingsContact">Kontakt</string>
+    <string name="settingsOssLicenses">Open Source Lizenzen anzeigen</string>
+    <string name="settingsPreview">Vorschau</string>
+    <string name="settingsPreviewModeIntentDetails">Details über den Android Intent anzeigen, bevor der Speichher-Dialog angezeigt wird.</string>
+    <string name="settingsPreviewModeNone">Keine Vorschau und den Speicher-Dialog sofort anzeigen.</string>
+    <string name="settingsRestartIntro">Einführung neu starten</string>
+    <string name="settingsTitle">Save To… Einstellungen</string>
+    <string name="splashLogo">Save To logo</string>
+</resources>

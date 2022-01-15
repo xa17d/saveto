@@ -24,6 +24,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import at.xa1.saveto.R
 import at.xa1.saveto.android.Scrollable
@@ -121,7 +122,7 @@ fun OptionButton(text: String, onClick: () -> Unit) {
             .padding(bottom = 8.dp)
             .defaultMinSize(minHeight = 48.dp)
     ) {
-        Text(text = text)
+        Text(text = text, textAlign = TextAlign.Center)
     }
 }
 
