@@ -42,7 +42,11 @@ import kotlinx.coroutines.launch
 @Composable
 fun Intro(modifier: Modifier = Modifier, args: IntroArgs) {
 
-    Column(Modifier.fillMaxSize()) {
+    Column(
+        Modifier
+            .fillMaxSize()
+            .then(modifier)
+    ) {
         val pagerState = rememberPagerState()
 
         val scope = rememberCoroutineScope()

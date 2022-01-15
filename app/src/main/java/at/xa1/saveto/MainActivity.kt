@@ -37,7 +37,7 @@ class MainActivity : ComponentActivity() {
         }
     }
 
-    @SuppressWarnings("deprecation")
+    @Suppress("DEPRECATION")
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         intentManager.onActivityResult(requestCode, resultCode, data)

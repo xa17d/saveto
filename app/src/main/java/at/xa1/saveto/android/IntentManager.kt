@@ -13,6 +13,7 @@ class IntentManager(
         resultTransform: ResultTransform<R>
     ): R = suspendCoroutine { continuation ->
         hostHolder.runOrEnqueue {
+            @Suppress("DEPRECATION")
             activity.startActivityForResult(intent, requestCode)
             map[requestCode] = { resultCode, data ->
                 val result = runCatching { resultTransform(resultCode, data) }
