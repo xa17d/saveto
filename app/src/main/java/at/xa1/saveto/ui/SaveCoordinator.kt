@@ -86,10 +86,7 @@ class SaveCoordinator(
             streamCopy.progress
                 .takeWhile { progress -> !progress.isFinished }
                 .onEach { progress ->
-                    statusText.value = resources.string(
-                        R.string.progressBytesWritten,
-                        humanReadableByteCount(progress.bytesCopied)
-                    )
+                    statusText.value = resources.progressString(progress.bytesCopied)
                 }
                 .collect()
 
@@ -98,7 +95,6 @@ class SaveCoordinator(
             } else {
                 success()
             }
-
         }
     }
 
@@ -110,6 +106,12 @@ class SaveCoordinator(
         }
     }
 }
+
+internal fun Resources.progressString(bytesCopied: Long): String =
+    string(
+        R.string.progressBytesWritten,
+        humanReadableByteCount(bytesCopied)
+    )
 
 data class SaveArgs(
     val source: Source,

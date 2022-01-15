@@ -12,7 +12,7 @@
     <string name="introShareButtonContentDescription">Teilen Symbol</string>
     <string name="introSwipeToContinue">wische um fortzufahren</string>
     <string name="introWelcome">Willkommen bei Save To…!</string>
-    <string name="progressBytesWritten">%1$ geschrieben…</string>
+    <string name="progressBytesWritten">%1$s geschrieben…</string>
     <string name="saving">Speichern…</string>
     <string name="settingsClose">schließen</string>
     <string name="settingsContact">Kontakt</string>

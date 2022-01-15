@@ -12,7 +12,7 @@
     <string name="introShareButtonContentDescription">Share Icon</string>
     <string name="introSwipeToContinue">swipe to continue</string>
     <string name="introWelcome">Welcome to Save To…!</string>
-    <string name="progressBytesWritten">%1$ written…</string>
+    <string name="progressBytesWritten">%1$s written…</string>
     <string name="saving">Saving…</string>
     <string name="settingsClose">close</string>
     <string name="settingsContact">Contact</string>

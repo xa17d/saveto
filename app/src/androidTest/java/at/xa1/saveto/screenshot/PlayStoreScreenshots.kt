@@ -22,8 +22,10 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.test.junit4.createAndroidComposeRule
 import at.xa1.saveto.R
+import at.xa1.saveto.android.AndroidResources
 import at.xa1.saveto.android.HostHolder
 import at.xa1.saveto.android.IntentManager
+import at.xa1.saveto.android.Resources
 import at.xa1.saveto.android.SaveDialog
 import at.xa1.saveto.android.ShareChooser
 import at.xa1.saveto.model.Mime
@@ -32,6 +34,7 @@ import at.xa1.saveto.ui.Settings
 import at.xa1.saveto.ui.SettingsArgs
 import at.xa1.saveto.ui.Splash
 import at.xa1.saveto.ui.Success
+import at.xa1.saveto.ui.progressString
 import at.xa1.saveto.ui.theme.SaveToTheme
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -124,12 +127,14 @@ class PlayStoreScreenshots {
 
         composeTestRule.mainClock.autoAdvance = false
 
+        val resources: Resources = AndroidResources(composeTestRule.activity.applicationContext)
+
         composeTestRule.setContent {
             SaveToTheme {
                 Loading(
                     modifier = Modifier.fillMaxSize(),
-                    text = MutableStateFlow("13.2 MiB written...")
-                ) // TODO use same resource as real deal
+                    text = MutableStateFlow(resources.progressString(123 * 1024 * 1024 / 10))
+                )
             }
         }
 
