@@ -70,5 +70,3 @@ fun Source.proposedFilename(): String {
 
     return baseName + extensionByMime(type)
 }
-
-

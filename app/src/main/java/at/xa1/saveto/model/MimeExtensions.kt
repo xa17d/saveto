@@ -264,7 +264,7 @@ val mimeExtensionMap by lazy {
     add("text/plain", "asc")
     add("text/plain", "text")
     add("text/plain", "diff")
-    add("text/plain", "po")     // reserve "pot" for vnd.ms-powerpoint
+    add("text/plain", "po") // reserve "pot" for vnd.ms-powerpoint
     add("text/richtext", "rtx")
     add("text/rtf", "rtf")
     add("text/texmacs", "ts")

@@ -34,4 +34,3 @@ class IntentManager(
         action(resultCode, data)
     }
 }
-

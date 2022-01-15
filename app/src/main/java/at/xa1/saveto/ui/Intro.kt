@@ -96,7 +96,6 @@ fun Intro(modifier: Modifier = Modifier, args: IntroArgs) {
                 .align(Alignment.CenterHorizontally)
                 .padding(24.dp),
         )
-
     }
 }
 
@@ -121,9 +120,9 @@ fun CardFindShared(onShareClicked: () -> Unit) {
             Spacer(modifier = Modifier.size(24.dp))
 
             Button(onClick = { onShareClicked() }, modifier = Modifier.padding(end = 8.dp)) {
-                Icon(Icons.Filled.Share, stringResource(id = R.string.introShareButtonContentDescription))
-                Text(text = stringResource(id = R.string.introShareButton))
-            }
+            Icon(Icons.Filled.Share, stringResource(id = R.string.introShareButtonContentDescription))
+            Text(text = stringResource(id = R.string.introShareButton))
+        }
 
             Spacer(modifier = Modifier.size(24.dp))
 

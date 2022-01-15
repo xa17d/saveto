@@ -107,7 +107,6 @@ fun Settings(modifier: Modifier = Modifier, args: SettingsArgs) {
                     text = stringResource(id = R.string.settingsOssLicenses),
                     onClick = { args.onOssLicenses() }
                 )
-
             }
         }
     }

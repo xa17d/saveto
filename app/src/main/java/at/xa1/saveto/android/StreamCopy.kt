@@ -30,7 +30,7 @@ class StreamCopy(
         } catch (e: IOException) {
             _progress.value = _progress.value.copy(isFailed = true) // TODO avoid race
         } finally {
-            _progress.value = _progress.value.copy(isFinished = true)// TODO avoid race
+            _progress.value = _progress.value.copy(isFinished = true) // TODO avoid race
         }
     }
 
@@ -40,7 +40,6 @@ class StreamCopy(
             ?: error("openOutputStream(destinationUri) returns null")
         copy(source, destination)
     }
-
 
     fun copy(sourceUri: Uri, destinationUri: Uri) {
         val source = contentResolver.openInputStream(sourceUri)
