@@ -3,9 +3,9 @@ package at.xa1.saveto.ui
 import android.content.Intent
 import android.net.Uri
 import at.xa1.saveto.MainResult
-import at.xa1.saveto.android.HostHolder
 import at.xa1.saveto.model.SettingsStore
 import at.xa1.saveto.navigation.Coordinator
+import at.xa1.saveto.navigation.HostHolder
 import com.google.android.gms.oss.licenses.OssLicensesMenuActivity
 
 class LaunchedCoordinator(

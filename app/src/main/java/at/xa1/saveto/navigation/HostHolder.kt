@@ -1,4 +1,4 @@
-package at.xa1.saveto.android
+package at.xa1.saveto.navigation
 
 import androidx.activity.ComponentActivity
 import androidx.lifecycle.DefaultLifecycleObserver
