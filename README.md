@@ -1,4 +1,4 @@
-# saveto
+# Save To…
 
 Save shares to file from any app.
 
