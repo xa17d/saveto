@@ -3,7 +3,6 @@ package at.xa1.saveto.feature.save
 import android.net.Uri
 import at.xa1.saveto.MainResult
 import at.xa1.saveto.R
-import at.xa1.saveto.android.StreamCopy
 import at.xa1.saveto.common.android.Resources
 import at.xa1.saveto.common.android.SaveDialog
 import at.xa1.saveto.common.navigation.Coordinator

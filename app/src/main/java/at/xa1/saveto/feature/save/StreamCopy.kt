@@ -1,4 +1,4 @@
-package at.xa1.saveto.android
+package at.xa1.saveto.feature.save
 
 import android.content.ContentResolver
 import android.net.Uri
