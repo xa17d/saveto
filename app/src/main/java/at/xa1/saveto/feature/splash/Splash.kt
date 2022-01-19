@@ -13,7 +13,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import at.xa1.saveto.R
-import at.xa1.saveto.navigation.Destination
+import at.xa1.saveto.common.navigation.Destination
 import at.xa1.saveto.ui.theme.Orange500
 
 @Preview

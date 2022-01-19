@@ -6,13 +6,13 @@ import at.xa1.saveto.R
 import at.xa1.saveto.android.Resources
 import at.xa1.saveto.android.SaveDialog
 import at.xa1.saveto.android.StreamCopy
+import at.xa1.saveto.common.navigation.Coordinator
 import at.xa1.saveto.model.PreviewMode
 import at.xa1.saveto.model.SettingsStore
 import at.xa1.saveto.model.Source
 import at.xa1.saveto.model.SourceData
 import at.xa1.saveto.model.humanReadableByteCount
 import at.xa1.saveto.model.proposedFilename
-import at.xa1.saveto.navigation.Coordinator
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay

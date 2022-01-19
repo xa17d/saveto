@@ -2,13 +2,13 @@ package at.xa1.saveto
 
 import android.content.Intent
 import android.net.Uri
+import at.xa1.saveto.common.navigation.Coordinator
+import at.xa1.saveto.common.navigation.HostHolder
 import at.xa1.saveto.feature.intro.IntroArgs
 import at.xa1.saveto.feature.intro.IntroDestination
 import at.xa1.saveto.feature.settings.SettingsArgs
 import at.xa1.saveto.feature.settings.SettingsDestination
 import at.xa1.saveto.model.SettingsStore
-import at.xa1.saveto.navigation.Coordinator
-import at.xa1.saveto.navigation.HostHolder
 import com.google.android.gms.oss.licenses.OssLicensesMenuActivity
 
 /**

@@ -31,7 +31,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import at.xa1.saveto.R
 import at.xa1.saveto.android.compose.Scrollable
-import at.xa1.saveto.navigation.Destination
+import at.xa1.saveto.common.navigation.Destination
 import at.xa1.saveto.ui.OptionButton
 import com.google.accompanist.pager.ExperimentalPagerApi
 import com.google.accompanist.pager.HorizontalPager

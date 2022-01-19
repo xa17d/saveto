@@ -1,4 +1,4 @@
-package at.xa1.saveto.navigation
+package at.xa1.saveto.common.navigation
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState

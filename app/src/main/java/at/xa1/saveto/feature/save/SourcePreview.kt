@@ -13,8 +13,8 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import at.xa1.saveto.android.compose.Scrollable
+import at.xa1.saveto.common.navigation.Destination
 import at.xa1.saveto.model.Source
-import at.xa1.saveto.navigation.Destination
 
 @Composable
 fun SourcePreview(source: Source, onSave: () -> Unit) {

@@ -7,10 +7,10 @@ import androidx.activity.compose.setContent
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import at.xa1.saveto.android.IntentManager
+import at.xa1.saveto.common.navigation.ComposeNavigator
+import at.xa1.saveto.common.navigation.HostHolder
 import at.xa1.saveto.di.Inject
 import at.xa1.saveto.di.getInjector
-import at.xa1.saveto.navigation.ComposeNavigator
-import at.xa1.saveto.navigation.HostHolder
 import at.xa1.saveto.ui.theme.SaveToTheme
 
 class MainActivity : ComponentActivity() {

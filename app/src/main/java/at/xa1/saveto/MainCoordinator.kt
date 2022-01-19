@@ -1,11 +1,11 @@
 package at.xa1.saveto
 
 import android.content.Intent
+import at.xa1.saveto.common.navigation.Coordinator
+import at.xa1.saveto.common.navigation.Destination
 import at.xa1.saveto.feature.save.SaveArgs
 import at.xa1.saveto.feature.splash.SplashDestination
 import at.xa1.saveto.model.intentToSource
-import at.xa1.saveto.navigation.Coordinator
-import at.xa1.saveto.navigation.Destination
 
 /**
  * Main coordinator that is started on app start up.

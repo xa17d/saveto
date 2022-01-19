@@ -1,7 +1,7 @@
 package at.xa1.saveto.android
 
 import android.content.Intent
-import at.xa1.saveto.navigation.HostHolder
+import at.xa1.saveto.common.navigation.HostHolder
 import kotlin.coroutines.suspendCoroutine
 
 typealias ResultTransform<R> = (resultCode: Int, data: Intent?) -> R
