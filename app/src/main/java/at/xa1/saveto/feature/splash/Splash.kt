@@ -1,4 +1,4 @@
-package at.xa1.saveto.ui
+package at.xa1.saveto.feature.splash
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background

@@ -2,11 +2,11 @@ package at.xa1.saveto
 
 import android.content.Intent
 import at.xa1.saveto.feature.save.SaveArgs
+import at.xa1.saveto.feature.splash.SplashDestination
 import at.xa1.saveto.model.intentToSource
 import at.xa1.saveto.navigation.Coordinator
 import at.xa1.saveto.navigation.Destination
 import at.xa1.saveto.ui.LaunchedArgs
-import at.xa1.saveto.ui.SplashDestination
 
 class MainCoordinator(
     private val saveFlow: Destination<SaveArgs>,
