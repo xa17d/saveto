@@ -1,4 +1,4 @@
-package at.xa1.saveto.android
+package at.xa1.saveto.common.android
 
 import android.content.Intent
 import at.xa1.saveto.common.navigation.HostHolder

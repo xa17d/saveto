@@ -1,4 +1,4 @@
-package at.xa1.saveto.android
+package at.xa1.saveto.common.android
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider

@@ -1,3 +1,3 @@
 #!/usr/bin/env sh
 
-./gradlew assembleDebug ktlintFormat testDebug
+./gradlew assembleDebug ktlintFormat testDebug assembleDebugAndroidTest
