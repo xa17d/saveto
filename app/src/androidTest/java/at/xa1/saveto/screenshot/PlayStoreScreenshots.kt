@@ -21,22 +21,22 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.test.junit4.createAndroidComposeRule
+import androidx.lifecycle.lifecycleScope
 import at.xa1.saveto.R
-import at.xa1.saveto.android.AndroidResources
-import at.xa1.saveto.android.HostHolder
-import at.xa1.saveto.android.IntentManager
-import at.xa1.saveto.android.Resources
-import at.xa1.saveto.android.SaveDialog
-import at.xa1.saveto.android.ShareChooser
+import at.xa1.saveto.common.android.AndroidResources
+import at.xa1.saveto.common.android.IntentManager
+import at.xa1.saveto.common.android.Resources
+import at.xa1.saveto.common.android.SaveDialog
+import at.xa1.saveto.common.android.ShareChooser
+import at.xa1.saveto.common.navigation.HostHolder
+import at.xa1.saveto.feature.save.Loading
+import at.xa1.saveto.feature.save.Success
+import at.xa1.saveto.feature.save.progressString
+import at.xa1.saveto.feature.settings.Settings
+import at.xa1.saveto.feature.settings.SettingsArgs
+import at.xa1.saveto.feature.splash.Splash
 import at.xa1.saveto.model.Mime
-import at.xa1.saveto.ui.Loading
-import at.xa1.saveto.ui.Settings
-import at.xa1.saveto.ui.SettingsArgs
-import at.xa1.saveto.ui.Splash
-import at.xa1.saveto.ui.Success
-import at.xa1.saveto.ui.progressString
 import at.xa1.saveto.ui.theme.SaveToTheme
-import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.launch
 import org.junit.Rule
@@ -114,7 +114,7 @@ class PlayStoreScreenshots {
         activity.runOnUiThread {
             val hostHolder = HostHolder()
             hostHolder.attach(activity)
-            GlobalScope.launch { // TODO don't use globalscope
+            activity.lifecycleScope.launch {
                 SaveDialog(IntentManager(hostHolder)).show(Mime.from("image/png"), "my_image.png")
             }
         }
@@ -133,7 +133,7 @@ class PlayStoreScreenshots {
             SaveToTheme {
                 Loading(
                     modifier = Modifier.fillMaxSize(),
-                    text = MutableStateFlow(resources.progressString(123 * 1024 * 1024 / 10))
+                    text = MutableStateFlow(resources.progressString((12.3 * 1024 * 1024).toLong()))
                 )
             }
         }
