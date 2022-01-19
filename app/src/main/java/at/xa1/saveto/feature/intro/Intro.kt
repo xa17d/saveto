@@ -1,4 +1,4 @@
-package at.xa1.saveto.ui
+package at.xa1.saveto.feature.intro
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.border
@@ -32,6 +32,7 @@ import androidx.compose.ui.unit.sp
 import at.xa1.saveto.R
 import at.xa1.saveto.android.compose.Scrollable
 import at.xa1.saveto.navigation.Destination
+import at.xa1.saveto.ui.OptionButton
 import com.google.accompanist.pager.ExperimentalPagerApi
 import com.google.accompanist.pager.HorizontalPager
 import com.google.accompanist.pager.HorizontalPagerIndicator
