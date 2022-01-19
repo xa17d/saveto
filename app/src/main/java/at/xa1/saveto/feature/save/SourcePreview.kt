@@ -1,4 +1,4 @@
-package at.xa1.saveto.ui
+package at.xa1.saveto.feature.save
 
 import android.content.Intent
 import androidx.compose.foundation.layout.Column
@@ -12,7 +12,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import at.xa1.saveto.android.Scrollable
+import at.xa1.saveto.android.compose.Scrollable
 import at.xa1.saveto.model.Source
 import at.xa1.saveto.navigation.Destination
 

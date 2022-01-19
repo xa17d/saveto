@@ -30,7 +30,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import at.xa1.saveto.R
-import at.xa1.saveto.android.Scrollable
+import at.xa1.saveto.android.compose.Scrollable
 import at.xa1.saveto.navigation.Destination
 import com.google.accompanist.pager.ExperimentalPagerApi
 import com.google.accompanist.pager.HorizontalPager

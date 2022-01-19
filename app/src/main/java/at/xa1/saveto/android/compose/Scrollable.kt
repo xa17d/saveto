@@ -1,4 +1,4 @@
-package at.xa1.saveto.android
+package at.xa1.saveto.android.compose
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.rememberScrollState

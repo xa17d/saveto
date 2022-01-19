@@ -1,4 +1,4 @@
-package at.xa1.saveto.ui
+package at.xa1.saveto.feature.save
 
 import android.net.Uri
 import at.xa1.saveto.MainResult
@@ -31,7 +31,6 @@ class SaveCoordinator(
 ) : Coordinator<SaveArgs>() {
     override fun onStart() {
         super.onStart()
-        navigator.goTo(SplashDestination)
         scope.launch {
             when (settingsStore.previewMode) {
                 PreviewMode.INTENT_DETAILS -> preview()

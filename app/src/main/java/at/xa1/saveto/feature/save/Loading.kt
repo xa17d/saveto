@@ -1,4 +1,4 @@
-package at.xa1.saveto.ui
+package at.xa1.saveto.feature.save
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column

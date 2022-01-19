@@ -27,7 +27,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import at.xa1.saveto.R
-import at.xa1.saveto.android.Scrollable
+import at.xa1.saveto.android.compose.Scrollable
 import at.xa1.saveto.model.PreviewMode
 import at.xa1.saveto.model.SettingsStore
 import at.xa1.saveto.navigation.Destination
