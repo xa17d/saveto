@@ -11,6 +11,9 @@ import at.xa1.saveto.navigation.Coordinator
 import at.xa1.saveto.navigation.HostHolder
 import com.google.android.gms.oss.licenses.OssLicensesMenuActivity
 
+/**
+ * Coordinator that is started when the app is launched from the Launcher.
+ */
 class LaunchedCoordinator(
     private val settingsStore: SettingsStore,
     private val hostHolder: HostHolder

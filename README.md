@@ -9,6 +9,15 @@ Exporting data from any app into a file made simple. Just open the share options
 
 Very first release of "Save To…". Adds the app to the "sharing" and "open with" options on your device. When opened, allows to store the shared data into a file. It can then be viewed in the Gallery or another app.
 
+## Package-Structure
+
+- `at.xa1.saveto`: main package with the most fundamental classes (like `MainActivity` and `MainCoordinator`)
+  - `common`: generic, non-app-specific classes
+    - `android`: generic, non-app-specific classes that are strongly related to Android.
+  - `di`: Dependency Injection.
+  - `feature`: sub packages contain pieces of functionality, that don't depend on other features.
+  - `ui`: User interface components that are not feature specific.
+
 ## Screenshots
 
 * Make sure status bar is empty
@@ -33,7 +42,7 @@ Very first release of "Save To…". Adds the app to the "sharing" and "open with
 - [x] Screenshots
 - [x] Feature graphic
 - [x] https://xa1.at/saveto/ site
-- [ ] Review package and file structure
+- [x] Review package and file structure
 - [ ] Code Review (total)
 - [ ] Shouldn't be possible to open from recents.
 

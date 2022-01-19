@@ -7,6 +7,9 @@ import at.xa1.saveto.model.intentToSource
 import at.xa1.saveto.navigation.Coordinator
 import at.xa1.saveto.navigation.Destination
 
+/**
+ * Main coordinator that is started on app start up.
+ */
 class MainCoordinator(
     private val saveFlow: Destination<SaveArgs>,
     private val launchedFlow: Destination<LaunchedArgs>
