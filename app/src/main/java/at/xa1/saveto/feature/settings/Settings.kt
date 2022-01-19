@@ -1,4 +1,4 @@
-package at.xa1.saveto.ui
+package at.xa1.saveto.feature.settings
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
@@ -28,6 +28,7 @@ import at.xa1.saveto.android.compose.Scrollable
 import at.xa1.saveto.model.PreviewMode
 import at.xa1.saveto.model.SettingsStore
 import at.xa1.saveto.navigation.Destination
+import at.xa1.saveto.ui.OptionButton
 
 @Composable
 fun Settings(modifier: Modifier = Modifier, args: SettingsArgs) {
