@@ -6,7 +6,6 @@ import at.xa1.saveto.feature.splash.SplashDestination
 import at.xa1.saveto.model.intentToSource
 import at.xa1.saveto.navigation.Coordinator
 import at.xa1.saveto.navigation.Destination
-import at.xa1.saveto.ui.LaunchedArgs
 
 class MainCoordinator(
     private val saveFlow: Destination<SaveArgs>,

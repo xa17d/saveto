@@ -1,8 +1,7 @@
-package at.xa1.saveto.ui
+package at.xa1.saveto
 
 import android.content.Intent
 import android.net.Uri
-import at.xa1.saveto.MainResult
 import at.xa1.saveto.feature.intro.IntroArgs
 import at.xa1.saveto.feature.intro.IntroDestination
 import at.xa1.saveto.feature.settings.SettingsArgs
