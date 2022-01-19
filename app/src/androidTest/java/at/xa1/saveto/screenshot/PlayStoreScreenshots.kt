@@ -26,10 +26,10 @@ import at.xa1.saveto.R
 import at.xa1.saveto.common.android.AndroidResources
 import at.xa1.saveto.common.android.IntentManager
 import at.xa1.saveto.common.android.Resources
-import at.xa1.saveto.common.android.SaveDialog
 import at.xa1.saveto.common.android.ShareChooser
 import at.xa1.saveto.common.navigation.HostHolder
 import at.xa1.saveto.feature.save.Loading
+import at.xa1.saveto.feature.save.SaveDialog
 import at.xa1.saveto.feature.save.Success
 import at.xa1.saveto.feature.save.progressString
 import at.xa1.saveto.feature.settings.Settings

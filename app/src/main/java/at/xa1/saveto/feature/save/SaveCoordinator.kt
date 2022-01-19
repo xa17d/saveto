@@ -4,7 +4,6 @@ import android.net.Uri
 import at.xa1.saveto.MainResult
 import at.xa1.saveto.R
 import at.xa1.saveto.common.android.Resources
-import at.xa1.saveto.common.android.SaveDialog
 import at.xa1.saveto.common.navigation.Coordinator
 import at.xa1.saveto.model.PreviewMode
 import at.xa1.saveto.model.SettingsStore

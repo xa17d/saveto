@@ -11,12 +11,12 @@ import at.xa1.saveto.MainCoordinator
 import at.xa1.saveto.MainResult
 import at.xa1.saveto.common.android.AndroidResources
 import at.xa1.saveto.common.android.IntentManager
-import at.xa1.saveto.common.android.SaveDialog
 import at.xa1.saveto.common.android.getRetainedInstance
 import at.xa1.saveto.common.navigation.ComposeNavigator
 import at.xa1.saveto.common.navigation.CoordinatorDestination
 import at.xa1.saveto.common.navigation.HostHolder
 import at.xa1.saveto.feature.save.SaveCoordinator
+import at.xa1.saveto.feature.save.SaveDialog
 import at.xa1.saveto.feature.save.StreamCopy
 import at.xa1.saveto.model.SharedPreferencesSettingsStore
 import kotlinx.coroutines.CoroutineScope

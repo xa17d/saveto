@@ -1,8 +1,9 @@
-package at.xa1.saveto.common.android
+package at.xa1.saveto.feature.save
 
 import android.app.Activity
 import android.content.Intent
 import android.net.Uri
+import at.xa1.saveto.common.android.IntentManager
 import at.xa1.saveto.model.Mime
 
 class SaveDialog(
