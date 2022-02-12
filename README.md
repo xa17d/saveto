@@ -21,9 +21,9 @@ Very first release of "Save To…". Adds the app to the "sharing" and "open with
 ## Screenshots
 
 * Make sure status bar is empty
-* Make sure battery, network and wifi are full.
-* Use gesture navigation to hide navigation buttons
-* Set time to: 04:01
+* Make sure battery, network and wifi are full (emulator settings).
+* Use gesture navigation to hide navigation buttons (android settings)
+* Set time to: 04:01  (android settings)
 * Use tests in `PlayStoreScreenshots` for individual screens
 
 ## Backlog
