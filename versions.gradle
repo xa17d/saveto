@@ -1,16 +1,17 @@
 def versions = [
-    "kotlin"     : "1.5.31", // don't forget to update kotlin-gradle-plugin too
     "minSdk"     : 26,
     "compileSdk" : 31,
     "targetSdk"  : 31,
-    "versionCode": 1,
-    "versionName": "1.0",
+    "versionCode": 4,
+    "versionName": "1.1.2",
+
+    "kotlin"     : "1.6.10", // don't forget to update kotlin-gradle-plugin too
 
     "androidx"   : [
         "core"     : "1.7.0",
-        "appcompat": "1.4.0",
+        "appcompat": "1.4.1",
         "activity" : "1.4.0",
-        "compose"  : "1.0.5",
+        "compose"  : "1.1.0",
     ],
 
     "kotlinx"    : [
@@ -18,7 +19,7 @@ def versions = [
     ],
 
     "google"     : [
-        "accompanist": "0.22.0-rc"
+        "accompanist": "0.24.2-alpha"
     ]
 ]
 
@@ -33,9 +34,9 @@ def lib = [
             "test"   : "org.jetbrains.kotlinx:kotlinx-coroutines-test:${versions.kotlinx.coroutines}",
         ]
     ],
-    "junit"   : "junit:junit:4.12",
+    "junit"   : "junit:junit:4.13.2",
     "android" : [
-        "material": "com.google.android.material:material:1.4.0"
+        "material": "com.google.android.material:material:1.5.0"
     ],
     "androidx": [
         "coreKtx"  : "androidx.core:core-ktx:${versions.androidx.core}",

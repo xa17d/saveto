@@ -11,14 +11,14 @@ keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
 
 
 android {
-    compileSdk 31
+    compileSdk versions.compileSdk
 
     defaultConfig {
         applicationId "at.xa1.safeto"
-        minSdk 26
-        targetSdk 31
-        versionCode 4
-        versionName "1.1.2"
+        minSdk versions.minSdk
+        targetSdk versions.targetSdk
+        versionCode versions.versionCode
+        versionName versions.versionName
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables {
@@ -67,7 +67,7 @@ android {
 
 dependencies {
     implementation lib.kotlin.stdlib
-    implementation lib.android.material
+    implementation 'com.google.android.material:material:1.5.0'
     implementation lib.androidx.appcompat
     implementation lib.androidx.compose.ui
     implementation lib.androidx.compose.material
@@ -78,7 +78,7 @@ dependencies {
     implementation lib.google.accompanist.pagerIndicators
     implementation lib.google.play.ossLicenses
 
-    testImplementation lib.junit
+    testImplementation 'junit:junit:4.13.2'
     testImplementation lib.kotlinx.coroutines.test
 
     androidTestImplementation lib.androidx.test.ext
