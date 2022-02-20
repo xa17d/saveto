@@ -13,6 +13,11 @@
     <string name="introSwipeToContinue">wische um fortzufahren</string>
     <string name="introWelcome">Willkommen bei Save To…!</string>
     <string name="progressBytesWritten">%1$s geschrieben…</string>
+    <string name="saveErrorOpenInputStreamError">Die Datenquelle konnte nicht geöffnet werden. Bitte überprüfe ob deine Datei in der Ursprungs-App noch verfügbar ist.</string>
+    <string name="saveErrorOpenOutputStreamError">Die Ziel-Datei konnte nicht geöffnet werden. Bitte überprüfe ob du noch genug freien Speicherplatz hast, und ob du die nötigen Berechtigungen hast um Daten im ausgewählten Ziel zu speichern.</string>
+    <string name="saveErrorCopyError">Fehler während dem kopieren der Daten. Bitte überprüfe ob du noch genug freien Speicherplatz hast.</string>
+    <string name="saveErrorIconContentDescription">Fehler</string>
+    <string name="saveSuccessIconContentDescription">Abgeschlossen</string>
     <string name="saving">Speichern…</string>
     <string name="settingsClose">schließen</string>
     <string name="settingsContact">Kontakt</string>

@@ -44,7 +44,7 @@ For releasing run:
 - [x] Return OK Result when finished successfully
 - [x] Show KB copied
 - [x] Show Success
-- [ ] Show Error
+- [x] Show Error
 - [x] Propose Filename
 - [x] Support Plain Text
 - [x] Make Scrollable

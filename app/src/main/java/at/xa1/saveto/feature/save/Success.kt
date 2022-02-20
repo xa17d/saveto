@@ -9,6 +9,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import at.xa1.saveto.R
 import at.xa1.saveto.common.navigation.Destination
@@ -25,7 +26,7 @@ fun Success(modifier: Modifier = Modifier) {
         Icon(
             modifier = loadingIndicatorModifier,
             painter = painterResource(id = R.drawable.ic_check_circle_24),
-            contentDescription = "Success",
+            contentDescription = stringResource(id = R.string.saveSuccessIconContentDescription),
             tint = Orange500 // TODO from theme
         )
     }

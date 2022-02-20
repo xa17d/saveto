@@ -88,7 +88,7 @@ class SaveCoordinator(
                 .collect()
 
             if (streamCopy.progress.value.isFailed) {
-                TODO() // TODO implement and test
+                showError(streamCopy.progress.value.error!!)
             } else {
                 success()
             }
@@ -100,6 +100,22 @@ class SaveCoordinator(
         scope.launch {
             delay(500)
             args.onClose(MainResult.OK)
+        }
+    }
+
+    private fun showError(error: StreamCopyError) {
+        navigator.goTo(ErrorDestination) {
+            ErrorArgs(
+                text = when (error.type) {
+                    StreamCopyErrorType.OPEN_INPUT_STREAM_ERROR ->
+                        resources.string(R.string.saveErrorOpenInputStreamError)
+                    StreamCopyErrorType.OPEN_OUTPUT_STREAM_ERROR ->
+                        resources.string(R.string.saveErrorOpenOutputStreamError)
+                    StreamCopyErrorType.COPY_ERROR ->
+                        resources.string(R.string.saveErrorCopyError)
+                },
+                onClose = { args.onClose(MainResult.ABORT) }
+            )
         }
     }
 }

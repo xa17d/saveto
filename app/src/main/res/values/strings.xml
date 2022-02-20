@@ -13,6 +13,11 @@
     <string name="introSwipeToContinue">swipe to continue</string>
     <string name="introWelcome">Welcome to Save To…!</string>
     <string name="progressBytesWritten">%1$s written…</string>
+    <string name="saveErrorIconContentDescription">Error</string>
+    <string name="saveErrorOpenInputStreamError">The data source couldn\'t be opened. Please make sure your file is still available in the source app.</string>
+    <string name="saveErrorOpenOutputStreamError">The destination file couldn\'t be opened. Please ensure you have enough free space and the necessary permissions to write to the selected destination.</string>
+    <string name="saveErrorCopyError">Error during copying data. Please make sure you have enough free space available.</string>
+    <string name="saveSuccessIconContentDescription">Success</string>
     <string name="saving">Saving…</string>
     <string name="settingsClose">close</string>
     <string name="settingsContact">Contact</string>
@@ -24,4 +29,6 @@
     <string name="settingsTitle">Save To… Settings</string>
     <string name="settingsVersion">Version %1$s</string>
     <string name="splashLogo">Save To logo</string>
+    <string name="errorSomethingWentWrong">Something went wrong...</string>
+
 </resources>
