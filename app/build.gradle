@@ -67,7 +67,7 @@ android {
 
 dependencies {
     implementation lib.kotlin.stdlib
-    implementation 'com.google.android.material:material:1.5.0'
+    implementation lib.android.material
     implementation lib.androidx.appcompat
     implementation lib.androidx.compose.ui
     implementation lib.androidx.compose.material
@@ -78,7 +78,7 @@ dependencies {
     implementation lib.google.accompanist.pagerIndicators
     implementation lib.google.play.ossLicenses
 
-    testImplementation 'junit:junit:4.13.2'
+    testImplementation lib.junit
     testImplementation lib.kotlinx.coroutines.test
 
     androidTestImplementation lib.androidx.test.ext
