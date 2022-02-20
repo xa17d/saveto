@@ -22,5 +22,6 @@
     <string name="settingsPreviewModeNone">Keine Vorschau und den Speicher-Dialog sofort anzeigen.</string>
     <string name="settingsRestartIntro">Einführung neu starten</string>
     <string name="settingsTitle">Save To… Einstellungen</string>
+    <string name="settingsVersion">Version %1$s</string>
     <string name="splashLogo">Save To logo</string>
 </resources>

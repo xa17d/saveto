@@ -43,6 +43,7 @@ Very first release of "Save To…". Adds the app to the "sharing" and "open with
 - [x] Feature graphic
 - [x] https://xa1.at/saveto/ site
 - [x] Review package and file structure
+- [x] show version
 - [ ] Code Review (total)
 - [ ] Shouldn't be possible to open from recents.
 

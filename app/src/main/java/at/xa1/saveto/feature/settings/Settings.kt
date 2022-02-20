@@ -23,6 +23,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import at.xa1.saveto.R
 import at.xa1.saveto.android.compose.Scrollable
 import at.xa1.saveto.common.navigation.Destination
@@ -66,10 +67,13 @@ fun Settings(modifier: Modifier = Modifier, args: SettingsArgs) {
                                     args.settingsStore.previewMode = PreviewMode.NONE
                                 }
                         ) {
-                            RadioButton(selected = previewMode.value == PreviewMode.NONE, onClick = {
-                                previewMode.value = PreviewMode.NONE
-                                args.settingsStore.previewMode = PreviewMode.NONE
-                            })
+                            RadioButton(
+                                selected = previewMode.value == PreviewMode.NONE,
+                                onClick = {
+                                    previewMode.value = PreviewMode.NONE
+                                    args.settingsStore.previewMode = PreviewMode.NONE
+                                }
+                            )
                             Spacer(modifier = Modifier.size(16.dp))
                             Text(stringResource(id = R.string.settingsPreviewModeNone))
                         }
@@ -82,10 +86,13 @@ fun Settings(modifier: Modifier = Modifier, args: SettingsArgs) {
                                     args.settingsStore.previewMode = PreviewMode.INTENT_DETAILS
                                 },
                         ) {
-                            RadioButton(selected = previewMode.value == PreviewMode.INTENT_DETAILS, onClick = {
-                                previewMode.value = PreviewMode.INTENT_DETAILS
-                                args.settingsStore.previewMode = PreviewMode.INTENT_DETAILS
-                            })
+                            RadioButton(
+                                selected = previewMode.value == PreviewMode.INTENT_DETAILS,
+                                onClick = {
+                                    previewMode.value = PreviewMode.INTENT_DETAILS
+                                    args.settingsStore.previewMode = PreviewMode.INTENT_DETAILS
+                                }
+                            )
                             Spacer(modifier = Modifier.size(16.dp))
                             Text(stringResource(id = R.string.settingsPreviewModeIntentDetails))
                         }
@@ -104,6 +111,16 @@ fun Settings(modifier: Modifier = Modifier, args: SettingsArgs) {
                 OptionButton(
                     text = stringResource(id = R.string.settingsOssLicenses),
                     onClick = { args.onOssLicenses() }
+                )
+
+                Spacer(modifier = Modifier.size(16.dp))
+
+                Text(
+                    text = stringResource(
+                        id = R.string.settingsVersion,
+                        args.settingsStore.version
+                    ),
+                    fontSize = 12.sp
                 )
             }
         }

@@ -22,5 +22,6 @@
     <string name="settingsPreviewModeNone">No preview and immediately open save dialog</string>
     <string name="settingsRestartIntro">Restart the Intro</string>
     <string name="settingsTitle">Save To… Settings</string>
+    <string name="settingsVersion">Version %1$s</string>
     <string name="splashLogo">Save To logo</string>
 </resources>

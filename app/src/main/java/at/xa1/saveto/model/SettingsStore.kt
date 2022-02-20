@@ -1,10 +1,12 @@
 package at.xa1.saveto.model
 
 import android.content.SharedPreferences
+import at.xa1.saveto.BuildConfig
 
 interface SettingsStore {
     var previewMode: PreviewMode
     var introSeen: Boolean
+    val version: String
 }
 
 class SharedPreferencesSettingsStore(
@@ -29,6 +31,9 @@ class SharedPreferencesSettingsStore(
     override var introSeen: Boolean
         get() = sharedPreferences.getBoolean("introSeen", false)
         set(value) = sharedPreferences.edit().putBoolean("introSeen", value).apply()
+
+    override val version: String
+        get() = BuildConfig.VERSION_NAME
 }
 
 enum class PreviewMode {
