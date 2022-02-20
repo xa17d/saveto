@@ -59,6 +59,7 @@ For releasing run:
 - [x] show version
 - [ ] Code Review (total)
 - [ ] Shouldn't be possible to open from recents.
+- [ ] Abort (back button)
 
 **Future Version:**
 - [ ] Support multiple files
