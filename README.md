@@ -9,6 +9,18 @@ Exporting data from any app into a file made simple. Just open the share options
 
 Very first release of "Save To…". Adds the app to the "sharing" and "open with" options on your device. When opened, allows to store the shared data into a file. It can then be viewed in the Gallery or another app.
 
+## Code and Release
+
+Before committing run:
+```bash
+./debugCheck.sh
+```
+
+For releasing run:
+```bash
+./release.sh
+```
+
 ## Package-Structure
 
 - `at.xa1.saveto`: main package with the most fundamental classes (like `MainActivity` and `MainCoordinator`)
