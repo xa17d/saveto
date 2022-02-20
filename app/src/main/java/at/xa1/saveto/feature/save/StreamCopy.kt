@@ -10,12 +10,24 @@ import java.io.InputStream
 import java.io.OutputStream
 
 class StreamCopy(
-    private val contentResolver: ContentResolver,
+    private val contentResolver: ContentResolverWrapper,
     private val bufferSize: Int = 200 * 1024 // 200KB
 ) {
     private val _progress = MutableStateFlow(initialProgress())
     val progress: StateFlow<Progress>
         get() = _progress
+
+    fun copy(string: String, destinationUri: Uri) {
+        val source = ByteArrayInputStream(string.toByteArray())
+        val destination = contentResolver.openOutputStream(destinationUri)
+        copy(source, destination)
+    }
+
+    fun copy(sourceUri: Uri, destinationUri: Uri) {
+        val source = contentResolver.openInputStream(sourceUri)
+        val destination = contentResolver.openOutputStream(destinationUri)
+        copy(source, destination)
+    }
 
     fun copy(sourceStream: InputStream, destinationStream: OutputStream) {
         try {
@@ -32,21 +44,6 @@ class StreamCopy(
         } finally {
             _progress.value = _progress.value.copy(isFinished = true) // TODO avoid race
         }
-    }
-
-    fun copy(string: String, destinationUri: Uri) {
-        val source = ByteArrayInputStream(string.toByteArray())
-        val destination = contentResolver.openOutputStream(destinationUri, "w") // TODO deduplicate?
-            ?: error("openOutputStream(destinationUri) returns null")
-        copy(source, destination)
-    }
-
-    fun copy(sourceUri: Uri, destinationUri: Uri) {
-        val source = contentResolver.openInputStream(sourceUri)
-            ?: error("openInputStream(sourceUri) returns null")
-        val destination = contentResolver.openOutputStream(destinationUri, "w")
-            ?: error("openOutputStream(destinationUri) returns null")
-        copy(source, destination)
     }
 
     private fun copyBytes(source: InputStream, destination: OutputStream): Long {
@@ -79,4 +76,24 @@ class StreamCopy(
             isFailed = false,
             bytesCopied = 0L
         ) // TODO add phases: e.g. start reading, closing,...
+}
+
+interface ContentResolverWrapper { // TODO bettername
+    fun openInputStream(sourceUri: Uri): InputStream
+    fun openOutputStream(destinationUri: Uri): OutputStream
+}
+
+class AndroidContentResolver(
+    private val contentResolver: ContentResolver
+) : ContentResolverWrapper {
+
+    override fun openInputStream(sourceUri: Uri): InputStream {
+        return contentResolver.openInputStream(sourceUri)
+            ?: throw IOException("Android Exception: openInputStream($sourceUri) returns null")
+    }
+
+    override fun openOutputStream(destinationUri: Uri): OutputStream {
+        return contentResolver.openOutputStream(destinationUri, "w")
+            ?: throw IOException("Android Exception: openOutputStream($destinationUri) returns null")
+    }
 }

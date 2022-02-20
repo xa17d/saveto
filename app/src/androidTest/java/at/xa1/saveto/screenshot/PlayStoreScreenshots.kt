@@ -175,6 +175,7 @@ class PlayStoreScreenshots {
     }
 
     private fun waitForScreenshot() {
-        Thread.sleep(5000)
+        // Uncomment when taking screenshots
+        // Thread.sleep(5000)
     }
 }

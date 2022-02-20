@@ -37,6 +37,7 @@ For releasing run:
 * Use gesture navigation to hide navigation buttons (android settings)
 * Set time to: 04:01  (android settings)
 * Use tests in `PlayStoreScreenshots` for individual screens
+  * Uncomment `Thread.sleep` in `waitForScreenshot` function to have a chance in making screenshots.
 
 ## Backlog
 

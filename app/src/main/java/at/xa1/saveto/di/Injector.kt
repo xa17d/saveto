@@ -15,6 +15,7 @@ import at.xa1.saveto.common.android.getRetainedInstance
 import at.xa1.saveto.common.navigation.ComposeNavigator
 import at.xa1.saveto.common.navigation.CoordinatorDestination
 import at.xa1.saveto.common.navigation.HostHolder
+import at.xa1.saveto.feature.save.AndroidContentResolver
 import at.xa1.saveto.feature.save.SaveCoordinator
 import at.xa1.saveto.feature.save.SaveDialog
 import at.xa1.saveto.feature.save.StreamCopy
@@ -40,7 +41,7 @@ class Injector(private val applicationContext: Application) {
                     SaveCoordinator(
                         CoroutineScope(Dispatchers.Main),
                         SaveDialog(intentManager),
-                        StreamCopy(applicationContext.contentResolver),
+                        StreamCopy(AndroidContentResolver(applicationContext.contentResolver)),
                         settingsStore,
                         resources
                     )

@@ -1,3 +1,7 @@
 #!/usr/bin/env sh
 
-./gradlew assembleDebug ktlintFormat testDebug assembleDebugAndroidTest
+if [ "$1" == "--fast" ]; then
+  ./gradlew assembleDebug ktlintFormat testDebug assembleDebugAndroidTest
+else
+  ./gradlew assembleDebug ktlintFormat testDebug connectedDebugAndroidTest
+fi
