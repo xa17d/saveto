@@ -17,30 +17,64 @@ class StreamCopy(
     val progress: StateFlow<Progress>
         get() = _progress
 
+    private fun updateProgressError(type: StreamCopyErrorType, exception: Exception) {
+        val oldValue = _progress.value
+
+        // don't overwrite an already existing error.
+        if (oldValue.error == null) {
+            _progress.value = oldValue.copy(
+                isFinished = true,
+                error = StreamCopyError(type, exception)
+            )
+        }
+    }
+
     fun copy(string: String, destinationUri: Uri) {
         val source = ByteArrayInputStream(string.toByteArray())
-        val destination = contentResolver.openOutputStream(destinationUri)
-        copy(source, destination)
+        copy(source, destinationUri)
     }
 
     fun copy(sourceUri: Uri, destinationUri: Uri) {
-        val source = contentResolver.openInputStream(sourceUri)
-        val destination = contentResolver.openOutputStream(destinationUri)
-        copy(source, destination)
+        val sourceStream = try {
+            contentResolver.openInputStream(sourceUri)
+        } catch (e: IOException) {
+            updateProgressError(StreamCopyErrorType.OPEN_INPUT_STREAM_ERROR, e)
+            return
+        }
+
+        copy(sourceStream, destinationUri)
     }
 
-    fun copy(sourceStream: InputStream, destinationStream: OutputStream) {
+    private fun copy(sourceStream: InputStream, destinationUri: Uri) {
+        val destinationStream = try {
+            contentResolver.openOutputStream(destinationUri)
+        } catch (e: IOException) {
+            updateProgressError(StreamCopyErrorType.OPEN_OUTPUT_STREAM_ERROR, e)
+            return
+        }
+        copy(sourceStream, destinationStream)
+    }
+
+    private fun copy(sourceStream: InputStream, destinationStream: OutputStream) {
         try {
             sourceStream.use { source ->
-                destinationStream.use { destination ->
-                    copyBytes(source = source, destination = destination)
+                try {
+                    destinationStream.use { destination ->
+                        try {
+                            copyBytes(source = source, destination = destination)
+                        } catch (e: IOException) {
+                            updateProgressError(StreamCopyErrorType.COPY_ERROR, e)
+                        }
 
-                    source.close()
-                    destination.close()
+                        source.close()
+                        destination.close()
+                    }
+                } catch (e: IOException) {
+                    updateProgressError(StreamCopyErrorType.OPEN_OUTPUT_STREAM_ERROR, e)
                 }
             }
         } catch (e: IOException) {
-            _progress.value = _progress.value.copy(isFailed = true) // TODO avoid race
+            updateProgressError(StreamCopyErrorType.OPEN_INPUT_STREAM_ERROR, e)
         } finally {
             _progress.value = _progress.value.copy(isFinished = true) // TODO avoid race
         }
@@ -66,16 +100,30 @@ class StreamCopy(
 
     data class Progress(
         val isFinished: Boolean,
-        val isFailed: Boolean,
+        val error: StreamCopyError?,
         val bytesCopied: Long
     )
 
     private fun initialProgress(): Progress =
         Progress(
             isFinished = false,
-            isFailed = false,
+            error = null,
             bytesCopied = 0L
         ) // TODO add phases: e.g. start reading, closing,...
+}
+
+val StreamCopy.Progress.isFailed: Boolean
+    get() = error != null
+
+data class StreamCopyError(
+    val type: StreamCopyErrorType,
+    val exception: Exception
+)
+
+enum class StreamCopyErrorType {
+    OPEN_INPUT_STREAM_ERROR,
+    OPEN_OUTPUT_STREAM_ERROR,
+    COPY_ERROR
 }
 
 interface ContentResolverWrapper { // TODO bettername
