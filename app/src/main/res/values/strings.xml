@@ -3,7 +3,7 @@
     <string name="introAndDone">…and done!</string>
     <string name="introChooseDestination">Choose Target Filename:</string>
     <string name="introExitAndTry">Exit and Share from Another App</string>
-    <string name="introExplanation">You can now save data from various apps. Look out for the "Share" or "Open with…" option.</string>
+    <string name="introExplanation">You can now save data from various apps. Look out for the \"Share\" function.</string>
     <string name="introOpenSettings">Open Settings</string>
     <string name="introSaveDialogImageContentDescription">Save Dialog</string>
     <string name="introSelectSaveTo">Select \"Save To…\" in the Share Bottom Sheet</string>

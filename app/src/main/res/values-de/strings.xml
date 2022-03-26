@@ -3,7 +3,7 @@
     <string name="introAndDone">…und fertig!</string>
     <string name="introChooseDestination">Wähle einen Ziel-Dateiname:</string>
     <string name="introExitAndTry">Schließen und von einer anderen App teilen</string>
-    <string name="introExplanation">Du kannst jetzt Daten aus verschiedenen Apps speichern. Suche einfach nach der "Teilen" oder "Öffnen mit" Option.</string>
+    <string name="introExplanation">Du kannst jetzt Daten aus verschiedenen Apps speichern. Suche einfach nach \"Teilen\" Funktion.</string>
     <string name="introOpenSettings">Einstellungen öffnen</string>
     <string name="introSaveDialogImageContentDescription">Speicher-Dialog</string>
     <string name="introSelectSaveTo">Wähle \"Save To…\" im Teilen Menü aus</string>

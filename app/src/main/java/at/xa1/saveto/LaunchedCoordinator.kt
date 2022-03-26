@@ -34,7 +34,10 @@ class LaunchedCoordinator(
                     settingsStore.introSeen = true
                     settings()
                 },
-                onClose = ::close
+                onClose = {
+                    settingsStore.introSeen = true
+                    close()
+                }
             )
         }
     }
