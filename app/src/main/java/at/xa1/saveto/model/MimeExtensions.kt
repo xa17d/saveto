@@ -332,5 +332,8 @@ val mimeExtensionMap by lazy {
     add("x-conference/x-cooltalk", "ice")
     add("x-epoc/x-sisx-app", "sisx")
 
+    // Added Fallbacks:
+    add("image/*", "jpg")
+
     return@lazy result
 }
