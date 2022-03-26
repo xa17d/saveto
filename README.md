@@ -21,6 +21,19 @@ For releasing run:
 ./release.sh
 ```
 
+## Signing
+
+Signing is located in `.signing` folder. It is added to `.gitignore`.
+Extract `release.jks` (and `private_key.pepk`) from Password Manager to `.signing`.
+
+Create `.signing/keystore.properties`:
+```properties
+keyAlias=releaseKey
+keyPassword=[PASSWORD FROM PASSWORD MANAGER]
+storeFile=.signing/release.jks
+storePassword=[SAME PASSWORD FROM PASSWORD MANAGER]
+```
+
 ## Package-Structure
 
 - `at.xa1.saveto`: main package with the most fundamental classes (like `MainActivity` and `MainCoordinator`)
