@@ -16,10 +16,14 @@ Before committing run:
 ./debugCheck.sh
 ```
 
-For releasing run:
-```bash
-./release.sh
-```
+### Release
+
+1. Update `versionCode` and `versionName` in `versions.gradle`
+2. Run:
+   ```bash
+   ./release.sh
+   ```
+3. Upload `app/build/outputs/bundle/release/app-release.aab` to Google Play Console.
 
 ## Signing
 
