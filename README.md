@@ -1,7 +1,7 @@
 
 <div align="center">
 
-  <img src="assets/ic_launcher-playstore.png" style="border-radius: 1em" alt="logo" width="200" height="auto" />
+  <img src="assets/ic_launcher-playstore.png" alt="logo" width="200" height="auto" />
   <h1>Save To…</h1>
   
   <p>
@@ -27,9 +27,9 @@ Done.
 No permissions required.
 
 <div align="center"> 
-  <img src="assets/screenshots/phone-pixel4/02share.png" style="max-width: 30%; max-height: 35em;" alt="Share dialog screenshot" />
-  <img src="assets/screenshots/phone-pixel4/03save.png" style="max-width: 30%; max-height: 35em;" alt="Save dialog screenshot" />
-  <img src="assets/screenshots/phone-pixel4/06success.png" style="max-width: 30%; max-height: 35em;" alt="Success screenshot" />
+  <img src="assets/screenshots/phone-pixel4/02share.png" width="180" alt="Share dialog screenshot" />
+  <img src="assets/screenshots/phone-pixel4/03save.png" width="180" alt="Save dialog screenshot" />
+  <img src="assets/screenshots/phone-pixel4/06success.png" width="180" alt="Success screenshot" />
 </div>
 
 More infos on the official website: [xa1.at/saveto](https://xa1.at/saveto/).
@@ -37,7 +37,7 @@ More infos on the official website: [xa1.at/saveto](https://xa1.at/saveto/).
 Background on blog post: [I Published My First App on the Google Play Store](https://xa1.at/first-app-published/)
 
 <!-- Generated using: https://play.google.com/intl/en_us/badges/ -->
-<a href="https://play.google.com/store/apps/details?id=at.xa1.safeto"><img style="height: 5em;" alt="Get it on Google Play" src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png"/></a>
+<a href="https://play.google.com/store/apps/details?id=at.xa1.safeto"><img height="70" alt="Get it on Google Play" src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png"/></a>
 
 <!-- TechStack -->
 ### Tech Stack
