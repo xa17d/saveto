@@ -1,22 +1,97 @@
-# Save To…
 
-Save shares to file from any app.
+<div align="center">
 
-Save To… - Share into a file
-Share data from any app to save it into a file.
+  <img src="assets/ic_launcher-playstore.png" style="border-radius: 1em" alt="logo" width="200" height="auto" />
+  <h1>Save To…</h1>
+  
+  <p>
+    Android App to save shares from any app into a file.
+  </p>
+   
+  <h4>
+      <a href="https://play.google.com/store/apps/details?id=at.xa1.safeto">Download</a>
+    <span> · </span>
+      <a href="https://xa1.at/saveto/">Website</a>
+    <span>
+    <span> · </span>
+      <a href="mailto:support@xa1.at?subject=Save+To+App">Contact</a>
+  </h4>
+</div>
 
-Exporting data from any app into a file made simple. Just open the share options, select "Save To…" and choose the target file. Done. No permissions required.
+<!-- About the Project -->
+## About the Project
 
-Very first release of "Save To…". Adds the app to the "sharing" and "open with" options on your device. When opened, allows to store the shared data into a file. It can then be viewed in the Gallery or another app.
+Exporting data from any app into a file made simple.
+Just open the share options, select "Save To…" and choose the target file.
+Done.
+No permissions required.
 
-## Code and Release
+<div align="center"> 
+  <img src="assets/screenshots/phone-pixel4/02share.png" style="max-width: 30%; max-height: 35em;" alt="Share dialog screenshot" />
+  <img src="assets/screenshots/phone-pixel4/03save.png" style="max-width: 30%; max-height: 35em;" alt="Save dialog screenshot" />
+  <img src="assets/screenshots/phone-pixel4/06success.png" style="max-width: 30%; max-height: 35em;" alt="Success screenshot" />
+</div>
+
+More infos on the official website: [xa1.at/saveto](https://xa1.at/saveto/).
+
+Background on blog post: [I Published My First App on the Google Play Store](https://xa1.at/first-app-published/)
+
+<!-- Generated using: https://play.google.com/intl/en_us/badges/ -->
+<a href="https://play.google.com/store/apps/details?id=at.xa1.safeto"><img style="height: 5em;" alt="Get it on Google Play" src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png"/></a>
+
+<!-- TechStack -->
+### Tech Stack
+
+Native Android App.
+
+Maximum Privacy. No Permissions required. Not even internet access.
+
+<!-- Features -->
+### Features
+
+- Introduction Guide
+- Open from Share Dialog and save shared item into a file.
+- Settings
+
+<!-- Color Reference -->
+### Color Reference
+
+| Color | Hex |
+| --- | --- |
+| Primary Color | ![#ff8f00](https://via.placeholder.com/10/ff8f00?text=+) #ff8f00 |
+
+<!-- Getting Started -->
+## Getting Started
+
+<!-- Prerequisites -->
+### Prerequisites
+
+- Android Studio
+- Java 11+
+- sh
+
+### Code Checks
 
 Before committing run:
 ```bash
 ./debugCheck.sh
 ```
 
-### Release
+This compiles the code, runs ktlint, unit tests and android tests.
+
+### Package-Structure
+
+- `at.xa1.saveto`: main package with the most fundamental classes (like `MainActivity` and `MainCoordinator`)
+  - `common`: generic, non-app-specific classes
+    - `android`: generic, non-app-specific classes that are strongly related to Android.
+  - `di`: Dependency Injection.
+  - `feature`: sub packages contain pieces of functionality, that don't depend on other features.
+  - `ui`: User interface components that are not feature specific.
+
+
+## Release
+
+_This is only relevant for the deployer._
 
 1. Update `versionCode` and `versionName` in `versions.gradle`
 2. Run:
@@ -25,9 +100,10 @@ Before committing run:
    ```
 3. Upload `app/build/outputs/bundle/release/app-release.aab` to Google Play Console.
 
-## Signing
+### Signing
 
-Signing is located in `.signing` folder. It is added to `.gitignore`.
+Signing is located in `.signing` folder.
+It is added to `.gitignore` to avoid accidental committing.
 Extract `release.jks` (and `private_key.pepk`) from Password Manager to `.signing`.
 
 Create `.signing/keystore.properties`:
@@ -38,25 +114,17 @@ storeFile=.signing/release.jks
 storePassword=[SAME PASSWORD FROM PASSWORD MANAGER]
 ```
 
-## Package-Structure
+### Create Screenshots
 
-- `at.xa1.saveto`: main package with the most fundamental classes (like `MainActivity` and `MainCoordinator`)
-  - `common`: generic, non-app-specific classes
-    - `android`: generic, non-app-specific classes that are strongly related to Android.
-  - `di`: Dependency Injection.
-  - `feature`: sub packages contain pieces of functionality, that don't depend on other features.
-  - `ui`: User interface components that are not feature specific.
-
-## Screenshots
-
-* Make sure status bar is empty
+* Start Emulator.
+* Make sure status bar is empty.
 * Make sure battery, network and wifi are full (emulator settings).
-* Use gesture navigation to hide navigation buttons (android settings)
-* Set time to: 04:01  (android settings)
-* Use tests in `PlayStoreScreenshots` for individual screens
+* Use gesture navigation to hide navigation buttons (android settings).
+* Set time to: 04:01  (android settings).
+* Use tests in `PlayStoreScreenshots` for individual screens.
   * Uncomment `Thread.sleep` in `waitForScreenshot` function to have a chance in making screenshots.
 
-## Backlog
+## Roadmap
 
 - [x] Return OK Result when finished successfully
 - [x] Show KB copied
@@ -73,10 +141,14 @@ storePassword=[SAME PASSWORD FROM PASSWORD MANAGER]
 - [x] Feature graphic
 - [x] https://xa1.at/saveto/ site
 - [x] Review package and file structure
-- [x] show version
-- [ ] Code Review (total)
-- [ ] Shouldn't be possible to open from recents.
+- [x] Show version in settings
+- [ ] CI setup
+- [ ] Bug: Shouldn't be possible to open from recents.
 - [ ] Abort (back button)
+- [ ] Support multiple files shared at once.
 
-**Future Version:**
-- [ ] Support multiple files
+## Attributions
+
+README inspired by [Louis3797/awesome-readme-template](https://github.com/Louis3797/awesome-readme-template).
+
+Google Play and the Google Play logo are trademarks of Google LLC.
