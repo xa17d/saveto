@@ -14,7 +14,7 @@
       <a href="https://xa1.at/saveto/">Website</a>
     <span>
     <span> · </span>
-      <a href="mailto:support@xa1.at?subject=Save+To+App">Contact</a>
+      <a href="mailto:support@xa1.at?subject=Save%20To%20App">Contact</a>
   </h4>
 </div>
 
