@@ -147,6 +147,16 @@ storePassword=[SAME PASSWORD FROM PASSWORD MANAGER]
 - [ ] Abort (back button)
 - [ ] Support multiple files shared at once.
 
+## License
+
+Distributed under [BSD 3-Clause License](LICENSE). See [LICENSE](LICENSE) for more information.
+
+## Contact
+
+- Twitter: [@xa17d](https://twitter.com/xa17d)
+- Website: [xa1.at/saveto](https://xa1.at/saveto/)
+- E-Mail: [support@xa1.at](mailto:support@xa1.at?subject=Save%20To%20App)
+
 ## Attributions
 
 README inspired by [Louis3797/awesome-readme-template](https://github.com/Louis3797/awesome-readme-template).
