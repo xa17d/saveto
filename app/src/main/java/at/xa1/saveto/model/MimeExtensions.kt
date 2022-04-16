@@ -332,6 +332,9 @@ val mimeExtensionMap by lazy {
     add("x-conference/x-cooltalk", "ice")
     add("x-epoc/x-sisx-app", "sisx")
 
+    // Custom Additions:
+    add("audio/mp4a-latm", "m4a")
+
     // Added Fallbacks:
     add("image/*", "jpg")
 

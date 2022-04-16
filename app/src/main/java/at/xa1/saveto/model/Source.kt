@@ -73,11 +73,16 @@ fun Source.proposedFilename(
             }
         }
 
-    return baseName + extensionByMime(type)
+    val extension = extensionByMime(type)
+    val result = if (baseName.endsWith(extension, ignoreCase = true)) {
+        baseName
+    } else {
+        baseName + extension
+    }
+    return result
 }
 
 private fun String.makeValidFilename(): String =
     trim()
-        .replace(" ", "_")
-        .replace(Regex("[^a-zA-Z0-9\\-_]"), "-")
-        .take(18)
+        .replace(Regex("[^a-zA-Z0-9\\-_. ]"), "-")
+        .take(30)

@@ -21,7 +21,7 @@ class ProposedFilenameTest {
             .proposedFilename()
 
         assertEquals(
-            "TEST_SUBJECT.txt",
+            "TEST SUBJECT.txt",
             result
         )
     }
@@ -41,11 +41,11 @@ class ProposedFilenameTest {
     @Test
     fun noSubjectTextSource_ShortenedTextIsUsed() {
         val result = source
-            .copy(data = SourceData.Text("This is an long example test text"))
+            .copy(data = SourceData.Text("This is an long example test-text"))
             .proposedFilename()
 
         assertEquals(
-            "This_is_an_long_ex.txt",
+            "This is an long example test-t.txt",
             result
         )
     }
@@ -57,7 +57,7 @@ class ProposedFilenameTest {
             .proposedFilename()
 
         assertEquals(
-            "Example_Text.txt",
+            "Example Text.txt",
             result
         )
     }
@@ -123,6 +123,26 @@ class ProposedFilenameTest {
 
         assertEquals(
             "some-subject.txt",
+            result
+        )
+    }
+
+    @Test
+    fun googleRecorder() {
+        val result = source
+            .copy(
+                type = Mime.from("audio/mp4a-latm"),
+                data = SourceData.Uri(
+                    Uri.parse(
+                        "content://com.google.android.apps.recorder.fileprovider/share/recordings/" +
+                            "053e9918-8ac4-4da1-9d4a-7937a70e5e14/Video%20-%20Sunday%20at%2017-02.m4a"
+                    )
+                )
+            )
+            .proposedFilename()
+
+        assertEquals(
+            "Video - Sunday at 17-02.m4a",
             result
         )
     }
