@@ -18,6 +18,8 @@ class FakeContentResolver : ContentResolverWrapper {
     var failInOpenInputStream = false
     var failInOpenOutputStream = false
 
+    var filenameForUri: String? = null
+
     override fun openInputStream(sourceUri: Uri): InputStream {
         if (inputConsumed) {
             error("openInputStream was called multiple times")
@@ -42,5 +44,9 @@ class FakeContentResolver : ContentResolverWrapper {
         }
 
         return outputStream
+    }
+
+    override fun getFilenameByContentUriOrNull(uri: Uri): String? {
+        return filenameForUri
     }
 }

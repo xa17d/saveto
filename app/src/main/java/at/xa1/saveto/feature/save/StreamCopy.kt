@@ -1,7 +1,9 @@
 package at.xa1.saveto.feature.save
 
 import android.content.ContentResolver
+import android.database.Cursor
 import android.net.Uri
+import android.provider.OpenableColumns
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import java.io.ByteArrayInputStream
@@ -129,6 +131,7 @@ enum class StreamCopyErrorType {
 interface ContentResolverWrapper { // TODO bettername
     fun openInputStream(sourceUri: Uri): InputStream
     fun openOutputStream(destinationUri: Uri): OutputStream
+    fun getFilenameByContentUriOrNull(uri: Uri): String?
 }
 
 class AndroidContentResolver(
@@ -143,5 +146,18 @@ class AndroidContentResolver(
     override fun openOutputStream(destinationUri: Uri): OutputStream {
         return contentResolver.openOutputStream(destinationUri, "w")
             ?: throw IOException("Android Exception: openOutputStream($destinationUri) returns null")
+    }
+
+    override fun getFilenameByContentUriOrNull(uri: Uri): String? {
+        if (uri.scheme != "content") return null
+
+        val cursor: Cursor = contentResolver.query(uri, null, null, null, null) ?: return null
+        cursor.use { usedCursor ->
+            if (usedCursor.moveToFirst()) {
+                val displayNameColumnIndex = usedCursor.getColumnIndex(OpenableColumns.DISPLAY_NAME)
+                return usedCursor.getString(displayNameColumnIndex)
+            }
+        }
+        return null
     }
 }

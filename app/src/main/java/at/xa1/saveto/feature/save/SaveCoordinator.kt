@@ -6,11 +6,11 @@ import at.xa1.saveto.R
 import at.xa1.saveto.common.android.Resources
 import at.xa1.saveto.common.navigation.Coordinator
 import at.xa1.saveto.model.PreviewMode
+import at.xa1.saveto.model.ProposeFilenameUseCase
 import at.xa1.saveto.model.SettingsStore
 import at.xa1.saveto.model.Source
 import at.xa1.saveto.model.SourceData
 import at.xa1.saveto.model.humanReadableByteCount
-import at.xa1.saveto.model.proposedFilename
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
@@ -25,6 +25,7 @@ class SaveCoordinator(
     private val saveDialog: SaveDialog,
     private val streamCopy: StreamCopy,
     private val settingsStore: SettingsStore,
+    private val proposeFilenameUseCase: ProposeFilenameUseCase,
     private val resources: Resources,
 ) : Coordinator<SaveArgs>() {
     override fun onStart() {
@@ -54,7 +55,7 @@ class SaveCoordinator(
             )
         }
         scope.launch {
-            val filename = args.source.proposedFilename()
+            val filename = proposeFilenameUseCase.getFilenameFor(args.source)
             val result = saveDialog.show(args.source.type, filename)
 
             if (result == null) {

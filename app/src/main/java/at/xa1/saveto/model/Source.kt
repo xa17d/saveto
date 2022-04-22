@@ -59,30 +59,3 @@ fun sourceDataFromIntent(intent: Intent): SourceData {
 
     return SourceData.Unknown
 }
-
-fun Source.proposedFilename(
-    default: String = "file" // TODO localize?
-): String {
-    val baseName = subject
-        .makeValidFilename()
-        .ifEmpty {
-            when (data) {
-                SourceData.Unknown -> default
-                is SourceData.Uri -> data.value.lastPathSegment?.makeValidFilename() ?: default
-                is SourceData.Text -> data.value.makeValidFilename()
-            }
-        }
-
-    val extension = extensionByMime(type)
-    val result = if (baseName.endsWith(extension, ignoreCase = true)) {
-        baseName
-    } else {
-        baseName + extension
-    }
-    return result
-}
-
-private fun String.makeValidFilename(): String =
-    trim()
-        .replace(Regex("[^a-zA-Z0-9\\-_. ]"), "-")
-        .take(30)
