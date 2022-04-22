@@ -1,5 +1,6 @@
 package at.xa1.saveto.screenshot
 
+import android.graphics.Bitmap
 import androidx.activity.ComponentActivity
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -22,6 +23,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.test.junit4.createAndroidComposeRule
 import androidx.lifecycle.lifecycleScope
+import androidx.test.runner.screenshot.Screenshot
 import at.xa1.saveto.R
 import at.xa1.saveto.common.android.AndroidResources
 import at.xa1.saveto.common.android.IntentManager
@@ -57,7 +59,7 @@ class PlayStoreScreenshots {
             }
         }
 
-        waitForScreenshot()
+        takeScreenshot()
     }
 
     @Test
@@ -105,7 +107,7 @@ class PlayStoreScreenshots {
             ShareChooser(activity).open()
         }
 
-        waitForScreenshot()
+        takeScreenshot()
     }
 
     @Test
@@ -119,7 +121,7 @@ class PlayStoreScreenshots {
             }
         }
 
-        waitForScreenshot()
+        takeScreenshot()
     }
 
     @Test
@@ -140,7 +142,7 @@ class PlayStoreScreenshots {
 
         composeTestRule.mainClock.advanceTimeBy(800)
 
-        waitForScreenshot()
+        takeScreenshot()
     }
 
     @Test
@@ -160,7 +162,7 @@ class PlayStoreScreenshots {
             }
         }
 
-        waitForScreenshot()
+        takeScreenshot()
     }
 
     @Test
@@ -171,11 +173,26 @@ class PlayStoreScreenshots {
             }
         }
 
-        waitForScreenshot()
+        takeScreenshot()
     }
 
-    private fun waitForScreenshot() {
-        // Uncomment when taking screenshots
-        // Thread.sleep(5000)
+    private fun takeScreenshot() {
+        // Give UI some time to settle before taking the screenshot.
+        Thread.sleep(1000)
+
+        val screenCapture = Screenshot.capture()
+        screenCapture.name = getCallingMethodName()
+        screenCapture.format = Bitmap.CompressFormat.PNG
+        screenCapture.process()
+    }
+
+    private fun getCallingMethodName(parents: Int = 1): String {
+        val stackTrace = Exception().stackTrace
+        val stackTraceIndex = parents + 2
+        return if (stackTraceIndex >= stackTrace.size) {
+            "unknown-overflow"
+        } else {
+            stackTrace[stackTraceIndex].methodName
+        }
     }
 }

@@ -121,8 +121,16 @@ storePassword=[SAME PASSWORD FROM PASSWORD MANAGER]
 * Make sure battery, network and wifi are full (emulator settings).
 * Use gesture navigation to hide navigation buttons (android settings).
 * Set time to: 04:01  (android settings).
-* Use tests in `PlayStoreScreenshots` for individual screens.
-  * Uncomment `Thread.sleep` in `waitForScreenshot` function to have a chance in making screenshots.
+* Use tests in `PlayStoreScreenshots` for individual screens:
+  * Clear screenshot folder on emulator:
+    ```sh
+    adb shell rm -rf "/storage/emulated/0/Pictures/screenshots"
+    ```
+  * Run [`PlayStoreScreenshots` tests](app/src/androidTest/java/at/xa1/saveto/screenshot/PlayStoreScreenshots.kt)
+  * Download screenshots from emulator:
+    ```sh
+    adb pull "/storage/emulated/0/Pictures/screenshots"
+    ```
 
 ## Roadmap
 
@@ -142,6 +150,7 @@ storePassword=[SAME PASSWORD FROM PASSWORD MANAGER]
 - [x] https://xa1.at/saveto/ site
 - [x] Review package and file structure
 - [x] Show version in settings
+- [x] Create screenshots using [Screenshot.capture()](https://developer.android.com/reference/androidx/test/runner/screenshot/Screenshot#capture()) instead of doing it manually.
 - [ ] CI setup
 - [ ] Bug: Shouldn't be possible to open from recents.
 - [ ] Abort (back button)
