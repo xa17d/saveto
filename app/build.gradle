@@ -2,7 +2,7 @@ plugins {
     id "com.android.application"
     id "kotlin-android"
     id "com.google.android.gms.oss-licenses-plugin"
-    id "org.jlleitschuh.gradle.ktlint" version "10.2.1"
+    id "org.jlleitschuh.gradle.ktlint" version "10.3.0"
 }
 
 def keystorePropertiesFile = rootProject.file(".signing/keystore.properties")
@@ -59,13 +59,12 @@ android {
     }
     kotlinOptions {
         jvmTarget = '1.8'
-        useIR = true
     }
     buildFeatures {
         compose true
     }
     composeOptions {
-        kotlinCompilerExtensionVersion versions.androidx.compose
+        kotlinCompilerExtensionVersion versions.androidx.composeCompiler
         kotlinCompilerVersion versions.kotlin
     }
     packagingOptions {

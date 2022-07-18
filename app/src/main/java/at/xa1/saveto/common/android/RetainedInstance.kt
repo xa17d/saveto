@@ -26,7 +26,7 @@ private const val KEY_RETAINED_VIEWMODEL =
 private class InstanceHolderAndroidViewModelFactory<T>(
     private val factory: () -> T
 ) : ViewModelProvider.Factory {
-    override fun <T : ViewModel?> create(modelClass: Class<T>): T {
+    override fun <T : ViewModel> create(modelClass: Class<T>): T {
         @Suppress("UNCHECKED_CAST")
         return InstanceHolderAndroidViewModel(factory.invoke()) as T
     }

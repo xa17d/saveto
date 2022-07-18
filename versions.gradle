@@ -1,25 +1,26 @@
 def versions = [
     "minSdk"     : 26,
-    "compileSdk" : 31,
-    "targetSdk"  : 31,
+    "compileSdk" : 32,
+    "targetSdk"  : 32,
     "versionCode": 8,
     "versionName": "1.5.0",
 
-    "kotlin"     : "1.6.10", // don't forget to update kotlin-gradle-plugin too
+    "kotlin"     : "1.7.0", // don't forget to update kotlin-gradle-plugin too
 
     "androidx"   : [
-        "core"     : "1.7.0",
-        "appcompat": "1.4.1",
+        "core"     : "1.8.0",
+        "appcompat": "1.4.2",
         "activity" : "1.4.0",
-        "compose"  : "1.1.0",
+        "compose"  : "1.2.0-rc03",
+        "composeCompiler"  : "1.2.0",
     ],
 
     "kotlinx"    : [
-        "coroutines": "1.6.0"
+        "coroutines": "1.6.4"
     ],
 
     "google"     : [
-        "accompanist": "0.24.2-alpha"
+        "accompanist": "0.24.13-rc"
     ]
 ]
 
@@ -36,7 +37,7 @@ def lib = [
     ],
     "junit"   : "junit:junit:4.13.2",
     "android" : [
-        "material": "com.google.android.material:material:1.5.0"
+        "material": "com.google.android.material:material:1.6.1"
     ],
     "androidx": [
         "coreKtx"  : "androidx.core:core-ktx:${versions.androidx.core}",
