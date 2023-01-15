@@ -21,24 +21,33 @@ class ProposeFilenameUseCase(
     }
 
     private fun getBaseNameForSource(source: Source): String {
-        if (source.subject.isNotEmpty()) {
-            return source.subject.replaceInvalidCharsAndLimitLength()
-        }
-
         return when (val data = source.data) {
-            SourceData.Unknown -> default
-            is SourceData.Uri -> getFilenameFromUri(data.value)
-            is SourceData.Text -> data.value.replaceInvalidCharsAndLimitLength()
+            SourceData.Unknown -> getFilenameFromSubjectOrNull(source)
+                ?: default
+
+            is SourceData.Uri -> getFilenameFromUriOrNull(data.value)
+                ?: getFilenameFromSubjectOrNull(source)
+                ?: default
+
+            is SourceData.Text -> getFilenameFromSubjectOrNull(source)
+                ?: data.value.replaceInvalidCharsAndLimitLength()
         }
     }
 
-    private fun getFilenameFromUri(uri: Uri): String {
+    private fun getFilenameFromSubjectOrNull(source: Source): String? {
+        if (source.subject.isNotEmpty()) {
+            return source.subject.replaceInvalidCharsAndLimitLength()
+        }
+        return null
+    }
+
+    private fun getFilenameFromUriOrNull(uri: Uri): String? {
         val filenameFromContentResolver = contentResolver.getFilenameByContentUriOrNull(uri)
         if (filenameFromContentResolver != null) {
             return filenameFromContentResolver
         }
 
-        return uri.lastPathSegment?.replaceInvalidCharsAndLimitLength() ?: default
+        return uri.lastPathSegment?.replaceInvalidCharsAndLimitLength()
     }
 
     private fun String.replaceInvalidCharsAndLimitLength(): String =
