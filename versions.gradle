@@ -2,8 +2,8 @@ def versions = [
     "minSdk"     : 26,
     "compileSdk" : 33,
     "targetSdk"  : 33,
-    "versionCode": 9,
-    "versionName": "1.6.0",
+    "versionCode": 12,
+    "versionName": "1.7.0",
 
     "kotlin"     : "1.7.20", // don't forget to update kotlin-gradle-plugin too
 
