@@ -1,0 +1,11 @@
+<resources>
+    <string name="appName" maxLength="30">Save To… - Teile in eine Datei</string>
+    <string name="shortDescription" maxLength="80">Speichert alles in eine Datei, was auch immer du aus anderen Apps teilen kannst.</string>
+    <string name="fullDescription" maxLength="4000">Daten aus anderen Apps exportieren einfach gemacht. Suche nach der "Teilen" Option, wähle "Save To…" aus, und wähle eine Ziel-Datei aus. Fertig. Keine Berechtigungen nötig. Keine Werbung. Kostenlos, für immer.</string>
+    <string name="mockupShareFromAnyApp">Teile Daten aus jeder App und speichere sie in eine Datei.</string>
+    <string name="mockupProgressIndicator">Fortschrittsanzeige</string>
+    <string name="mockupProgressIndicatorSubTitle">für große Dateien</string>
+    <string name="mockupProgressIndicatorSubTitle">Keine Berechtigungen
+        Keine Werbung
+        für immer kostenlos</string>
+</resources>

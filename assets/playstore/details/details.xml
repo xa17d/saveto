@@ -1,0 +1,11 @@
+<resources>
+    <string name="appName" maxLength="30">Save To… - Share into a file</string>
+    <string name="shortDescription" maxLength="80">Share data from any app to save it into a file.</string>
+    <string name="fullDescription" maxLength="4000">Exporting data from any app into a file made simple. Just open the share options, select "Save To…" and choose the target file. Done. No permissions required. No Ads. Free Forever.</string>
+    <string name="mockupShareFromAnyApp">Share data from any app to save it into a file.</string>
+    <string name="mockupProgressIndicator">Progress Indicator</string>
+    <string name="mockupProgressIndicatorSubTitle">for large files</string>
+    <string name="mockupProgressIndicatorSubTitle">No Permissions
+        No Ads
+        Free Forever</string>
+</resources>
