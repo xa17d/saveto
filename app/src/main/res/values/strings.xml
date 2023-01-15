@@ -30,6 +30,6 @@
     <string name="settingsTitle">Save To… Settings</string>
     <string name="settingsVersion">Version %1$s</string>
     <string name="splashLogo">Save To logo</string>
-    <string name="errorSomethingWentWrong">Something went wrong...</string>
+    <string name="errorSomethingWentWrong">Something went wrong…</string>
 
 </resources>
