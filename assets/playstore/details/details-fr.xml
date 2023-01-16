@@ -1,0 +1,11 @@
+<resources>
+    <string name="appName" maxLength="30">Save To… - Partager dans un fichier</string>
+    <string name="shortDescription" maxLength="80">Partagez des données de n\'importe quelle application pour les enregistrer dans un fichier.</string>
+    <string name="fullDescription" maxLength="4000">L\'exportation des données depuis n\'importe quelle application vers un fichier est très simple. Il suffit d\'ouvrir les options de partage, de sélectionner "Save To…" et de choisir le fichier cible. C\'est fait. Aucune autorisation requise. Pas de publicité. Gratuit pour toujours.</string>
+    <string name="mockupShareFromAnyApp">Partagez des données depuis n\'importe quelle application pour les enregistrer dans un fichier.</string>
+    <string name="mockupProgressIndicator">Indicateur d\'avancement</string>
+    <string name="mockupProgressIndicatorSubTitle">Pour les fichiers volumineux</string>
+    <string name="mockupProgressIndicatorSubTitle">Aucune autorisation
+        Pas de publicité
+        Gratuit pour toujours</string>
+</resources>
