@@ -1,0 +1,35 @@
+<resources>
+    <string name="app_name">Save To…</string>
+    <string name="defaultFilename">fichier</string>
+    <string name="introAndDone">…c\'est terminé !</string>
+    <string name="introChooseDestination">Choisissez le nom du fichier cible :</string>
+    <string name="introExitAndTry">Quitter et Partager depuis une autre application</string>
+    <string name="introExplanation">Vous pouvez maintenant sauvegarder les données de diverses applications. Surveillez la fonction \"Partage\".</string>
+    <string name="introOpenSettings">Ouvrir les paramètres</string>
+    <string name="introSaveDialogImageContentDescription">Fenêtre de sauvegarde</string>
+    <string name="introSelectSaveTo">Sélectionnez \"Save To…\" dans la fenêtre de partage</string>
+    <string name="introShareBottomSheetImageContentDescription">Fenêtre de partage</string>
+    <string name="introShareButton">Partager</string>
+    <string name="introShareButtonContentDescription">Icone de partage</string>
+    <string name="introSwipeToContinue">balayer pour continuer</string>
+    <string name="introWelcome">Bienvenue dans Save To…!</string>
+    <string name="progressBytesWritten">%1$s écrit…</string>
+    <string name="saveErrorIconContentDescription">Erreur</string>
+    <string name="saveErrorOpenInputStreamError">La source de données ne peut pas être ouverte. Veuillez vous assurer que votre fichier est toujours disponible dans l\'application source.</string>
+    <string name="saveErrorOpenOutputStreamError">Le fichier de destination ne peut pas être ouvert. Veuillez vous assurer que vous disposez de suffisamment d\'espace libre et des autorisations nécessaires pour écrire sur la destination sélectionnée.</string>
+    <string name="saveErrorCopyError">Erreur pendant la copie des données. Veuillez vous assurer que vous disposez de suffisamment d\'espace libre.</string>
+    <string name="saveSuccessIconContentDescription">Succès</string>
+    <string name="saving">Sauvegarde…</string>
+    <string name="settingsClose">fermer</string>
+    <string name="settingsContact">Contact</string>
+    <string name="settingsOssLicenses">Voir les licences Open Source</string>
+    <string name="settingsPreview">Prévisualisation</string>
+    <string name="settingsPreviewModeIntentDetails">Afficher les détails du Android Intent avant d\'ouvrir la fenêtre de sauvegarde.</string>
+    <string name="settingsPreviewModeNone">Pas de prévisualisation et ouvrir la fenêtre de sauvegarde immédiatement</string>
+    <string name="settingsRestartIntro">Redémarrer l\'introduction</string>
+    <string name="settingsTitle">Paramètres de Save To…</string>
+    <string name="settingsVersion">Version %1$s</string>
+    <string name="splashLogo">Logo de Save To</string>
+    <string name="errorSomethingWentWrong">Il y a eu un problème…</string>
+
+</resources>
