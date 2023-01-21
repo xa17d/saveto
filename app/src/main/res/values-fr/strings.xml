@@ -1,8 +1,8 @@
 <resources>
     <string name="app_name">Save To…</string>
     <string name="defaultFilename">fichier</string>
-    <string name="introAndDone">…c\'est terminé !</string>
-    <string name="introChooseDestination">Choisissez le nom du fichier cible :</string>
+    <string name="introAndDone">…c\'est terminé!</string>
+    <string name="introChooseDestination">Choisissez le nom du fichier cible:</string>
     <string name="introExitAndTry">Quitter et Partager depuis une autre application</string>
     <string name="introExplanation">Vous pouvez maintenant sauvegarder les données de diverses applications. Surveillez la fonction \"Partage\".</string>
     <string name="introOpenSettings">Ouvrir les paramètres</string>
