@@ -26,7 +26,7 @@ class SaveCoordinator(
     private val streamCopy: StreamCopy,
     private val settingsStore: SettingsStore,
     private val proposeFilenameUseCase: ProposeFilenameUseCase,
-    private val resources: Resources,
+    private val resources: Resources
 ) : Coordinator<SaveArgs>() {
     override fun onStart() {
         super.onStart()

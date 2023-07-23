@@ -52,7 +52,6 @@ class PlayStoreScreenshots {
 
     @Test
     fun splash() {
-
         composeTestRule.setContent {
             SaveToTheme {
                 Splash(modifier = Modifier.fillMaxSize())
@@ -94,7 +93,7 @@ class PlayStoreScreenshots {
                             .aspectRatio(1f),
                         painter = painterResource(id = R.drawable.ic_launcher_foreground),
                         tint = Color.Gray,
-                        contentDescription = "SaveTo logo",
+                        contentDescription = "SaveTo logo"
                     )
 
                     Spacer(modifier = Modifier.fillMaxHeight())
@@ -126,7 +125,6 @@ class PlayStoreScreenshots {
 
     @Test
     fun loading() {
-
         composeTestRule.mainClock.autoAdvance = false
 
         val resources: Resources = AndroidResources(composeTestRule.activity.applicationContext)

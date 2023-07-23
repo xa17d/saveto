@@ -17,8 +17,10 @@ class MainActivity : ComponentActivity() {
 
     @Inject
     lateinit var hostHolder: HostHolder
+
     @Inject
     lateinit var intentManager: IntentManager
+
     @Inject
     lateinit var navigator: ComposeNavigator
 

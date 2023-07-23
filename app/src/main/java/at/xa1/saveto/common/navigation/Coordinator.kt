@@ -47,7 +47,6 @@ class ComposeNavigator : Navigator() {
         get() = _screen
 
     override fun <Args> goToIntern(destination: Destination<Args>, args: Args) {
-
         when (destination) {
             is ComposeDestination<Args> -> {
                 val context = LocationContext(args = args)

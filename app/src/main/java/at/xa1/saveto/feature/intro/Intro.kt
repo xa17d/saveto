@@ -42,7 +42,6 @@ import kotlinx.coroutines.launch
 @OptIn(ExperimentalPagerApi::class)
 @Composable
 fun Intro(modifier: Modifier = Modifier, args: IntroArgs) {
-
     Column(
         Modifier
             .fillMaxSize()
@@ -64,7 +63,7 @@ fun Intro(modifier: Modifier = Modifier, args: IntroArgs) {
             contentPadding = PaddingValues(start = 32.dp, end = 32.dp, top = 32.dp),
             modifier = Modifier
                 .weight(1f)
-                .fillMaxWidth(),
+                .fillMaxWidth()
         ) { page ->
             Card(
                 elevation = 4.dp,
@@ -95,7 +94,7 @@ fun Intro(modifier: Modifier = Modifier, args: IntroArgs) {
             pagerState = pagerState,
             modifier = Modifier
                 .align(Alignment.CenterHorizontally)
-                .padding(24.dp),
+                .padding(24.dp)
         )
     }
 }
@@ -115,15 +114,15 @@ fun CardFindShared(onShareClicked: () -> Unit) {
             Spacer(modifier = Modifier.size(24.dp))
 
             Text(
-                text = stringResource(id = R.string.introExplanation),
+                text = stringResource(id = R.string.introExplanation)
             )
 
             Spacer(modifier = Modifier.size(24.dp))
 
             Button(onClick = { onShareClicked() }, modifier = Modifier.padding(end = 8.dp)) {
-            Icon(Icons.Filled.Share, stringResource(id = R.string.introShareButtonContentDescription))
-            Text(text = stringResource(id = R.string.introShareButton))
-        }
+                Icon(Icons.Filled.Share, stringResource(id = R.string.introShareButtonContentDescription))
+                Text(text = stringResource(id = R.string.introShareButton))
+            }
 
             Spacer(modifier = Modifier.size(24.dp))
 
@@ -198,7 +197,7 @@ fun CardChooseDestination() {
 fun CardFinish(args: IntroArgs) {
     Column(
         modifier = Modifier.fillMaxSize(),
-        verticalArrangement = Arrangement.Center,
+        verticalArrangement = Arrangement.Center
     ) {
         OptionButton(
             text = stringResource(id = R.string.introExitAndTry),

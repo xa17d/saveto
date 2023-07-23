@@ -10,7 +10,6 @@ class SaveDialog(
     private val intentManager: IntentManager
 ) {
     suspend fun show(type: Mime, filename: String): Uri? {
-
         val intent = Intent(Intent.ACTION_CREATE_DOCUMENT)
         intent.addCategory(Intent.CATEGORY_OPENABLE)
         intent.type = type.value

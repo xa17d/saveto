@@ -12,7 +12,7 @@ class StreamCopyTest {
         val streamCopy = StreamCopy(fakeContentResolver)
         streamCopy.copy(
             Uri.parse("test://source"),
-            Uri.parse("test://destination"),
+            Uri.parse("test://destination")
         )
 
         val progress = streamCopy.progress.value
@@ -31,7 +31,7 @@ class StreamCopyTest {
         val streamCopy = StreamCopy(fakeContentResolver)
         streamCopy.copy(
             Uri.parse("test://source"),
-            Uri.parse("test://destination"),
+            Uri.parse("test://destination")
         )
 
         val progress = streamCopy.progress.value
@@ -50,7 +50,7 @@ class StreamCopyTest {
         val streamCopy = StreamCopy(fakeContentResolver)
         streamCopy.copy(
             Uri.parse("test://source"),
-            Uri.parse("test://destination"),
+            Uri.parse("test://destination")
         )
 
         val progress = streamCopy.progress.value
@@ -69,7 +69,7 @@ class StreamCopyTest {
         val streamCopy = StreamCopy(fakeContentResolver)
         streamCopy.copy(
             Uri.parse("test://source"),
-            Uri.parse("test://destination"),
+            Uri.parse("test://destination")
         )
 
         val progress = streamCopy.progress.value

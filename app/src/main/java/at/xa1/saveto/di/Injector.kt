@@ -34,7 +34,6 @@ class Injector(private val applicationContext: Application) {
     private val resources = AndroidResources(applicationContext)
 
     fun inject(mainActivity: MainActivity) {
-
         class MainActivityInstances(intent: Intent) {
             val hostHolder = HostHolder()
             val intentManager = IntentManager(hostHolder)
@@ -53,7 +52,8 @@ class Injector(private val applicationContext: Application) {
 
                 val launchedCoordinatorDestination = CoordinatorDestination {
                     LaunchedCoordinator(
-                        settingsStore, hostHolder
+                        settingsStore,
+                        hostHolder
                     )
                 }
 
