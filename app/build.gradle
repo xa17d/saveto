@@ -2,7 +2,7 @@ plugins {
     id "com.android.application"
     id "kotlin-android"
     id "com.google.android.gms.oss-licenses-plugin"
-    id "org.jlleitschuh.gradle.ktlint" version "10.3.0"
+    id "org.jlleitschuh.gradle.ktlint" version "11.5.0"
 }
 
 def keystorePropertiesFile = rootProject.file(".signing/keystore.properties")
@@ -13,6 +13,8 @@ if (keystorePropertiesFile.exists()) {
 
 
 android {
+    namespace "at.xa1.saveto"
+
     compileSdk versions.compileSdk
 
     defaultConfig {
@@ -31,10 +33,10 @@ android {
     signingConfigs {
         release {
             if (keystorePropertiesFile.exists()) {
-                keyAlias keystoreProperties['keyAlias']
-                keyPassword keystoreProperties['keyPassword']
-                storeFile rootProject.file(keystoreProperties['storeFile'])
-                storePassword keystoreProperties['storePassword']
+                keyAlias keystoreProperties["keyAlias"]
+                keyPassword keystoreProperties["keyPassword"]
+                storeFile rootProject.file(keystoreProperties["storeFile"])
+                storePassword keystoreProperties["storePassword"]
             } else {
                 println("ℹ️ Release Keystore files are missing. Check out README.md")
             }
@@ -45,7 +47,7 @@ android {
     buildTypes {
         release {
             minifyEnabled true
-            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            proguardFiles getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro"
             signingConfig signingConfigs.release
         }
         debug {
@@ -58,18 +60,18 @@ android {
         targetCompatibility JavaVersion.VERSION_1_8
     }
     kotlinOptions {
-        jvmTarget = '1.8'
+        jvmTarget = "1.8"
     }
     buildFeatures {
         compose true
     }
     composeOptions {
-        kotlinCompilerExtensionVersion versions.androidx.composeCompiler
+        kotlinCompilerExtensionVersion versions.androidx.compose.compiler
         kotlinCompilerVersion versions.kotlin
     }
     packagingOptions {
         resources {
-            excludes += '/META-INF/{AL2.0,LGPL2.1}'
+            excludes += "/META-INF/{AL2.0,LGPL2.1}"
         }
     }
 }
