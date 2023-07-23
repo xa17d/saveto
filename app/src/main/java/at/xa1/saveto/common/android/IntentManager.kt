@@ -10,10 +10,11 @@ class IntentManager(
     private val hostHolder: HostHolder
 ) {
     suspend fun <R> startForResult(
-        intent: Intent,
+        intentProvider: (host: HostHolder.Host) -> Intent,
         resultTransform: ResultTransform<R>
     ): R = suspendCoroutine { continuation ->
         hostHolder.runOrEnqueue {
+            val intent = intentProvider(this)
             @Suppress("DEPRECATION")
             activity.startActivityForResult(intent, requestCode)
             map[requestCode] = { resultCode, data ->
@@ -25,6 +26,14 @@ class IntentManager(
             // TODO reset counter
         }
     }
+
+    suspend fun <R> startForResult(
+        intent: Intent,
+        resultTransform: ResultTransform<R>
+    ): R = startForResult(
+        intentProvider = { intent },
+        resultTransform = resultTransform
+    )
 
     private val map = HashMap<Int, ResultTransform<Any?>>()
 
