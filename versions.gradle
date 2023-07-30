@@ -37,7 +37,8 @@ def versions = [
 
 def lib = [
     "kotlin"  : [
-        "stdlib": "org.jetbrains.kotlin:kotlin-stdlib:${versions.kotlin}"
+        "stdlib": "org.jetbrains.kotlin:kotlin-stdlib:${versions.kotlin}",
+        "test": "org.jetbrains.kotlin:kotlin-test:${versions.kotlin}"
     ],
     "kotlinx" : [
         "coroutines": [

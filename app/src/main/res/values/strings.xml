@@ -31,5 +31,26 @@
     <string name="settingsVersion">Version %1$s</string>
     <string name="splashLogo">Save To logo</string>
     <string name="errorSomethingWentWrong">Something went wrong…</string>
+    <string name="settingsTemplates">Templates</string>
+    <string name="templatePlaceHolderDescriptionYYYY">Year as 4 digit number</string>
+    <string name="templatePlaceHolderDescriptionYY">Year as 2 digit number</string>
+    <string name="templatePlaceHolderDescriptionMMM">Month as 3 letter text</string>
+    <string name="templatePlaceHolderDescriptionMMMM">Month as full name text</string>
+    <string name="templatePlaceHolderDescriptionMM">Month as 2 digit number</string>
+    <string name="templatePlaceHolderDescriptionM">Month as number without leading 0</string>
+    <string name="templatePlaceHolderDescriptionDD">Day of month as 2 digit number</string>
+    <string name="templatePlaceHolderDescriptionD">Day of month as number without leading 0</string>
+    <string name="templatePlaceHolderDescriptionDAY_OF_WEEK">Day of week as 3 letter text</string>
+    <string name="templatePlaceHolderDescriptionDAY_OF_WEEK_FULL">Day of week as full name text</string>
+    <string name="templatePlaceHolderDescriptionHH">Hour of day in 24h-format as 2 digit number</string>
+    <string name="templatePlaceHolderDescriptionH">Hour of day in 24h-format as number without leading 0</string>
+    <string name="templatePlaceHolderDescriptionhh">Hour of day in 12h-format as 2 digit number</string>
+    <string name="templatePlaceHolderDescriptionh">Hour of day in 12h-format as number without leading 0</string>
+    <string name="templatePlaceHolderDescriptionAMPM">am or pm of day in 12h-format</string>
+    <string name="templatePlaceHolderDescriptionmm">Minute of hour as 2 digit number</string>
+    <string name="templatePlaceHolderDescriptionm">Minute of hour as number without leading 0</string>
+    <string name="templatePlaceHolderDescriptionss">Second of minute as 2 digit number</string>
+    <string name="templatePlaceHolderDescriptions">Second of minute as number without leading 0</string>
+    <string name="templatePlaceHolderDescriptionORIGINAL_FILENAME">Original filename</string>
 
 </resources>

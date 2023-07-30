@@ -90,6 +90,7 @@ dependencies {
     implementation lib.google.play.ossLicenses
 
     testImplementation lib.junit
+    testImplementation lib.kotlin.test
     testImplementation lib.kotlinx.coroutines.test
 
     androidTestImplementation lib.androidx.test.ext
