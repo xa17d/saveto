@@ -171,4 +171,15 @@ class TemplatePlaceholderTest {
             TemplatePlaceholder.ORIGINAL_FILENAME.value(context)
         )
     }
+
+    @Test
+    fun `fill placeholders`() {
+        assertEquals(
+            "Hello, 2023 world 3! {NON_EXISTINNG_PLACEHOLDER}",
+            TemplatePlaceholder.fill(
+                "Hello, {YYYY} world {s}! {NON_EXISTINNG_PLACEHOLDER}",
+                context
+            )
+        )
+    }
 }

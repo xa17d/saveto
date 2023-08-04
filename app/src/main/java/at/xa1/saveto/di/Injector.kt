@@ -20,6 +20,7 @@ import at.xa1.saveto.feature.save.AndroidContentResolver
 import at.xa1.saveto.feature.save.SaveCoordinator
 import at.xa1.saveto.feature.save.SaveDialog
 import at.xa1.saveto.feature.save.StreamCopy
+import at.xa1.saveto.feature.settings.SettingsCoordinator
 import at.xa1.saveto.model.ProposeFilenameUseCase
 import at.xa1.saveto.model.SharedPreferencesSettingsStore
 import kotlinx.coroutines.CoroutineScope
@@ -50,10 +51,18 @@ class Injector(private val applicationContext: Application) {
                     )
                 }
 
+                val settingsCoordinatorDestination = CoordinatorDestination {
+                    SettingsCoordinator(
+                        settingsStore,
+                        resources,
+                        hostHolder
+                    )
+                }
+
                 val launchedCoordinatorDestination = CoordinatorDestination {
                     LaunchedCoordinator(
                         settingsStore,
-                        hostHolder
+                        settingsCoordinatorDestination
                     )
                 }
 

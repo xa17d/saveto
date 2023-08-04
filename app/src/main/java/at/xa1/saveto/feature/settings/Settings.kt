@@ -22,6 +22,9 @@ import at.xa1.saveto.android.compose.Scrollable
 import at.xa1.saveto.common.navigation.Destination
 import at.xa1.saveto.model.PreviewMode
 import at.xa1.saveto.model.SettingsStore
+import at.xa1.saveto.model.Template
+import at.xa1.saveto.model.TemplateId
+import at.xa1.saveto.model.Templates
 import at.xa1.saveto.ui.OptionButton
 
 @Composable
@@ -47,6 +50,18 @@ fun Settings(modifier: Modifier = Modifier, args: SettingsArgs) {
                 }
 
                 Spacer(modifier = Modifier.size(16.dp))
+
+                SettingsCard(title = stringResource(id = R.string.settingsTemplates)) {
+                    TemplateList(
+                        templates = args.settingsStore.templates,
+                        onAddTemplate = args.onAddTemplate,
+                        onRemoveTemplate = args.onRemoveTemplate,
+                        onEditTemplate = args.onEditTemplate
+                    )
+                }
+
+                Spacer(modifier = Modifier.size(16.dp))
+
                 OptionButton(
                     text = stringResource(id = R.string.settingsRestartIntro),
                     onClick = { args.onIntro() }
@@ -80,6 +95,9 @@ val SettingsDestination = Destination<SettingsArgs> {
 
 data class SettingsArgs(
     val settingsStore: SettingsStore,
+    val onAddTemplate: () -> Unit,
+    val onRemoveTemplate: (id: TemplateId) -> Unit,
+    val onEditTemplate: (template: Template) -> Unit,
     val onOssLicenses: () -> Unit,
     val onIntro: () -> Unit,
     val onClose: () -> Unit,
@@ -95,7 +113,15 @@ fun SettingsPreview() {
                 override var previewMode: PreviewMode = PreviewMode.NONE
                 override var introSeen: Boolean = false
                 override val version: String = "ComposablePreview"
+                override val templates: Templates = Templates(
+                    listOf(
+                        Template(TemplateId.new(), "Default", "{ORIGINAL_FILENAME}", true)
+                    )
+                )
             },
+            onAddTemplate = {},
+            onRemoveTemplate = {},
+            onEditTemplate = {},
             onOssLicenses = {},
             onIntro = {},
             onClose = {},

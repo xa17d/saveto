@@ -151,6 +151,9 @@ class PlayStoreScreenshots {
                     modifier = Modifier.fillMaxSize(),
                     args = SettingsArgs(
                         settingsStore = FakeSettingsStore(),
+                        onAddTemplate = {},
+                        onRemoveTemplate = {},
+                        onEditTemplate = {},
                         onOssLicenses = {},
                         onIntro = {},
                         onClose = {},

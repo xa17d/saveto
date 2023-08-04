@@ -151,6 +151,7 @@ storePassword=[SAME PASSWORD FROM PASSWORD MANAGER]
 - [x] Review package and file structure
 - [x] Show version in settings
 - [x] Create screenshots using [Screenshot.capture()](https://developer.android.com/reference/androidx/test/runner/screenshot/Screenshot#capture()) instead of doing it manually.
+- [ ] Filename Templates
 - [ ] CI setup
 - [ ] Bug: Shouldn't be possible to open from recents.
 - [ ] Abort (back button)

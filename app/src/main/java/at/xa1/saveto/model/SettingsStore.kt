@@ -7,6 +7,7 @@ interface SettingsStore {
     var previewMode: PreviewMode
     var introSeen: Boolean
     val version: String
+    val templates: Templates
 }
 
 class SharedPreferencesSettingsStore(
@@ -34,6 +35,8 @@ class SharedPreferencesSettingsStore(
 
     override val version: String
         get() = BuildConfig.VERSION_NAME
+
+    override val templates: Templates = Templates(emptyList()) // TODO add default persist
 }
 
 enum class PreviewMode {

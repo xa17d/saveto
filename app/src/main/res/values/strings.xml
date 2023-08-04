@@ -52,5 +52,14 @@
     <string name="templatePlaceHolderDescriptionss">Second of minute as 2 digit number</string>
     <string name="templatePlaceHolderDescriptions">Second of minute as number without leading 0</string>
     <string name="templatePlaceHolderDescriptionORIGINAL_FILENAME">Original filename</string>
+    <string name="settingsSave">Save</string>
+    <string name="exampleText">Example:</string>
+    <string name="settingsTemplateExampleOriginalFilename">Example original filename.txt</string>
+    <string name="settingsTemplateName">Template Name</string>
+    <string name="settingsTemplateSuggestedFilename">Suggested Filename</string>
+    <string name="settingsTemplateDefaultNewName">New Template</string>
+    <string name="settingsTemplateAddExtensionIfMissing">Add extension if missing</string>
+    <string name="settingsTemplateDelete">Delete Template</string>
+    <string name="settingsTemplateAdd">Create a new Template</string>
 
 </resources>

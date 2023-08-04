@@ -7,10 +7,10 @@ import java.time.format.DateTimeFormatter
 import java.util.UUID
 
 data class Template(
-    val id: TemplateId,
-    val name: String,
-    val suggestedFilename: String,
-    val addExtensionIfMissing: Boolean
+    val id: TemplateId = TemplateId.new(),
+    val name: String = "",
+    val suggestedFilename: String = TemplatePlaceholder.ORIGINAL_FILENAME.replacementPattern,
+    val addExtensionIfMissing: Boolean = true
 )
 
 @JvmInline
@@ -87,8 +87,22 @@ enum class TemplatePlaceholder(
     }),
     ORIGINAL_FILENAME("ORIGINAL_FILENAME", R.string.templatePlaceHolderDescriptionORIGINAL_FILENAME, { context ->
         context.originalFilename
-    })
+    });
+
+    companion object {
+        fun fill(pattern: String, context: TemplatePlaceholderContext): String =
+            pattern.replace(Regex("\\{([A-Za-z0-9_-]+)\\}")) { match ->
+                val id = match.groupValues[1]
+                byId(id)?.value?.invoke(context) ?: match.value
+            }
+
+        private fun byId(id: String): TemplatePlaceholder? =
+            entries.find { it.id == id }
+    }
 }
+
+val TemplatePlaceholder.replacementPattern: String
+    get() = "{$id}"
 
 data class TemplatePlaceholderContext(
     val time: ZonedDateTime,
