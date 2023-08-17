@@ -2,15 +2,18 @@ package at.xa1.saveto.model
 
 import android.content.SharedPreferences
 import at.xa1.saveto.BuildConfig
+import at.xa1.saveto.model.template.Templates
 
 interface SettingsStore {
     var previewMode: PreviewMode
     var introSeen: Boolean
     val version: String
+    val templates: Templates
 }
 
 class SharedPreferencesSettingsStore(
-    private val sharedPreferences: SharedPreferences
+    private val sharedPreferences: SharedPreferences,
+    override val templates: Templates
 ) : SettingsStore {
     override var previewMode: PreviewMode
         get() {

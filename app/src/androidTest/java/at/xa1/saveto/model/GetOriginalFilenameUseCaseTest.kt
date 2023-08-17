@@ -6,7 +6,7 @@ import at.xa1.saveto.feature.save.FakeContentResolver
 import org.junit.Assert.assertEquals
 import org.junit.Test
 
-class ProposeFilenameUseCaseTest {
+class GetOriginalFilenameUseCaseTest {
     private val source = Source(
         type = Mime.from("text/plain"),
         data = SourceData.Unknown,
@@ -16,11 +16,11 @@ class ProposeFilenameUseCaseTest {
 
     private val contentResolver = FakeContentResolver()
 
-    private val instance = ProposeFilenameUseCase(contentResolver, "default")
+    private val instance = GetOriginalFilenameUseCase(contentResolver, "default")
 
     @Test
     fun unknownSource_subjectIsUsedByDefault() {
-        val result = instance.getFilenameFor(
+        val result = instance.getOriginalFilenameFrom(
             source.copy(
                 data = SourceData.Unknown,
                 subject = "TEST SUBJECT"
@@ -28,26 +28,26 @@ class ProposeFilenameUseCaseTest {
         )
 
         assertEquals(
-            "TEST SUBJECT.txt",
+            "TEST SUBJECT",
             result
         )
     }
 
     @Test
     fun unknownSource_defaultIsUsedWhenSubjectEmpty() {
-        val result = instance.getFilenameFor(
+        val result = instance.getOriginalFilenameFrom(
             source.copy(data = SourceData.Unknown)
         )
 
         assertEquals(
-            "default.txt",
+            "default",
             result
         )
     }
 
     @Test
     fun textSource_subjectIsUsedByDefault() {
-        val result = instance.getFilenameFor(
+        val result = instance.getOriginalFilenameFrom(
             source.copy(
                 data = SourceData.Text("Example Text"),
                 subject = "TEST SUBJECT"
@@ -55,38 +55,26 @@ class ProposeFilenameUseCaseTest {
         )
 
         assertEquals(
-            "TEST SUBJECT.txt",
+            "TEST SUBJECT",
             result
         )
     }
 
     @Test
     fun textSource_textIsUsedWhenSubjectEmpty() {
-        val result = instance.getFilenameFor(
+        val result = instance.getOriginalFilenameFrom(
             source.copy(data = SourceData.Text("Example Text"))
         )
 
         assertEquals(
-            "Example Text.txt",
-            result
-        )
-    }
-
-    @Test
-    fun textSource_shortenedTextIsUsedWhenTextLongAndSubjectEmpty() {
-        val result = instance.getFilenameFor(
-            source.copy(data = SourceData.Text("This is an long example test-text"))
-        )
-
-        assertEquals(
-            "This is an long example test-t.txt",
+            "Example Text",
             result
         )
     }
 
     @Test
     fun uriSource_lastSegmentIsUsedWhenContentCannotBeResolved() {
-        val result = instance.getFilenameFor(
+        val result = instance.getOriginalFilenameFrom(
             source.copy(
                 type = Mime.from("image/*"),
                 data = SourceData.Uri(Uri.parse("content://media/external/images/media/14"))
@@ -94,14 +82,14 @@ class ProposeFilenameUseCaseTest {
         )
 
         assertEquals(
-            "14.jpg",
+            "14",
             result
         )
     }
 
     @Test
     fun uriSource_lastSegmentIsUsedWhenContentCannotBeResolved_2() {
-        val result = instance.getFilenameFor(
+        val result = instance.getOriginalFilenameFrom(
             source.copy(
                 type = Mime.from("image/jpeg"),
                 data = SourceData.Uri(
@@ -111,14 +99,14 @@ class ProposeFilenameUseCaseTest {
         )
 
         assertEquals(
-            "image-14.jpg",
+            "image:14",
             result
         )
     }
 
     @Test
     fun uriSource_defaultIsUsedWhenContentCannotBeResolvedAndNoLastSegmentAndNoSubject() {
-        val result = instance.getFilenameFor(
+        val result = instance.getOriginalFilenameFrom(
             source.copy(
                 data = SourceData.Uri(
                     Uri.parse("content://provider.without.path")
@@ -127,14 +115,14 @@ class ProposeFilenameUseCaseTest {
         )
 
         assertEquals(
-            "default.txt",
+            "default",
             result
         )
     }
 
     @Test
     fun uriSource_lastSegmentOfUriIsPreferredOverSubject() {
-        val result = instance.getFilenameFor(
+        val result = instance.getOriginalFilenameFrom(
             source.copy(
                 subject = "some-subject",
                 data = SourceData.Uri(
@@ -152,7 +140,7 @@ class ProposeFilenameUseCaseTest {
     @Test
     fun uriSource_resolvedContentNameIsPreferredOverSubject() {
         contentResolver.filenameForUri = "contentProviderFile"
-        val result = instance.getFilenameFor(
+        val result = instance.getOriginalFilenameFrom(
             source.copy(
                 subject = "some-subject",
                 data = SourceData.Uri(
@@ -162,14 +150,14 @@ class ProposeFilenameUseCaseTest {
         )
 
         assertEquals(
-            "contentProviderFile.txt",
+            "contentProviderFile",
             result
         )
     }
 
     @Test
     fun uriSource_subjectIsUsedWhenContentCannotBeResolvedAndNoLastSegment() {
-        val result = instance.getFilenameFor(
+        val result = instance.getOriginalFilenameFrom(
             source.copy(
                 subject = "some-subject",
                 data = SourceData.Uri(
@@ -179,14 +167,14 @@ class ProposeFilenameUseCaseTest {
         )
 
         assertEquals(
-            "some-subject.txt",
+            "some-subject",
             result
         )
     }
 
     @Test
     fun uriSource_googleRecorder() {
-        val result = instance.getFilenameFor(
+        val result = instance.getOriginalFilenameFrom(
             source.copy(
                 type = Mime.from("audio/mp4a-latm"),
                 data = SourceData.Uri(

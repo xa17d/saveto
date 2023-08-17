@@ -3,6 +3,7 @@ plugins {
     id "kotlin-android"
     id "com.google.android.gms.oss-licenses-plugin"
     id "org.jlleitschuh.gradle.ktlint" version "11.5.0"
+    id "org.jetbrains.kotlin.plugin.serialization"
 }
 
 def keystorePropertiesFile = rootProject.file(".signing/keystore.properties")
@@ -85,16 +86,19 @@ dependencies {
     implementation lib.androidx.compose.uiPreview
     implementation lib.androidx.activity.compose
     implementation lib.kotlinx.coroutines.android
+    implementation lib.kotlinx.serialization.json
     implementation lib.google.accompanist.pager
     implementation lib.google.accompanist.pagerIndicators
     implementation lib.google.play.ossLicenses
 
     testImplementation lib.junit
+    testImplementation lib.kotlin.test
     testImplementation lib.kotlinx.coroutines.test
 
     androidTestImplementation lib.androidx.test.ext
     androidTestImplementation lib.androidx.test.espresso
     androidTestImplementation lib.androidx.compose.uiTest
+    androidTestImplementation lib.kotlin.test
 
     debugImplementation lib.androidx.compose.uiTooling
     debugImplementation lib.androidx.compose.uiTestManifest

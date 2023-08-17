@@ -25,7 +25,8 @@ def versions = [
     ],
 
     "kotlinx"    : [
-        "coroutines": "1.7.2"
+        "coroutines": "1.7.2",
+        "serialization": "1.5.1"
     ],
 
     "google"     : [
@@ -37,13 +38,17 @@ def versions = [
 
 def lib = [
     "kotlin"  : [
-        "stdlib": "org.jetbrains.kotlin:kotlin-stdlib:${versions.kotlin}"
+        "stdlib": "org.jetbrains.kotlin:kotlin-stdlib:${versions.kotlin}",
+        "test": "org.jetbrains.kotlin:kotlin-test:${versions.kotlin}"
     ],
     "kotlinx" : [
         "coroutines": [
             "core"   : "org.jetbrains.kotlinx:kotlinx-coroutines-core:${versions.kotlinx.coroutines}",
             "android": "org.jetbrains.kotlinx:kotlinx-coroutines-android:${versions.kotlinx.coroutines}",
             "test"   : "org.jetbrains.kotlinx:kotlinx-coroutines-test:${versions.kotlinx.coroutines}",
+        ],
+        "serialization" : [
+            "json": "org.jetbrains.kotlinx:kotlinx-serialization-json:${versions.kotlinx.serialization}"
         ]
     ],
     "junit"   : "junit:junit:${versions.junit}",

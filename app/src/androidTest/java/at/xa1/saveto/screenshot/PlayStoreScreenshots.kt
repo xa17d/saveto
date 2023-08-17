@@ -37,6 +37,7 @@ import at.xa1.saveto.feature.save.progressString
 import at.xa1.saveto.feature.settings.Settings
 import at.xa1.saveto.feature.settings.SettingsArgs
 import at.xa1.saveto.feature.splash.Splash
+import at.xa1.saveto.model.FakeSettingsStore
 import at.xa1.saveto.model.Mime
 import at.xa1.saveto.ui.theme.SaveToTheme
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -151,6 +152,9 @@ class PlayStoreScreenshots {
                     modifier = Modifier.fillMaxSize(),
                     args = SettingsArgs(
                         settingsStore = FakeSettingsStore(),
+                        onAddTemplate = {},
+                        onRemoveTemplate = {},
+                        onEditTemplate = {},
                         onOssLicenses = {},
                         onIntro = {},
                         onClose = {},

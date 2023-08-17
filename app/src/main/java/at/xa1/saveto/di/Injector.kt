@@ -20,18 +20,27 @@ import at.xa1.saveto.feature.save.AndroidContentResolver
 import at.xa1.saveto.feature.save.SaveCoordinator
 import at.xa1.saveto.feature.save.SaveDialog
 import at.xa1.saveto.feature.save.StreamCopy
-import at.xa1.saveto.model.ProposeFilenameUseCase
+import at.xa1.saveto.feature.settings.SettingsCoordinator
+import at.xa1.saveto.model.GetOriginalFilenameUseCase
 import at.xa1.saveto.model.SharedPreferencesSettingsStore
+import at.xa1.saveto.model.template.SharedPreferencesTemplates
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 
 class Injector(private val applicationContext: Application) {
 
-    private val settingsStore = SharedPreferencesSettingsStore(
-        applicationContext.getSharedPreferences("settings", Context.MODE_PRIVATE)
-    )
-
     private val resources = AndroidResources(applicationContext)
+
+    private val settingsSharedPreferences = applicationContext.getSharedPreferences("settings", Context.MODE_PRIVATE)
+
+    private val settingsStore = SharedPreferencesSettingsStore(
+        sharedPreferences = settingsSharedPreferences,
+        templates = SharedPreferencesTemplates(
+            sharedPreferences = settingsSharedPreferences,
+            resources = resources,
+            saveScope = CoroutineScope(Dispatchers.IO)
+        ).templates
+    )
 
     fun inject(mainActivity: MainActivity) {
         class MainActivityInstances(intent: Intent) {
@@ -45,15 +54,23 @@ class Injector(private val applicationContext: Application) {
                         SaveDialog(intentManager),
                         StreamCopy(androidContentResolver),
                         settingsStore,
-                        ProposeFilenameUseCase(androidContentResolver, resources.string(R.string.defaultFilename)),
+                        GetOriginalFilenameUseCase(androidContentResolver, resources.string(R.string.defaultFilename)),
                         resources
+                    )
+                }
+
+                val settingsCoordinatorDestination = CoordinatorDestination {
+                    SettingsCoordinator(
+                        settingsStore,
+                        resources,
+                        hostHolder
                     )
                 }
 
                 val launchedCoordinatorDestination = CoordinatorDestination {
                     LaunchedCoordinator(
                         settingsStore,
-                        hostHolder
+                        settingsCoordinatorDestination
                     )
                 }
 
