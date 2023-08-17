@@ -33,6 +33,7 @@ import at.xa1.saveto.common.navigation.Destination
 import at.xa1.saveto.model.template.Template
 import at.xa1.saveto.model.template.TemplatePlaceholder
 import at.xa1.saveto.model.template.TemplatePlaceholderContext
+import at.xa1.saveto.model.template.fill
 import at.xa1.saveto.model.template.replacementPattern
 import at.xa1.saveto.ui.OptionButton
 
@@ -45,14 +46,14 @@ fun TemplateSetting(modifier: Modifier = Modifier, args: TemplateSettingsArgs) {
     val suggestedFilename = remember { mutableStateOf(args.template.suggestedFilename) }
     var addExtensionIfMissing by remember { mutableStateOf(args.template.addExtensionIfMissing) }
 
+    val newTemplate = args.template.copy(
+        name = templateName,
+        suggestedFilename = suggestedFilename.value,
+        addExtensionIfMissing = addExtensionIfMissing
+    )
+
     val onSave: () -> Unit = {
-        args.onSave(
-            args.template.copy(
-                name = templateName,
-                suggestedFilename = suggestedFilename.value,
-                addExtensionIfMissing = addExtensionIfMissing
-            )
-        )
+        args.onSave(newTemplate)
     }
 
     Column(modifier = modifier) {
@@ -102,10 +103,6 @@ fun TemplateSetting(modifier: Modifier = Modifier, args: TemplateSettingsArgs) {
                 )
 
                 val exampleContext = ExampleTemplatePlaceholderContext()
-                ExampleText(
-                    modifier = Modifier.padding(8.dp),
-                    text = TemplatePlaceholder.fill(suggestedFilename.value, exampleContext)
-                )
 
                 if (!placeholderListCollapsed) {
                     Column {
@@ -132,6 +129,11 @@ fun TemplateSetting(modifier: Modifier = Modifier, args: TemplateSettingsArgs) {
                         text = stringResource(id = R.string.settingsTemplateAddExtensionIfMissing)
                     )
                 }
+
+                ExampleText(
+                    modifier = Modifier.padding(8.dp),
+                    text = newTemplate.fill(exampleContext)
+                )
 
                 OptionButton(
                     modifier = Modifier.padding(horizontal = 8.dp),

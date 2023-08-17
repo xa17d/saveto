@@ -19,12 +19,12 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import at.xa1.saveto.R
 import at.xa1.saveto.android.compose.Scrollable
+import at.xa1.saveto.common.TemplateList
 import at.xa1.saveto.common.navigation.Destination
-import at.xa1.saveto.model.PreviewMode
+import at.xa1.saveto.model.FakeSettingsStore
 import at.xa1.saveto.model.SettingsStore
 import at.xa1.saveto.model.template.Template
 import at.xa1.saveto.model.template.TemplateId
-import at.xa1.saveto.model.template.Templates
 import at.xa1.saveto.ui.OptionButton
 
 @Composable
@@ -51,12 +51,16 @@ fun Settings(modifier: Modifier = Modifier, args: SettingsArgs) {
 
                 Spacer(modifier = Modifier.size(16.dp))
 
+                val exampleContext = ExampleTemplatePlaceholderContext()
+
                 SettingsCard(title = stringResource(id = R.string.settingsTemplates)) {
                     TemplateList(
                         templates = args.settingsStore.templates,
+                        context = exampleContext,
+                        allowEdit = true,
                         onAddTemplate = args.onAddTemplate,
                         onRemoveTemplate = args.onRemoveTemplate,
-                        onEditTemplate = args.onEditTemplate
+                        onSelectTemplate = args.onEditTemplate
                     )
                 }
 
@@ -109,16 +113,7 @@ data class SettingsArgs(
 fun SettingsPreview() {
     Settings(
         args = SettingsArgs(
-            object : SettingsStore {
-                override var previewMode: PreviewMode = PreviewMode.NONE
-                override var introSeen: Boolean = false
-                override val version: String = "ComposablePreview"
-                override val templates: Templates = Templates(
-                    listOf(
-                        Template(TemplateId.new(), "Default", "{ORIGINAL_FILENAME}", true)
-                    )
-                )
-            },
+            settingsStore = FakeSettingsStore(),
             onAddTemplate = {},
             onRemoveTemplate = {},
             onEditTemplate = {},

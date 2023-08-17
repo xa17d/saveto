@@ -2,6 +2,8 @@ package at.xa1.saveto.model.template
 
 import androidx.annotation.StringRes
 import at.xa1.saveto.R
+import at.xa1.saveto.model.Mime
+import at.xa1.saveto.model.extensionByMime
 import kotlinx.serialization.Serializable
 import java.time.ZonedDateTime
 import java.time.format.DateTimeFormatter
@@ -14,6 +16,23 @@ data class Template(
     val suggestedFilename: String = TemplatePlaceholder.ORIGINAL_FILENAME.replacementPattern,
     val addExtensionIfMissing: Boolean = true
 )
+
+fun Template.fill(context: TemplatePlaceholderContext): String {
+    val proposedFilename = TemplatePlaceholder.fill(suggestedFilename, context)
+    return if (addExtensionIfMissing) {
+        addExtensionIfMissing(proposedFilename, extensionByMime(context.type))
+    } else {
+        proposedFilename
+    }
+}
+
+private fun addExtensionIfMissing(baseName: String, extension: String): String {
+    return if (baseName.endsWith(extension, ignoreCase = true)) {
+        baseName
+    } else {
+        baseName + extension
+    }
+}
 
 @Serializable
 @JvmInline
@@ -109,6 +128,7 @@ val TemplatePlaceholder.replacementPattern: String
 
 data class TemplatePlaceholderContext(
     val time: ZonedDateTime,
+    val type: Mime,
     val originalFilename: String
 )
 

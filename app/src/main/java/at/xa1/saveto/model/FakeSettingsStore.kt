@@ -1,7 +1,5 @@
-package at.xa1.saveto.screenshot
+package at.xa1.saveto.model
 
-import at.xa1.saveto.model.PreviewMode
-import at.xa1.saveto.model.SettingsStore
 import at.xa1.saveto.model.template.Template
 import at.xa1.saveto.model.template.TemplateId
 import at.xa1.saveto.model.template.Templates
@@ -16,6 +14,12 @@ class FakeSettingsStore : SettingsStore {
                 id = TemplateId.new(),
                 name = "Default",
                 suggestedFilename = "{ORIGINAL_FILENAME}",
+                addExtensionIfMissing = true
+            ),
+            Template(
+                id = TemplateId.new(),
+                name = "Custom",
+                suggestedFilename = "{YYYY}-{MM}-{DD}_{ORIGINAL_FILENAME}",
                 addExtensionIfMissing = true
             )
         )

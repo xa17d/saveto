@@ -1,5 +1,6 @@
 package at.xa1.saveto.model.template
 
+import at.xa1.saveto.model.Mime
 import org.junit.Test
 import java.time.ZoneId
 import java.time.ZonedDateTime
@@ -9,6 +10,7 @@ class TemplatePlaceholderTest {
 
     private val context = TemplatePlaceholderContext(
         time = ZonedDateTime.of(2023, 7, 9, 17, 4, 3, 789, ZoneId.of("Europe/Vienna")),
+        type = Mime.from("text/plain"),
         originalFilename = "Test Original Filename"
     )
 
