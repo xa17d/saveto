@@ -2,10 +2,12 @@ package at.xa1.saveto.model
 
 import androidx.annotation.StringRes
 import at.xa1.saveto.R
+import kotlinx.serialization.Serializable
 import java.time.ZonedDateTime
 import java.time.format.DateTimeFormatter
 import java.util.UUID
 
+@Serializable
 data class Template(
     val id: TemplateId = TemplateId.new(),
     val name: String = "",
@@ -13,6 +15,7 @@ data class Template(
     val addExtensionIfMissing: Boolean = true
 )
 
+@Serializable
 @JvmInline
 value class TemplateId(private val value: String) {
 
