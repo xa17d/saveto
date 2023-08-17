@@ -61,5 +61,6 @@
     <string name="settingsTemplateAddExtensionIfMissing">Add extension if missing</string>
     <string name="settingsTemplateDelete">Delete Template</string>
     <string name="settingsTemplateAdd">Create a new Template</string>
+    <string name="settingsTemplateDefaultName">Default</string>
 
 </resources>

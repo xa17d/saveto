@@ -4,7 +4,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.ReadOnlyComposable
 import androidx.compose.ui.res.stringResource
 import at.xa1.saveto.R
-import at.xa1.saveto.model.TemplatePlaceholderContext
+import at.xa1.saveto.model.template.TemplatePlaceholderContext
 import java.time.ZonedDateTime
 
 @Composable

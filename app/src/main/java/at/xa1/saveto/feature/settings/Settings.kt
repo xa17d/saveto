@@ -22,9 +22,9 @@ import at.xa1.saveto.android.compose.Scrollable
 import at.xa1.saveto.common.navigation.Destination
 import at.xa1.saveto.model.PreviewMode
 import at.xa1.saveto.model.SettingsStore
-import at.xa1.saveto.model.Template
-import at.xa1.saveto.model.TemplateId
-import at.xa1.saveto.model.Templates
+import at.xa1.saveto.model.template.Template
+import at.xa1.saveto.model.template.TemplateId
+import at.xa1.saveto.model.template.Templates
 import at.xa1.saveto.ui.OptionButton
 
 @Composable

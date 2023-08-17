@@ -23,16 +23,24 @@ import at.xa1.saveto.feature.save.StreamCopy
 import at.xa1.saveto.feature.settings.SettingsCoordinator
 import at.xa1.saveto.model.ProposeFilenameUseCase
 import at.xa1.saveto.model.SharedPreferencesSettingsStore
+import at.xa1.saveto.model.template.SharedPreferencesTemplates
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 
 class Injector(private val applicationContext: Application) {
 
-    private val settingsStore = SharedPreferencesSettingsStore(
-        applicationContext.getSharedPreferences("settings", Context.MODE_PRIVATE)
-    )
-
     private val resources = AndroidResources(applicationContext)
+
+    private val settingsSharedPreferences = applicationContext.getSharedPreferences("settings", Context.MODE_PRIVATE)
+
+    private val settingsStore = SharedPreferencesSettingsStore(
+        sharedPreferences = settingsSharedPreferences,
+        templates = SharedPreferencesTemplates(
+            sharedPreferences = settingsSharedPreferences,
+            resources = resources,
+            saveScope = CoroutineScope(Dispatchers.IO)
+        ).templates
+    )
 
     fun inject(mainActivity: MainActivity) {
         class MainActivityInstances(intent: Intent) {

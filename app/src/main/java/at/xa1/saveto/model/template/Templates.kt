@@ -1,4 +1,4 @@
-package at.xa1.saveto.model
+package at.xa1.saveto.model.template
 
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow

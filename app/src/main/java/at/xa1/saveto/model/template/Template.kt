@@ -1,4 +1,4 @@
-package at.xa1.saveto.model
+package at.xa1.saveto.model.template
 
 import androidx.annotation.StringRes
 import at.xa1.saveto.R

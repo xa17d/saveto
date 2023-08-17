@@ -61,4 +61,5 @@
     <string name="settingsTemplateAddExtensionIfMissing">Dateierweiterung hinzufügen falls sie fehlt</string>
     <string name="settingsTemplateDelete">Vorlage löschen</string>
     <string name="settingsTemplateAdd">Neue Vorlage erstellen</string>
+    <string name="settingsTemplateDefaultName">Standard</string>
 </resources>

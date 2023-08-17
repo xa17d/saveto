@@ -2,6 +2,7 @@ package at.xa1.saveto.model
 
 import android.content.SharedPreferences
 import at.xa1.saveto.BuildConfig
+import at.xa1.saveto.model.template.Templates
 
 interface SettingsStore {
     var previewMode: PreviewMode
@@ -11,7 +12,8 @@ interface SettingsStore {
 }
 
 class SharedPreferencesSettingsStore(
-    private val sharedPreferences: SharedPreferences
+    private val sharedPreferences: SharedPreferences,
+    override val templates: Templates
 ) : SettingsStore {
     override var previewMode: PreviewMode
         get() {
@@ -35,8 +37,6 @@ class SharedPreferencesSettingsStore(
 
     override val version: String
         get() = BuildConfig.VERSION_NAME
-
-    override val templates: Templates = Templates(emptyList()) // TODO add default persist
 }
 
 enum class PreviewMode {

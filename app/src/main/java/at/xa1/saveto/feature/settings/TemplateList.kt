@@ -22,10 +22,10 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import at.xa1.saveto.R
-import at.xa1.saveto.model.Template
-import at.xa1.saveto.model.TemplateId
-import at.xa1.saveto.model.TemplatePlaceholder
-import at.xa1.saveto.model.Templates
+import at.xa1.saveto.model.template.Template
+import at.xa1.saveto.model.template.TemplateId
+import at.xa1.saveto.model.template.TemplatePlaceholder
+import at.xa1.saveto.model.template.Templates
 
 @Composable
 fun TemplateList(

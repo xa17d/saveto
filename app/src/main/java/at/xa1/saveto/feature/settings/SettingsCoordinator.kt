@@ -7,8 +7,8 @@ import at.xa1.saveto.common.android.Resources
 import at.xa1.saveto.common.navigation.Coordinator
 import at.xa1.saveto.common.navigation.HostHolder
 import at.xa1.saveto.model.SettingsStore
-import at.xa1.saveto.model.Template
-import at.xa1.saveto.model.TemplateId
+import at.xa1.saveto.model.template.Template
+import at.xa1.saveto.model.template.TemplateId
 import com.google.android.gms.oss.licenses.OssLicensesMenuActivity
 
 class SettingsCoordinator(

@@ -1,4 +1,4 @@
-package at.xa1.saveto.model
+package at.xa1.saveto.model.template
 
 import org.junit.Test
 import java.time.ZoneId

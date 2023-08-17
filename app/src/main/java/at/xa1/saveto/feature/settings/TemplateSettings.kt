@@ -30,10 +30,10 @@ import androidx.compose.ui.unit.dp
 import at.xa1.saveto.R
 import at.xa1.saveto.android.compose.Scrollable
 import at.xa1.saveto.common.navigation.Destination
-import at.xa1.saveto.model.Template
-import at.xa1.saveto.model.TemplatePlaceholder
-import at.xa1.saveto.model.TemplatePlaceholderContext
-import at.xa1.saveto.model.replacementPattern
+import at.xa1.saveto.model.template.Template
+import at.xa1.saveto.model.template.TemplatePlaceholder
+import at.xa1.saveto.model.template.TemplatePlaceholderContext
+import at.xa1.saveto.model.template.replacementPattern
 import at.xa1.saveto.ui.OptionButton
 
 @Composable
