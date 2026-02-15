@@ -47,7 +47,7 @@ value class TemplateId(private val value: String) {
 
 enum class TemplatePlaceholder(
     val id: String,
-    @StringRes val description: Int,
+    @param:StringRes val description: Int,
     val value: (TemplatePlaceholderContext) -> String
 ) {
     YYYY("YYYY", R.string.templatePlaceHolderDescriptionYYYY, { context ->

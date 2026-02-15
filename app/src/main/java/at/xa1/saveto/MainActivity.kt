@@ -39,8 +39,9 @@ class MainActivity : ComponentActivity() {
         }
     }
 
-    @Suppress("DEPRECATION")
+    @Deprecated("Use Activity Result API", ReplaceWith("registerForActivityResult()"))
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        @Suppress("DEPRECATION")
         super.onActivityResult(requestCode, resultCode, data)
         intentManager.onActivityResult(requestCode, resultCode, data)
     }

@@ -3,6 +3,7 @@ package at.xa1.saveto.model
 import android.content.Intent
 import android.net.Uri
 import android.os.Parcelable
+import androidx.core.content.IntentCompat
 
 data class Source(
     val type: Mime,
@@ -42,7 +43,7 @@ fun intentToSource(intent: Intent): Source {
 }
 
 fun sourceDataFromIntent(intent: Intent): SourceData {
-    val streamUri = intent.getParcelableExtra<Parcelable>(Intent.EXTRA_STREAM) as? Uri
+    val streamUri = IntentCompat.getParcelableExtra(intent, Intent.EXTRA_STREAM, Parcelable::class.java) as? Uri
     if (streamUri != null) {
         return SourceData.Uri(streamUri)
     }

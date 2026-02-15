@@ -45,6 +45,7 @@ fun IntentBox(intent: Intent) {
             val extras = intent.extras
             if (extras != null) {
                 extras.keySet().forEach { key ->
+                    @Suppress("DEPRECATION")
                     IntentProperty(name = "extra: $key", value = extras.get(key))
                 }
             } else {

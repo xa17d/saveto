@@ -1,20 +1,26 @@
 package at.xa1.saveto.feature.intro
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.pager.HorizontalPager
+import androidx.compose.foundation.pager.rememberPagerState
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.Button
 import androidx.compose.material.Card
 import androidx.compose.material.Icon
+import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Share
@@ -22,6 +28,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
@@ -33,13 +40,8 @@ import at.xa1.saveto.R
 import at.xa1.saveto.android.compose.Scrollable
 import at.xa1.saveto.common.navigation.Destination
 import at.xa1.saveto.ui.OptionButton
-import com.google.accompanist.pager.ExperimentalPagerApi
-import com.google.accompanist.pager.HorizontalPager
-import com.google.accompanist.pager.HorizontalPagerIndicator
-import com.google.accompanist.pager.rememberPagerState
 import kotlinx.coroutines.launch
 
-@OptIn(ExperimentalPagerApi::class)
 @Composable
 fun Intro(modifier: Modifier = Modifier, args: IntroArgs) {
     Column(
@@ -47,7 +49,8 @@ fun Intro(modifier: Modifier = Modifier, args: IntroArgs) {
             .fillMaxSize()
             .then(modifier)
     ) {
-        val pagerState = rememberPagerState()
+        val pageCount = 4
+        val pagerState = rememberPagerState(pageCount = { pageCount })
 
         val scope = rememberCoroutineScope()
         fun nextPage() {
@@ -56,9 +59,7 @@ fun Intro(modifier: Modifier = Modifier, args: IntroArgs) {
             }
         }
 
-        val pageCount = 4
         HorizontalPager(
-            count = pageCount,
             state = pagerState,
             contentPadding = PaddingValues(start = 32.dp, end = 32.dp, top = 32.dp),
             modifier = Modifier
@@ -90,12 +91,36 @@ fun Intro(modifier: Modifier = Modifier, args: IntroArgs) {
             }
         }
 
-        HorizontalPagerIndicator(
-            pagerState = pagerState,
+        PagerIndicator(
+            pageCount = pageCount,
+            currentPage = pagerState.currentPage,
             modifier = Modifier
                 .align(Alignment.CenterHorizontally)
                 .padding(24.dp)
         )
+    }
+}
+
+@Composable
+private fun PagerIndicator(
+    pageCount: Int,
+    currentPage: Int,
+    modifier: Modifier = Modifier,
+    activeColor: Color = MaterialTheme.colors.primary,
+    inactiveColor: Color = Color.LightGray
+) {
+    Row(
+        modifier = modifier,
+        horizontalArrangement = Arrangement.spacedBy(8.dp)
+    ) {
+        repeat(pageCount) { index ->
+            Box(
+                modifier = Modifier
+                    .size(8.dp)
+                    .clip(CircleShape)
+                    .background(if (index == currentPage) activeColor else inactiveColor)
+            )
+        }
     }
 }
 

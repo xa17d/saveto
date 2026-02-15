@@ -14,7 +14,7 @@ import androidx.compose.material.Text
 import androidx.compose.material.TextField
 import androidx.compose.material.TopAppBar
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.ArrowBack
+import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.filled.Check
 import androidx.compose.material.icons.filled.MoreVert
 import androidx.compose.runtime.Composable
@@ -61,7 +61,7 @@ fun TemplateSetting(modifier: Modifier = Modifier, args: TemplateSettingsArgs) {
             title = { Text(text = "Edit Template") },
             navigationIcon = {
                 IconButton(onClick = args.onBack) {
-                    Icon(Icons.Filled.ArrowBack, stringResource(id = R.string.settingsClose))
+                    Icon(Icons.AutoMirrored.Filled.ArrowBack, stringResource(id = R.string.settingsClose))
                 }
             },
             actions = {

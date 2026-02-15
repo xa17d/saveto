@@ -1,3 +1,5 @@
+@file:Suppress("DEPRECATION") // OssLicensesMenuActivity has no replacement
+
 package at.xa1.saveto.feature.settings
 
 import android.content.Intent

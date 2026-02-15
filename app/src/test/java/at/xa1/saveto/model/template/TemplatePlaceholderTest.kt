@@ -129,7 +129,7 @@ class TemplatePlaceholderTest {
     @Test
     fun `AMPM returns X`() {
         assertEquals(
-            "pm",
+            "PM",
             TemplatePlaceholder.AM_PM.value(context)
         )
     }
