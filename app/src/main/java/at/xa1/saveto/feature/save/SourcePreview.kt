@@ -12,7 +12,9 @@ import androidx.compose.material.TextField
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
+import at.xa1.saveto.R
 import at.xa1.saveto.android.compose.Scrollable
 import at.xa1.saveto.common.navigation.Destination
 import at.xa1.saveto.model.Source
@@ -27,7 +29,7 @@ fun SourcePreview(source: Source, onSave: () -> Unit) {
                     .align(Alignment.CenterHorizontally),
                 onClick = onSave
             ) {
-                Text(text = "Save")
+                Text(text = stringResource(R.string.settingsSave))
             }
             IntentBox(intent = source.rawIntent)
         }

@@ -63,4 +63,7 @@
     <string name="settingsTemplateAdd">Neue Vorlage erstellen</string>
     <string name="settingsTemplateDefaultName">Standard</string>
     <string name="selectTemplateTitle">Vorlage wählen</string>
+    <string name="templateSettingsTitle">Vorlage bearbeiten</string>
+    <string name="templateSettingsTogglePlaceholders">Platzhalter ein-/ausblenden</string>
+    <string name="errorClose">Schließen</string>
 </resources>

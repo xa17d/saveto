@@ -63,5 +63,8 @@
     <string name="settingsTemplateAdd">Create a new Template</string>
     <string name="settingsTemplateDefaultName">Default</string>
     <string name="selectTemplateTitle">Select Template</string>
+    <string name="templateSettingsTitle">Edit Template</string>
+    <string name="templateSettingsTogglePlaceholders">Toggle placeholders</string>
+    <string name="errorClose">Close</string>
 
 </resources>

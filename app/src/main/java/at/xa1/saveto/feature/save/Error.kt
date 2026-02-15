@@ -75,7 +75,7 @@ fun Error(modifier: Modifier = Modifier, args: ErrorArgs) {
             modifier = Modifier
                 .padding(top = 16.dp)
         ) {
-            OptionButton(text = "Close") {
+            OptionButton(text = stringResource(R.string.errorClose)) {
                 args.onClose()
             }
         }

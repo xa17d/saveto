@@ -64,7 +64,7 @@ fun TemplateSetting(modifier: Modifier = Modifier, args: TemplateSettingsArgs) {
         Surface(color = MaterialTheme.colors.primarySurface) {
             Column(modifier = Modifier.statusBarsPadding()) {
                 TopAppBar(
-                    title = { Text(text = "Edit Template") },
+                    title = { Text(text = stringResource(R.string.templateSettingsTitle)) },
                     navigationIcon = {
                         IconButton(onClick = args.onBack) {
                             Icon(Icons.AutoMirrored.Filled.ArrowBack, stringResource(id = R.string.settingsClose))
@@ -101,7 +101,7 @@ fun TemplateSetting(modifier: Modifier = Modifier, args: TemplateSettingsArgs) {
                         IconButton(onClick = {
                             placeholderListCollapsed = !placeholderListCollapsed
                         }) {
-                            Icon(imageVector = Icons.Filled.MoreVert, contentDescription = "")
+                            Icon(imageVector = Icons.Filled.MoreVert, contentDescription = stringResource(R.string.templateSettingsTogglePlaceholders))
                         }
                     },
                     value = suggestedFilename.value,
