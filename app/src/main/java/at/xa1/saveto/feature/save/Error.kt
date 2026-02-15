@@ -7,6 +7,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.foundation.text.selection.SelectionContainer
 import androidx.compose.material.Icon
 import androidx.compose.material.Text
@@ -29,6 +30,7 @@ import at.xa1.saveto.ui.theme.SaveToTheme
 fun Error(modifier: Modifier = Modifier, args: ErrorArgs) {
     Column(
         modifier = Modifier
+            .statusBarsPadding()
             .padding(16.dp)
             .fillMaxSize()
     ) {

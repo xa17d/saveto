@@ -6,6 +6,7 @@ import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.material.CircularProgressIndicator
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
@@ -29,6 +30,7 @@ val loadingIndicatorModifier: Modifier
 fun Loading(modifier: Modifier = Modifier, text: StateFlow<String?>) {
     Column(
         modifier = Modifier
+            .statusBarsPadding()
             .then(modifier),
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally

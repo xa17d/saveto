@@ -7,9 +7,12 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.material.Checkbox
 import androidx.compose.material.Icon
 import androidx.compose.material.IconButton
+import androidx.compose.material.MaterialTheme
+import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.material.TextField
 import androidx.compose.material.TopAppBar
@@ -17,6 +20,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.filled.Check
 import androidx.compose.material.icons.filled.MoreVert
+import androidx.compose.material.primarySurface
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.getValue
@@ -57,19 +61,24 @@ fun TemplateSetting(modifier: Modifier = Modifier, args: TemplateSettingsArgs) {
     }
 
     Column(modifier = modifier) {
-        TopAppBar(
-            title = { Text(text = "Edit Template") },
-            navigationIcon = {
-                IconButton(onClick = args.onBack) {
-                    Icon(Icons.AutoMirrored.Filled.ArrowBack, stringResource(id = R.string.settingsClose))
-                }
-            },
-            actions = {
-                IconButton(onClick = onSave) {
-                    Icon(Icons.Filled.Check, stringResource(id = R.string.settingsSave))
-                }
+        Surface(color = MaterialTheme.colors.primarySurface) {
+            Column(modifier = Modifier.statusBarsPadding()) {
+                TopAppBar(
+                    title = { Text(text = "Edit Template") },
+                    navigationIcon = {
+                        IconButton(onClick = args.onBack) {
+                            Icon(Icons.AutoMirrored.Filled.ArrowBack, stringResource(id = R.string.settingsClose))
+                        }
+                    },
+                    actions = {
+                        IconButton(onClick = onSave) {
+                            Icon(Icons.Filled.Check, stringResource(id = R.string.settingsSave))
+                        }
+                    },
+                    elevation = 0.dp
+                )
             }
-        )
+        }
 
         Scrollable {
             Column {

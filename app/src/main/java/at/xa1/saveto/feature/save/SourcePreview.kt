@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.material.Button
 import androidx.compose.material.Card
 import androidx.compose.material.Text
@@ -18,7 +19,7 @@ import at.xa1.saveto.model.Source
 
 @Composable
 fun SourcePreview(source: Source, onSave: () -> Unit) {
-    Scrollable {
+    Scrollable(modifier = Modifier.statusBarsPadding()) {
         Column {
             Button(
                 modifier = Modifier

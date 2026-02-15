@@ -14,6 +14,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.foundation.pager.HorizontalPager
 import androidx.compose.foundation.pager.rememberPagerState
 import androidx.compose.foundation.shape.CircleShape
@@ -47,6 +48,7 @@ fun Intro(modifier: Modifier = Modifier, args: IntroArgs) {
     Column(
         Modifier
             .fillMaxSize()
+            .statusBarsPadding()
             .then(modifier)
     ) {
         val pageCount = 4

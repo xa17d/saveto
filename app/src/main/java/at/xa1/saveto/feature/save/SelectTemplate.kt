@@ -6,6 +6,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.material.Divider
 import androidx.compose.material.Icon
 import androidx.compose.material.IconButton
@@ -15,6 +16,7 @@ import androidx.compose.material.Text
 import androidx.compose.material.TopAppBar
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Close
+import androidx.compose.material.primarySurface
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Modifier
@@ -37,14 +39,19 @@ import at.xa1.saveto.model.template.fill
 fun SelectTemplate(modifier: Modifier = Modifier, args: SelectTemplateArgs) {
     BackHandler(onBack = args.onAbort)
     Column(modifier = modifier) {
-        TopAppBar(
-            title = { Text(text = stringResource(R.string.selectTemplateTitle)) },
-            navigationIcon = {
-                IconButton(onClick = { args.onAbort() }) {
-                    Icon(Icons.Filled.Close, stringResource(id = R.string.settingsClose))
-                }
+        Surface(color = MaterialTheme.colors.primarySurface) {
+            Column(modifier = Modifier.statusBarsPadding()) {
+                TopAppBar(
+                    title = { Text(text = stringResource(R.string.selectTemplateTitle)) },
+                    navigationIcon = {
+                        IconButton(onClick = { args.onAbort() }) {
+                            Icon(Icons.Filled.Close, stringResource(id = R.string.settingsClose))
+                        }
+                    },
+                    elevation = 0.dp
+                )
             }
-        )
+        }
         Scrollable {
             Column {
                 val templates = args.templates.all.collectAsState()

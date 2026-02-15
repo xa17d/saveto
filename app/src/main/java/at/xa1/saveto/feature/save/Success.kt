@@ -4,6 +4,7 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.material.Icon
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -19,6 +20,7 @@ import at.xa1.saveto.ui.theme.Orange500
 fun Success(modifier: Modifier = Modifier) {
     Column(
         modifier = Modifier
+            .statusBarsPadding()
             .then(modifier),
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally

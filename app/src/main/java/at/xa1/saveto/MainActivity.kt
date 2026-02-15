@@ -4,8 +4,11 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.activity.enableEdgeToEdge
+import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
+import androidx.compose.ui.Modifier
 import at.xa1.saveto.common.android.IntentManager
 import at.xa1.saveto.common.navigation.ComposeNavigator
 import at.xa1.saveto.common.navigation.HostHolder
@@ -25,6 +28,7 @@ class MainActivity : ComponentActivity() {
     lateinit var navigator: ComposeNavigator
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        enableEdgeToEdge()
         super.onCreate(savedInstanceState)
 
         getInjector().inject(this)
@@ -32,7 +36,10 @@ class MainActivity : ComponentActivity() {
 
         setContent {
             SaveToTheme {
-                Surface(color = MaterialTheme.colors.background) {
+                Surface(
+                    modifier = Modifier.navigationBarsPadding(),
+                    color = MaterialTheme.colors.background
+                ) {
                     navigator.Show()
                 }
             }
