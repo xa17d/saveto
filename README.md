@@ -67,7 +67,7 @@ Maximum Privacy. No Permissions required. Not even internet access.
 ### Prerequisites
 
 - Android Studio
-- Java 11+
+- Java 17+
 - sh
 
 ### Code Checks
@@ -93,7 +93,7 @@ This compiles the code, runs ktlint, unit tests and android tests.
 
 _This is only relevant for the deployer._
 
-1. Update `versionCode` and `versionName` in `versions.gradle`
+1. Update `versionCode` and `versionName` in `app/build.gradle.kts`
 2. Run:
    ```bash
    ./release.sh
