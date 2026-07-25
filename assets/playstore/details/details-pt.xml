@@ -1,0 +1,11 @@
+<resources>
+    <string name="appName" maxLength="30">Salvar em… - Compartilhe em arquivo</string>
+    <string name="shortDescription" maxLength="80">Compartilhe dados de qualquer app e salve em arquivo.</string>
+    <string name="fullDescription" maxLength="4000">Exportar dados de qualquer aplicativo para um arquivo ficou simples. Basta abrir as opções de compartilhamento, selecionar "Salvar em…" e escolher o arquivo de destino. Pronto. Sem permissões extras. Sem anúncios. Grátis para sempre.</string>
+    <string name="mockupShareFromAnyApp">Compartilhe dados de qualquer app e salve em arquivo.</string>
+    <string name="mockupProgressIndicator">Indicador de Progresso</string>
+    <string name="mockupProgressIndicatorSubTitle">para arquivos grandes</string>
+    <string name="mockupProgressIndicatorSubTitle">Sem Permissões
+        Sem Anúncios
+        Grátis para Sempre</string>
+</resources>
